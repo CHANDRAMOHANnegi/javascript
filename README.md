@@ -1,6 +1,10 @@
 
 JAVASCRIPT
 
+    CONCEPTS
+        1. "this" keyword
+        http://javascriptissexy.com/understand-javascripts-this-with-clarity-and-master-it/
+
 
     FRONTEND INTERVIEW QUESTION
         1. Memoized Functions
