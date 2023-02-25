@@ -1,11 +1,11 @@
 Array.prototype.myReduce = function (callback, defaultValue) {
   const array = this;
   const length = array.length;
-  let res = defaultValue;
+  let result = defaultValue;
   for (let i = 0; i < length; i++) {
-    res = callback(res, this[i], i, this);
+    result = callback(result, this[i], i, this);
   }
-  return res;
+  return result;
 };
 
 const ans = [1, 2, 3].myReduce((sum, ele) => sum + ele, 0);
