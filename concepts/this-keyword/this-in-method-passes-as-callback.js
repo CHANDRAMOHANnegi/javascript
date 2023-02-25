@@ -72,3 +72,8 @@ var user = {
 $(".buttonError").click(user.clickHandler); // undefined
 
 $(".buttonGood").click(user.clickHandler.bind(user));
+
+
+// Just try to remember this single upshot: callback functions are completely 
+// at the power of the higher order function calling them. 
+// That outer enclosing function is the call site.

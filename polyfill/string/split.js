@@ -1,3 +1,6 @@
+// https://www.youtube.com/watch?v=ssBvK5EMess&list=PLe3J6mZBq1xUWVBMpSR2zpp8paWMJQ91b&index=10&ab_channel=JsCafe
+
+
 String.prototype.mySplit = function (separator, noOfSplit) {
   const text = this;
   const result = [];

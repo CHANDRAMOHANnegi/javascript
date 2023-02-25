@@ -1,5 +1,9 @@
 // http://javascriptissexy.com/understand-javascripts-this-with-clarity-and-master-it/
+// https://thenewstack.io/mastering-javascript-callbacks-bind-apply-call/
 
+
+// It’s important to bear in mind that once bind() sets a chosen ‘this’ value, it’s immutable.
+//  That is, a function returned from bind() can never again be bound to a different ‘this’ value.
 
 var person = {
     firstName: "Penelope",
