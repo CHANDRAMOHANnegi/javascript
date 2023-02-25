@@ -1,5 +1,5 @@
 function createSetTimeout() {
-  var timerId = 0;
+  var timerId = 1;
   var timerMap = {};
 
   function setTimeoutPoly(callback, delay, ...args) {
@@ -27,8 +27,10 @@ function createSetTimeout() {
 
 var { clearTimeoutPoly, setTimeoutPoly } = createSetTimeout();
 
-var callback = function (name) {
-  console.log("Hello, welcome " + name);
-};
+// var callback = function (name) {
+//   console.log("Hello, welcome " + name);
+// };
 
-var id = setTimeoutPoly(callback, 2000, "cm");
+// var id = setTimeoutPoly(callback, 2000, "cm");
+
+export default createSetTimeout
