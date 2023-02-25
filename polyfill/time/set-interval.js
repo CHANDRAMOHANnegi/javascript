@@ -1,3 +1,5 @@
+//https://www.youtube.com/watch?v=Ci28TR9i9aQ&list=PLe3J6mZBq1xUWVBMpSR2zpp8paWMJQ91b&index=16&ab_channel=JsCafe
+
 import createSetTimeout from './set-timeout.js'
 
 function createInterval() {
