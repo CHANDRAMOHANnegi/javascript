@@ -1,5 +1,5 @@
 function createSetTimeout() {
-  var timerId = 0;
+  var timerId = 1;
   var timerMap = {};
 
   function setTimeoutPoly(callback, delay, ...args) {
