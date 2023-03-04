@@ -1,0 +1,73 @@
+{
+    "CONCEPTS": [
+        {
+            "title": "this keyword",
+            "videos": [
+                {
+                    "link": "https://www.youtube.com/watch?v=aHPK2rsonZA&ab_channel=ApnaCollege"
+                },
+                {
+                    "link": "http://javascriptissexy.com/understand-javascripts-this-with-clarity-and-master-it/"
+                }
+            ]
+        },
+        {
+            "title": "Proxy",
+            "videos": [
+                {
+                    "title": "What do these JavaScript libraries have in common?",
+                    "link": "https://www.youtube.com/watch?v=KRxOG3kdZE4&ab_channel=mewtru"
+                }
+            ]
+        }
+    ],
+    "FRONTEND_INTERVIEW_QUESTION": [
+        {
+            "title": "Memoized Functions",
+            "videos": [
+                {
+                    "title": "Q1 Memoized Functions | Zomato Frontend Interview Question | Javascript Questions for Interviews",
+                    "link": "https://www.youtube.com/watch?v=Mip6ejPRXko&list=PLe3J6mZBq1xUWVBMpSR2zpp8paWMJQ91b&index=2&ab_channel=JsCafe"
+                }
+            ]
+        }
+    ],
+    "Packages": [
+        {
+            "title": "Redis class",
+            "videos": [
+                {
+                    "title": "Are YOU smarter than a staff software engineer?",
+                    "link": "https: //www.youtube.com/watch?v=UMFAMyOkThw&ab_channel=mewtru"
+                }
+            ]
+        }
+    ],
+    "polyfill": [
+        {
+            "title": "array"
+        },
+        {
+            "title": "string",
+            "videos": [
+                {
+                    "title": "Split polyfill",
+                    "link": "https://www.youtube.com/watch?v=ssBvK5EMess&list=PLe3J6mZBq1xUWVBMpSR2zpp8paWMJQ91b&index=10&ab_channel=JsCafe"
+                }
+            ]
+        },
+        {
+            "title": "time",
+            "videos": [
+                {
+                    "title": "settimeout",
+                    "link": "https://www.youtube.com/watch?v=Ci28TR9i9aQ&list=PLe3J6mZBq1xUWVBMpSR2zpp8paWMJQ91b&index=16&ab_channel=JsCafe"
+                },
+                {
+                    "title": "setInterval",
+                    "link": "https://www.youtube.com/watch?v=j1-fbe5F5uE&list=PLe3J6mZBq1xUWVBMpSR2zpp8paWMJQ91b&index=15&ab_channel=JsCafe"
+                }
+            ]
+        }
+    ]
+}
