@@ -70,6 +70,7 @@ const listCommands = [
             if (data.has(key) && !Array.isArray(data.get(key))) {
                 throw new Error('Key already exists but is not array.');
             }
+            console.log('---lpush---->>', this);
 
             const arr = data.get(key) ?? [];
             const ret = arr.unshift(value);
@@ -83,6 +84,7 @@ const listCommands = [
             if (data.has(key) && !Array.isArray(data.get(key))) {
                 throw new Error('Key already exists but is not array.');
             }
+            console.log('---rpush---->>', this);
 
             const arr = data.get(key) ?? [];
             const ret = arr.push(value);
@@ -96,13 +98,14 @@ const listCommands = [
             if (data.has(key) && !Array.isArray(data.get(key))) {
                 throw new Error('Key already exists but is not array.');
             }
+            console.log('---lrange---->>', this);
 
             const arr = data.get(key);
             if (!arr) {
                 return null;
             }
 
-            return arr.slice(start,stop);
+            return arr.slice(start, stop);
         }
     }
 ];
@@ -119,6 +122,7 @@ class Redis {
     process(commandString) {
         const [commandName, ...args] = commandString.split(" ")
         const command = this.#commands.find(({ name }) => name == commandName.toLowerCase())
+        console.log('--redis-process---->>', this);
         if (!command) {
             throw new Error(`Unexpected command: ${commandName} `)
         }
