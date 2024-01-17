@@ -1,0 +1,28 @@
+// https://javascriptinterviewquestions.com/2020/05/how-to-memoize-any-function-in-javascript.html
+
+var memoized = function (foo) {
+  var cache = {};
+  return function (...args) {
+    var argId = args.toString();
+    if (cache[argId]) {
+      return cache[argId];
+    } else {
+      var value = foo(...args);
+      cache[argId] = value;
+      return value;
+    }
+  };
+};
+
+var factor = function (n) {
+  if (n <= 1) {
+    return 1;
+  } else {
+    console.log("in", n);
+    return n * factorial(n - 1);
+  }
+};
+
+var factorial = memoized(factor);
+console.log(factorial(5));
+console.log(factorial(6));
