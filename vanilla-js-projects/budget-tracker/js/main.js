@@ -12,7 +12,7 @@ var memoized = function (foo) {
   };
 };
 
-var factor = function (n) {
+var factorial = function (n) {
   if (n <= 1) {
     return 1;
   } else {
@@ -21,6 +21,6 @@ var factor = function (n) {
   }
 };
 
-var factorial = memoized(factor);
+var factorial = memoized(factorial);
 console.log(factorial(5));
 console.log(factorial(6));
