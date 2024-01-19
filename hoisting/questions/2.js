@@ -5,7 +5,6 @@
 //     console.log(variable);
 // })();
 
-
 // var variable = 10;
 // (()=>{
 //    console.log(variable);   // undefined
@@ -13,23 +12,25 @@
 //    console.log(variable);   // 20
 // })();
 
-
 var variable = 10;
 
 function print1() {
-    console.log(variable);   // undefined
-    var variable = 20;
-    console.log(variable);
+  console.log(variable); // undefined
+  var variable = 20;
+  console.log(variable);
 }
+
+// till we reach execution phase, we have the variable,
+// so we don't need to look outside print1 scope for variable
 
 function print2() {
-    console.log(variable);   // undefined
-    variable = 20;
-    console.log(variable);
+  console.log(variable); // undefined
+  variable = 20;
+  console.log(variable);
 }
 // because of "closures" as the first console log gets its value from the variable described outside its scope.
-// print1()
-// console.log(variable);
+print1();
+console.log(variable);
 
-print2()
+// print2();
 // console.log(variable);
