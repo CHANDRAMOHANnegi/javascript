@@ -31,8 +31,3 @@ console.log(obj.increase());
 // console.log(x, y);
 // var x = 10;
 // y = 20;
-
-{
-}
-
-func;
