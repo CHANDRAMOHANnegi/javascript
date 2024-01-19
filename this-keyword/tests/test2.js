@@ -1,9 +1,8 @@
-function getThisWithArgs(doge, saying) {
-    console.log(doge, saying)
-    console.log(this)
+function getThisWithArgs(dog, saying) {
+  console.log(dog, saying);
+  console.log(this);
 }
 
-// getThisWithArgs("Doge says", "Very args!")
-// getThisWithArgs.call({ name: "Dogec" }, "Doge says", "Very args!")
-getThisWithArgs.apply({ name: "Dogec" }, ["Doge says", "Very args!"])
-
+// getThisWithArgs("Dog says", "Very args!")
+// getThisWithArgs.call({ name: "Dog" }, "german shepher", "barkss");
+// getThisWithArgs.apply({ name: "Dog" }, ["german shepher", "barkss"]);

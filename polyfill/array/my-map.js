@@ -1,64 +1,42 @@
-const arr = [1, 2, 3]
-const callback = (ele) => ele * 2
+const arr = [1, 2, 3];
+// const callback = (ele) => ele * 2;
 
-
-const double = arr.map((ele, index, arr) => { })
+const double = arr.map((ele, index, arr) => {});
 
 // const double2 = arr.myMap(callback)
 
 // console.log(double);// [2,4,6]
 
-
 Array.prototype.myMap = function (callback) {
-  var array = this
-  var length = array.length
+  console.log("=-=>", this);
+  var array = this;
+  var length = array.length;
 
-  const result = []
+  const result = [];
 
   for (let i = 0; i < length; i++) {
-    const ans = callback(array[i], i, array)
-    result.push(ans)
+    const ans = callback(this, array[i], i, array);
+    result.push(ans);
   }
 
   return result;
-}
-
+};
 
 // const double2 = arr.myMap(callback)
 
 // console.log(arr);
 // console.log(double2);
 
+const str = ["a", "b", "c"];
 
-const str = ["a", "b", "c"]
-const cb = (ele) => ele + ele
+function cb(ele) {
+  console.log("this", this);
+  return ele + ele;
+}
 
-const ans = str.myMap(cb)
+const ans = str.myMap(cb);
 
 console.log(ans);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // Array.prototype.myMap = function (fn) {
 //   const array = this;
