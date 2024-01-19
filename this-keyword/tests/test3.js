@@ -1,6 +1,11 @@
+function getThis() {
+  console.log(this);
+}
+
 const counter = {
   name: "cm",
   count: 0,
+  getThis,
   decrease: function () {
     console.log("decrease", this);
     let x = 0;
@@ -8,6 +13,7 @@ const counter = {
     const arrow = (num) => {
       x++;
       context.num = num;
+      getThis();
       console.log("arrow decrease : ", x, this, context);
     };
     return arrow;
@@ -26,12 +32,14 @@ const counter = {
 
 const obj = { name: "obj", count: 5 };
 
+// counter.getThis();
+
 // counter.increase.call(obj); // ()
 // const arrowIn = counter.increase(); //.call(obj);
 // arrowIn();
-const arrowDec = counter.decrease.call(obj);
+const arrowDec = counter.decrease(); //.call(obj);
 arrowDec(5);
-arrowDec(6);
+// arrowDec(6);
 // counter.increase();
 // counter.increase()
 // console.log(counter);
