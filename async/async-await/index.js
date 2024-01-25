@@ -1,4 +1,3 @@
-
 // fetch('https://jsonplaceholder.typicode.com/todos')
 //     .then(response => response.json())
 //     .then(todoList => {
@@ -22,22 +21,19 @@
 //         console.log('outer error', err);
 //     })
 
-
-
 async function fetchTodos() {
-    try {
-        const listRes = await fetch('https://jsonplaceholder.typicode.com/todos')
-        const list = await listRes.json()
-        console.log(list);
+  try {
+    const listRes = await fetch("https://jsonplaceholder.typicode.com/todos");
+    const list = await listRes.json();
+    console.log(list);
 
-        const todoRes = await fetch('https://jsonplceholder.typicode.com/todos/5')
-        const todo = await todoRes.json()
+    const todoRes = await fetch("https://jsonplceholder.typicode.com/todos/5");
+    const todo = await todoRes.json();
 
-        console.log(todo);
-    } catch (error) {
-        console.log('error', error);
-    }
+    console.log(todo);
+  } catch (error) {
+    console.log("error", error);
+  }
 }
 
-
-fetchTodos()
+fetchTodos();

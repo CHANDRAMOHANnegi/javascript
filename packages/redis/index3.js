@@ -1,161 +1,157 @@
-
-
 const kvCommands = [
-    {
-        name: 'get',
-        handler: (data, [key]) => data.get(key),
+  {
+    name: "get",
+    handler: (data, [key]) => data.get(key),
+  },
+  {
+    name: "set",
+    handler: (data, [key, value]) => {
+      data.set(key, value);
+      return "OK";
     },
-    {
-        name: 'set',
-        handler: (data, [key, value]) => {
-            data.set(key, value);
-            return "OK";
-        }
+  },
+  {
+    name: "del",
+    handler: (data, [key]) => {
+      const val = data.get(key);
+      data.delete(key);
+      return val;
     },
-    {
-        name: 'del',
-        handler: (data, [key]) => {
-            const val = data.get(key);
-            data.delete(key);
-            return val;
-        }
-    }
+  },
 ];
 
 const hashCommands = [
-    {
-        name: "hset",
-        handler: (data, [key, field, value]) => {
-            if (data.has(key) && !(data.get(key) instanceof Map)) {
-                throw new Error("Key already exisit but is not hash")
-            }
-            const map = data.get(key) ?? new Map();
-            map.set(field, value)
-            data.set(key, map)
-            return "OK"
-        }
+  {
+    name: "hset",
+    handler: (data, [key, field, value]) => {
+      if (data.has(key) && !(data.get(key) instanceof Map)) {
+        throw new Error("Key already exisit but is not hash");
+      }
+      const map = data.get(key) ?? new Map();
+      map.set(field, value);
+      data.set(key, map);
+      return "OK";
     },
-    {
-        name: "hget",
-        handler: (data, [key, field, value]) => {
-            if (data.has([key]) && !(data.get(key) instanceof Map)) {
-                throw new Error("Key already exisit but is not hash")
-            }
-            const map = data.get(key)
-            if (!map) {
-                return null
-            }
-            return map.get(field);
-        }
+  },
+  {
+    name: "hget",
+    handler: (data, [key, field, value]) => {
+      if (data.has([key]) && !(data.get(key) instanceof Map)) {
+        throw new Error("Key already exisit but is not hash");
+      }
+      const map = data.get(key);
+      if (!map) {
+        return null;
+      }
+      return map.get(field);
     },
-    {
-        name: "hgetall",
-        handler: (data, [key, field, value]) => {
-            if (data.has([key]) && !(data.get(key) instanceof Map)) {
-                throw new Error("Key already exisit but is not hash")
-            }
-            const map = data.get(key)
-            if (!map) {
-                return null
-            }
-            return Object.fromEntries(map.entries())
-        }
+  },
+  {
+    name: "hgetall",
+    handler: (data, [key, field, value]) => {
+      if (data.has([key]) && !(data.get(key) instanceof Map)) {
+        throw new Error("Key already exisit but is not hash");
+      }
+      const map = data.get(key);
+      if (!map) {
+        return null;
+      }
+      return Object.fromEntries(map.entries());
     },
-]
+  },
+];
 
 const listCommands = [
-    {
-        name: 'lpush',
-        handler: (data, [key, value]) => {
-            if (data.has(key) && !Array.isArray(data.get(key))) {
-                throw new Error('Key already exists but is not array.');
-            }
-            console.log('---lpush---->>', this);
+  {
+    name: "lpush",
+    handler: (data, [key, value]) => {
+      if (data.has(key) && !Array.isArray(data.get(key))) {
+        throw new Error("Key already exists but is not array.");
+      }
+      console.log("---lpush---->>", this);
 
-            const arr = data.get(key) ?? [];
-            const ret = arr.unshift(value);
-            data.set(key, arr);
-            return ret;
-        }
+      const arr = data.get(key) ?? [];
+      const ret = arr.unshift(value);
+      data.set(key, arr);
+      return ret;
     },
-    {
-        name: 'rpush',
-        handler: (data, [key, value]) => {
-            if (data.has(key) && !Array.isArray(data.get(key))) {
-                throw new Error('Key already exists but is not array.');
-            }
-            console.log('---rpush---->>', this);
+  },
+  {
+    name: "rpush",
+    handler: (data, [key, value]) => {
+      if (data.has(key) && !Array.isArray(data.get(key))) {
+        throw new Error("Key already exists but is not array.");
+      }
+      console.log("---rpush---->>", this);
 
-            const arr = data.get(key) ?? [];
-            const ret = arr.push(value);
-            data.set(key, arr);
-            return ret;
-        }
+      const arr = data.get(key) ?? [];
+      const ret = arr.push(value);
+      data.set(key, arr);
+      return ret;
     },
-    {
-        name: 'lrange',
-        handler: (data, [key, start, stop]) => {
-            if (data.has(key) && !Array.isArray(data.get(key))) {
-                throw new Error('Key already exists but is not array.');
-            }
-            console.log('---lrange---->>', this);
+  },
+  {
+    name: "lrange",
+    handler: (data, [key, start, stop]) => {
+      if (data.has(key) && !Array.isArray(data.get(key))) {
+        throw new Error("Key already exists but is not array.");
+      }
+      console.log("---lrange---->>", this);
 
-            const arr = data.get(key);
-            if (!arr) {
-                return null;
-            }
+      const arr = data.get(key);
+      if (!arr) {
+        return null;
+      }
 
-            return arr.slice(start, stop);
-        }
-    }
+      return arr.slice(start, stop);
+    },
+  },
 ];
 
 class Redis {
-    #data;
-    #commands;
+  #data;
+  #commands;
 
-    constructor({ commands }) {
-        this.#data = new Map();
-        this.#commands = commands;
-    }
+  constructor({ commands }) {
+    this.#data = new Map();
+    this.#commands = commands;
+  }
 
-    process(commandString) {
-        const [commandName, ...args] = commandString.split(" ")
-        const command = this.#commands.find(({ name }) => name == commandName.toLowerCase())
-        console.log('--redis-process---->>', this);
-        if (!command) {
-            throw new Error(`Unexpected command: ${commandName} `)
-        }
-        return command.handler(this.#data, args)
+  process(commandString) {
+    const [commandName, ...args] = commandString.split(" ");
+    const command = this.#commands.find(
+      ({ name }) => name == commandName.toLowerCase()
+    );
+    console.log("--redis-process---->>", this);
+    if (!command) {
+      throw new Error(`Unexpected command: ${commandName} `);
     }
+    return command.handler(this.#data, args);
+  }
 }
 
 const redis = new Redis({
-    commands: [
-        ...kvCommands,
-        ...hashCommands,
-        ...listCommands
-    ]
+  commands: [...kvCommands, ...hashCommands, ...listCommands],
 });
 
 [
-    // 'get nonexisting',
-    // 'set key "hello"',
-    // 'get key',
-    // 'del key',
-    // 'get key',
-    // 'HSET key field value',
-    // 'HGET key field',
-    // 'HGETALL key',
+  // 'get nonexisting',
+  // 'set key "hello"',
+  // 'get key',
+  // 'del key',
+  // 'get key',
+  // 'HSET key field value',
+  // 'HGET key field',
+  // 'HGETALL key',
 
-    // 'HSET key foo bar',
-    // 'HGET key foo',
+  // 'HSET key foo bar',
+  // 'HGET key foo',
 
-    // 'hgetall key',
+  // 'hgetall key',
 
-    'lpush key one',
-    'rpush key two',
-    'lrange key 0 1',
-
-].map(testcase => redis.process(testcase)).forEach(val => console.log(val))
-
+  "lpush key one",
+  "rpush key two",
+  "lrange key 0 1",
+]
+  .map((testcase) => redis.process(testcase))
+  .forEach((val) => console.log(val));
