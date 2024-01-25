@@ -1,19 +1,20 @@
 function asyncFunc() {
-    const eventEmitter = { success: [] };
+  const eventEmitter = { success: [] };
 
-    setTimeout(() => { // (A)
-        for (const handler of eventEmitter.success) {
-            handler('DONE');
-        }
-    }, 0);
+  setTimeout(() => {
+    // (A)
+    for (const handler of eventEmitter.success) {
+      handler("DONE");
+    }
+  }, 0);
 
-    return eventEmitter;
+  return eventEmitter;
 }
 
-const x = asyncFunc()
+const x = asyncFunc();
 
 console.log(x);
 
-x.success.push(x => console.log('Result: ' + x)); // (B)
+x.success.push((x) => console.log("Result: " + x)); // (B)
 
 // console.log(x);
