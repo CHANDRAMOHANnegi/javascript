@@ -16,7 +16,7 @@ Promise.allSettled = (promises) => {
           result[i] = { status: "rejected", reason: err };
           len--;
           if (len === 0) {
-            rej(result);
+            res(result);
           }
         });
     });
