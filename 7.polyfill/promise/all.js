@@ -26,7 +26,7 @@ const res = Promise.myAll([
       res("1");
     }, 1000)
   ),
-  new Promise((res) => res()),
+  new Promise((res) => res('2')),
 ]);
 
 res.then((re) => console.log(re));

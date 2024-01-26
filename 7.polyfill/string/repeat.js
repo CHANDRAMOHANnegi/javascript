@@ -1,4 +1,4 @@
-String.prototype.myRepeat = function (repeat) {
+function myRepeat(repeat) {
   let result = String(this);
 
   //   console.log(this, typeof str);
@@ -7,17 +7,16 @@ String.prototype.myRepeat = function (repeat) {
   }
 
   let i = repeat;
-
   while (i > 1) {
-    result += str;
+    result += str; // str available in global , as memory and execution of it is done before calling this function
     i--;
   }
 
-  return result;
+  return '';
 };
-
+// console.log(str,'wtf'); // Reference error , temporal dead zone
 const str = "hello ";
-const res = str.myRepeat(1);
+const res = myRepeat(2);
 
 console.log(res);
 
