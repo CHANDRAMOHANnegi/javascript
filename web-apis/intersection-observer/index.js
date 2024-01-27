@@ -2,13 +2,13 @@
 const boxElement = document.querySelector("#red");
 
 let options = {
-  threshold: 1.0,
+  threshold: [0.3, 1.0],
 };
 
 console.log(boxElement);
 
-let observer = new IntersectionObserver(([entry]) => {
-  console.log(entry);
+let observer = new IntersectionObserver((entries) => {
+  console.log(entries);
 }, options);
 
 observer.observe(boxElement);
