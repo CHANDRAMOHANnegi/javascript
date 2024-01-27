@@ -8,7 +8,8 @@ function createSetTimeout() {
     var id = timerId++;
     timerMap[id] = true;
     var start = Date.now();
-    function triggerCallback() {
+    function triggerCallback(idleTimeLeftForBrowser) {
+      console.log(idleTimeLeftForBrowser?.timeRemaining());
       if (!timerMap[id]) return;
       if (Date.now() >= start + delay) {
         callback.apply(this, args);
