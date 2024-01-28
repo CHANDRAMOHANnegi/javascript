@@ -1,0 +1,1 @@
+for of loop with index ,  `for (const [index, key] of keys.entries()){}` 
