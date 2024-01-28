@@ -15,6 +15,15 @@ Promise.allSettled = (promises) => {
         .catch((err) => {
           result[i] = { status: "rejected", reason: err };
           len--;
+
+          /**
+           * key take-away is that
+           *
+           * we do not have to call reject, we just have to call resolve,
+           * either it is rejected or resolved
+           *
+           * */
+
           if (len === 0) {
             res(result);
           }
