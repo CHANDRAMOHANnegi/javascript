@@ -1,12 +1,8 @@
-
-
 // func.call(this,[......])
 
-
 function myCall(ref, ...params) {
-    const func = this;
+  const func = this;
 
-    ref.func = func
-    func(...params)
+  ref.func = func;
+  func(...params);
 }
-

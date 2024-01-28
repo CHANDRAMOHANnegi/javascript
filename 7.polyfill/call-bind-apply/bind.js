@@ -1,9 +1,7 @@
-
 function myBind(ref) {
-    ref.func = this;
+  ref.func = this;
 
-    return function (...params) {
-        ref.func(...params)
-    }
+  return function (...params) {
+    ref.func(...params);
+  };
 }
-
