@@ -4,7 +4,7 @@
  * but slightly more efficient than calling those two methods separately.
  *
  *
- * map elements then flat one level
+ * !map elements then flat one level
  *
  * **/
 
