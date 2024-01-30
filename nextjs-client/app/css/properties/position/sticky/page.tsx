@@ -1,88 +1,73 @@
 import React from "react";
+import "./index.css";
 
 export default function page() {
   return (
-    <>
-      <div>
-        <nav className="navbar navbar-expand-sm navbar-light bg-info position-sticky top-0">
-          <a className="navbar-brand" href="#">
-            Navbar
-          </a>
-          <ul className="navbar-nav">
-            <li className="nav-item active">
-              <a className="nav-link" href="#">
-                Home
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">
-                Features
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">
-                Pricing
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-      <div>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-      </div>
-    </>
+    <div
+      style={{
+        width: "500px",
+        height: "1400px",
+        margin: "0 auto",
+      }}
+    >
+      <h1>Sticky positioning</h1>
+      <dl>
+        <dt>A</dt>
+        <dd>Apple</dd>
+        <dd>Ant</dd>
+        <dd>Altimeter</dd>
+        <dd>Airplane</dd>
+        <dt>B</dt>
+        <dd>Bird</dd>
+        <dd>Buzzard</dd>
+        <dd>Bee</dd>
+        <dd>Banana</dd>
+        <dd>Beanstalk</dd>
+        <dt>C</dt>
+        <dd>Calculator</dd>
+        <dd>Cane</dd>
+        <dd>Camera</dd>
+        <dd>Camel</dd>
+        <dt>D</dt>
+        <dd>Duck</dd>
+        <dd>Dime</dd>
+        <dd>Dipstick</dd>
+        <dd>Drone</dd>
+        <dt>E</dt>
+        <dd>Egg</dd>
+        <dd>Elephant</dd>
+        <dd>Egret</dd>
+      </dl>
+
+      <h1>Sticky positioning</h1>
+
+      <dl>
+        <dt>A</dt>
+        <dd>Apple</dd>
+        <dd>Ant</dd>
+        <dd>Altimeter</dd>
+        <dd>Airplane</dd>
+        <dt>B</dt>
+        <dd>Bird</dd>
+        <dd>Buzzard</dd>
+        <dd>Bee</dd>
+        <dd>Banana</dd>
+        <dd>Beanstalk</dd>
+        <dt>C</dt>
+        <dd>Calculator</dd>
+        <dd>Cane</dd>
+        <dd>Camera</dd>
+        <dd>Camel</dd>
+        <dt>D</dt>
+        <dd>Duck</dd>
+        <dd>Dime</dd>
+        <dd>Dipstick</dd>
+        <dd>Drone</dd>
+        <dt>E</dt>
+        <dd>Egg</dd>
+        <dd>Elephant</dd>
+        <dd>Egret</dd>
+      </dl>
+    </div>
   );
 }
