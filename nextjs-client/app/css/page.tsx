@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const links = [
   { link: "/", text: "hello" },
-  { link: "/css", text: "css" },
+  { link: "/css/properties", text: "properties" },
 ];
 
 export default function Home() {
