@@ -1,6 +1,8 @@
 import React from "react";
 import "./style.css";
 
+// https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Positioning#sticky_positioning
+
 export default function page() {
   return (
     <>
