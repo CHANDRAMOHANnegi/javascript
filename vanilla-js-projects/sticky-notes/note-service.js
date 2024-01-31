@@ -6,15 +6,20 @@ const getRndmId = () => parseInt(Math.random() * 10000000);
 //   text: string;
 // };
 
+const key = "sticky-notes";
+
 export class NotesServices {
   #notes = [];
 
   // get
-  getNotes() {
+  static getNotes() {
+    const notes = JSON.parse(localStorage.getItem(key) || []);
+    this.#notes = notes;
+    // console.log(this.#notes);
     return this.#notes;
   }
 
-  getNewNote() {
+  static getNewNote() {
     const id = getRndmId();
     const note = {
       id,
@@ -26,9 +31,10 @@ export class NotesServices {
   }
 
   // put
-  updateNote(note) {
+  static updateNote(note) {
     const alreadyExist = this.#notes.find((not) => not.id === note.id);
 
+    // console.log(alreadyExist);
     if (alreadyExist) {
       alreadyExist.text = note.text;
     } else {
@@ -37,12 +43,15 @@ export class NotesServices {
       this.#notes.push(note);
     }
 
+    localStorage.setItem(key, JSON.stringify(this.#notes));
     return this.#notes;
   }
 
   // delete
-  removeNote(note) {
+  static removeNote(note) {
     const newNotes = this.#notes.filter((not) => not.id !== note.id);
     this.#notes = newNotes;
+    localStorage.setItem(key, JSON.stringify(this.#notes));
+    return newNotes;
   }
 }
