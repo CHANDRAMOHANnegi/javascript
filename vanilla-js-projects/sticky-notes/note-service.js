@@ -12,14 +12,16 @@ export class NotesServices {
   #notes = [];
 
   // get
-  static getNotes() {
-    const notes = JSON.parse(localStorage.getItem(key) || []);
+  getNotes() {
+    const data = localStorage.getItem(key);
+    // console.log(data, typeof data, data === null);
+    const notes = (data && JSON.parse(data)) || [];
     this.#notes = notes;
-    // console.log(this.#notes);
+    console.log(this.#notes);
     return this.#notes;
   }
 
-  static getNewNote() {
+  getNewNote() {
     const id = getRndmId();
     const note = {
       id,
@@ -31,7 +33,7 @@ export class NotesServices {
   }
 
   // put
-  static updateNote(note) {
+  updateNote(note) {
     const alreadyExist = this.#notes.find((not) => not.id === note.id);
 
     // console.log(alreadyExist);
@@ -48,7 +50,7 @@ export class NotesServices {
   }
 
   // delete
-  static removeNote(note) {
+  removeNote(note) {
     const newNotes = this.#notes.filter((not) => not.id !== note.id);
     this.#notes = newNotes;
     localStorage.setItem(key, JSON.stringify(this.#notes));
