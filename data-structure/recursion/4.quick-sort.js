@@ -30,7 +30,12 @@ function quick(arr, start, end) {
       swap(arr, left, right);
     }
   }
-
+  /**
+   * why swap with right,
+   * because right will cross left and will be
+   * pointing towards the smaller element
+   *
+   * */
   swap(arr, pivot, right);
   pivot = right;
 
