@@ -1,12 +1,9 @@
 import Link from "next/link";
 
 const links = [
-  { link: "/", text: "hello" },
-  { link: "/css", text: "css" },
-  { link: "/system-design", text: "system-design" },
-  { link: "/design-pattern", text: "design-pattern" },
-  { link: "/react/setState", text: "setState" },
   { link: "/libs", text: "libs" },
+  { link: "/libs/react-query", text: "react-query" },
+  { link: "/libs/react-test", text: "react-test" },
 ];
 
 export default function Home() {
