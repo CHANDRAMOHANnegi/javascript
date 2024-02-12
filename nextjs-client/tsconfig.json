@@ -19,15 +19,18 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@/components/*": ["components/*"]
     }
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
+    "**/*.js",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "app/test-components/page.jsx"
+    "app/test-components/page.jsx",
+    "app/libs/react-test/page.js"
   ],
   "exclude": ["node_modules"]
 }
