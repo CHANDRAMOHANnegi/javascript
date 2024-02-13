@@ -9,10 +9,27 @@
  * reducing the waiting time for that resource.
  *
  * **/
+
+"use client";
 import React from "react";
 
-const CodeSplitting = () => {
-  return <div>page</div>;
-};
+import dynamic from "next/dynamic";
+import { Suspense } from "react";
+
+export function CodeSplitting() {
+  const SayWelcome = dynamic(
+    () => import("../components/say-hello").then((res) => res.SayWelcome),
+    { loading: () => <p>Loading...</p> }
+  );
+  return (
+    <div>
+      hi
+      <Suspense fallback={<div>Loading...</div>}>
+        <SayWelcome />
+        hello
+      </Suspense>
+    </div>
+  );
+}
 
 export default CodeSplitting;
