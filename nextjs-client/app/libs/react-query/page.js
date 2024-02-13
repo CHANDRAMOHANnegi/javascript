@@ -32,7 +32,7 @@ function Example() {
 
 const queryClient = new QueryClient();
 
-export const ReactQuery = () => {
+const ReactQuery = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <Example />

@@ -11,6 +11,7 @@
     "test:coverage": "jest --coverage"
   },
   "dependencies": {
+    "@next/bundle-analyzer": "^14.1.0",
     "i18next": "^23.8.2",
     "next": "14.0.4",
     "react": "^18",
