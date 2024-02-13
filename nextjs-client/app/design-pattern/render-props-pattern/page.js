@@ -11,7 +11,7 @@ function Fahrenheit({ value }) {
   return <div className="temp">{(parseInt(value || 0) * 9) / 5 + 32}°F</div>;
 }
 
-export function RenderProps() {
+export default function RenderProps() {
   return (
     <div className="App">
       <h1>☃️ Temperature Converter 🌞</h1>
@@ -38,4 +38,4 @@ export function RenderProps() {
   );
 }
 
-export default RenderProps;
+// export default RenderProps;

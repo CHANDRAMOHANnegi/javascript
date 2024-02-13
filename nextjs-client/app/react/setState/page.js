@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 
-export const SetState = (props) => {
+const SetState = (props) => {
   const [val, set] = useState(0);
   const [obj, setObj] = useState({ count: 0 });
 
