@@ -3,6 +3,7 @@ import Link from "next/link";
 const links = [
   { link: "/", text: "hello" },
   { link: "/css/properties", text: "properties" },
+  { link: "/css/flex", text: "flex" },
 ];
 
 export default function Home() {
