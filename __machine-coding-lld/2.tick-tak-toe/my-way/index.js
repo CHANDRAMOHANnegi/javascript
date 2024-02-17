@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const board = document.querySelector(".board")?.[0];
-  const message = document.querySelector(".message");
+  const board = document.getElementById("board")//?.[0];
+  const message = document.getElementById("message");
   const restartBtn = document.getElementById("restartBtn");
   const cells = document.getElementsByClassName("cell");
 
@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", () => {
     winner: null,
     boardState: Array.from({ length: 9 }).fill(""),
   };
-  let { currentPlayer, winner, boardState } = state;
 
   [...cells].forEach((cell, idx) => {
     cell.addEventListener("click", () => handleCellClick(idx));
@@ -18,14 +17,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const render = () => {
     console.log("render", state);
     [...cells].forEach((cell, i) => {
-      cell.innerText = boardState[i];
+      cell.innerText = state.boardState[i];
     });
     message.innerText = "result " + state.winner;
   };
 
   const handleCellClick = (idx) => {
     console.log("idx", idx);
-    if (!winner && boardState[idx] === "") {
+    if (!state.winner && state.boardState[idx] === "") {
       state.boardState[idx] = state.currentPlayer;
       state.winner = checkWinner();
       if (!state.winner) {
@@ -36,6 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const checkWinner = () => {
+    const boardState = state.boardState
     const winningCombinations = [
       [0, 1, 2],
       [3, 4, 5],
@@ -66,12 +66,12 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const restartGame = () => {
-    state = {
-      currentPlayer: "",
-      winner: null,
-      boardState: Array.from({ length: 9 }).fill(""),
-    };
+    state.boardState = Array.from({ length: 9 }).fill("");
+    state.currentPlayer = ""; //Array.from({ length: 9 }).fill("")
+    state.winner = null; //Array.from({ length: 9 }).fill("")
+    render()
   };
 
+  restartBtn.addEventListener("click", restartGame);
   render();
 });
