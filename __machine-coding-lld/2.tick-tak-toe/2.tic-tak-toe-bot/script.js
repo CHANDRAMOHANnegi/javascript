@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let result = checkWinner();
     if (result !== null) {
       return scores[result];
-    }
+    } 
 
     if (isMaximizing) {
       let bestScore = -Infinity;
