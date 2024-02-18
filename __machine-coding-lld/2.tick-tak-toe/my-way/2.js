@@ -1,3 +1,4 @@
+// https://www.youtube.com/watch?v=P2TcQ3h0ipQ
 document.addEventListener("DOMContentLoaded", () => {
   const board = document.getElementById("board")//?.[0];
   const message = document.getElementById("message");

@@ -1,9 +1,9 @@
 import Link from "next/link";
 
 const links = [
-  { link: "/machine-coding", text: "machine-coding" },
-  { link: "/machine-coding/1.feature-flag", text: "1.feature-flag" },
-  { link: "/machine-coding/2.stepper", text: "2.stepper" },
+  { link: "/", text: "hello" },
+  { link: "/react/cloneElements", text: "cloneElements" },
+  { link: "/react/setState", text: "setState" },
 ];
 
 export default function Home() {
