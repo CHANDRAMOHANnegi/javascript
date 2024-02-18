@@ -8,6 +8,7 @@ const links = [
   { link: "/react/setState", text: "setState" },
   { link: "/web-concepts", text: "web-concepts" },
   { link: "/libs", text: "libs" },
+  { link: "/machine-coding", text: "machine-coding" },
 ];
 
 export default function Home() {
