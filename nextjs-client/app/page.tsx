@@ -5,7 +5,7 @@ const links = [
   { link: "/css", text: "css" },
   { link: "/system-design", text: "system-design" },
   { link: "/design-pattern", text: "design-pattern" },
-  { link: "/react/setState", text: "setState" },
+  { link: "/react", text: "react" },
   { link: "/web-concepts", text: "web-concepts" },
   { link: "/libs", text: "libs" },
   { link: "/machine-coding", text: "machine-coding" },
