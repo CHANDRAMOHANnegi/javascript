@@ -1,15 +1,10 @@
+import React from 'react'
 import Link from "next/link";
 
 const links = [
   { link: "/", text: "hello" },
-  { link: "/css", text: "css" },
-  { link: "/system-design", text: "system-design" },
-  { link: "/design-pattern", text: "design-pattern" },
-  { link: "/react", text: "react" },
-  { link: "/web-concepts", text: "web-concepts" },
-  { link: "/libs", text: "libs" },
-  { link: "/machine-coding", text: "machine-coding" },
   { link: "/architecture", text: "architecture" },
+  { link: "/architecture/pagination", text: "pagination" },
 ];
 
 export default function Home() {
