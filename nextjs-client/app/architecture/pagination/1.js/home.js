@@ -12,15 +12,15 @@ const HomePage = () => {
     totalPassengers: 0,
   });
   const [currentPage, setCurrentPage] = useState(1);
-  const [search, setSearch] = useState('');
-  const [debouncedSearch, setDebouncedSearch] = useDebounce('',300)
+  const [search, setSearch] = useState("");
+  const [debouncedSearch, setDebouncedSearch] = useDebounce("", 300);
   const showLoading = () => {
     setPageData((prevState) => ({
       ...prevState,
       rowData: [],
       isLoading: true,
     }));
-  }
+  };
   // To handle page change
   useEffect(() => {
     if (!currentPage) return;
@@ -65,7 +65,10 @@ const HomePage = () => {
       <p>Total Passengers: {pageData.totalPassengers || "Loading..."}</p>
       <div>
         <label>Search Airline</label>
-        <input value={search} onChange={e => setSearch(e.target.value.trim())}/>
+        <input
+          value={search}
+          onChange={(e) => setSearch(e.target.value.trim())}
+        />
       </div>
       <div style={{ height: "600px" }}>
         <Table

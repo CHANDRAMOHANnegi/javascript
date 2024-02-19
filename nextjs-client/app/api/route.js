@@ -18,13 +18,13 @@ const dummyData = generateDummyData(100);
 
 export async function GET(request, response) {
   const searchParams = request.nextUrl.searchParams;
-  const pageNumber = searchParams.get("page");
-  const pageSize = searchParams.get("size");
+  const pageNumber = parseInt(searchParams.get("page"));
+  const pageSize = parseInt(searchParams.get("size"));
 
   const startIndex = (pageNumber - 1) * pageSize;
   const endIndex = startIndex + pageSize;
   const data = dummyData.slice(startIndex, endIndex);
-  console.log(data[0]?.flightName);
+
   return new Response(
     JSON.stringify({
       totalPages: 10,
