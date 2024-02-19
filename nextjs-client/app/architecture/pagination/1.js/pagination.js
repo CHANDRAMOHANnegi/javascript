@@ -6,7 +6,7 @@ const Pagination1 = ({ pageChangeHandler, totalRows, rowsPerPage }) => {
   const noOfPages = Math.ceil(totalRows / rowsPerPage);
 
   // Creating an array with length equal to no.of pages
-  const pagesArr = [...Array.from({length:noOfPages})];
+  const pagesArr = [...Array.from({ length: noOfPages })];
 
   // State variable to hold the current page. This value is
   // passed to the callback provided by the parent

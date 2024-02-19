@@ -1,100 +1,75 @@
-"use client";
-import React, { Component } from "react";
-import styles from "./styles.module.css";
+import React from "react";
+import classnames from "classnames";
+import { usePagination, DOTS } from "./usePagination";
+import "./pagination.scss";
+const Pagination = (props) => {
+  const {
+    onPageChange,
+    totalCount,
+    siblingCount = 1,
+    currentPage,
+    pageSize,
+    className,
+  } = props;
 
-class Pagination2 extends Component {
-  state = {
-    users: null,
-    total: null,
-    per_page: null,
-    current_page: 1,
-  };
+  const paginationRange = usePagination({
+    currentPage,
+    totalCount,
+    siblingCount,
+    pageSize,
+  });
 
-  componentDidMount() {
-    this.makeHttpRequestWithPage(1);
+  if (currentPage === 0 || paginationRange.length < 2) {
+    return null;
   }
 
-  makeHttpRequestWithPage = async (pageNumber) => {
-    const response = await fetch(
-      `https://reqres.in/api/users?page=${pageNumber}`,
-      {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-      }
-    );
-
-    const data = await response.json();
-
-    this.setState({
-      users: data.data,
-      total: data.total,
-      per_page: data.per_page,
-      current_page: data.page,
-    });
+  const onNext = () => {
+    onPageChange(currentPage + 1);
   };
 
-  render() {
-    let users, renderPageNumbers;
+  const onPrevious = () => {
+    onPageChange(currentPage - 1);
+  };
 
-    if (this.state.users !== null) {
-      users = this.state.users.map((user) => (
-        <tr key={user.id}>
-          <td>{user.id}</td>
-          <td>{user.first_name}</td>
-          <td>{user.last_name}</td>
-        </tr>
-      ));
-    }
-
-    const pageNumbers = [];
-    if (this.state.total !== null) {
-      for (
-        let i = 1;
-        i <= Math.ceil(this.state.total / this.state.per_page);
-        i++
-      ) {
-        pageNumbers.push(i);
-      }
-
-      renderPageNumbers = pageNumbers.map((number) => {
-        let classes = this.state.current_page === number ? styles.active : "";
+  let lastPage = paginationRange[paginationRange.length - 1];
+  return (
+    <ul
+      className={classnames("pagination-container", { [className]: className })}
+    >
+      <li
+        className={classnames("pagination-item", {
+          disabled: currentPage === 1,
+        })}
+        onClick={onPrevious}
+      >
+        <div className="arrow left" />
+      </li>
+      {paginationRange.map((pageNumber) => {
+        if (pageNumber === DOTS) {
+          return <li className="pagination-item dots">&#8230;</li>;
+        }
 
         return (
-          <span
-            key={number}
-            className={classes}
-            onClick={() => this.makeHttpRequestWithPage(number)}
+          <li
+            className={classnames("pagination-item", {
+              selected: pageNumber === currentPage,
+            })}
+            onClick={() => onPageChange(pageNumber)}
           >
-            {number}
-          </span>
+            {pageNumber}
+          </li>
         );
-      });
-    }
+      })}
+      <li
+        className={classnames("pagination-item", {
+          disabled: currentPage === lastPage,
+        })}
+        onClick={onNext}
+      >
+        <div className="arrow right" />
+      </li>
+    </ul>
+  );
+};
 
-    return (
-      <div className={styles.app}>
-        <table className={styles.table}>
-          <thead>
-            <tr>
-              <th>S/N</th>
-              <th>First Name</th>
-              <th>Last Name</th>
-            </tr>
-          </thead>
-          <tbody>{users}</tbody>
-        </table>
-
-        <div className={styles.pagination}>
-          <span onClick={() => this.makeHttpRequestWithPage(1)}>&laquo;</span>
-          {renderPageNumbers}
-          <span onClick={() => this.makeHttpRequestWithPage(1)}>&raquo;</span>
-        </div>
-      </div>
-    );
-  }
-}
-
-export default Pagination2;
+export default Pagination;
