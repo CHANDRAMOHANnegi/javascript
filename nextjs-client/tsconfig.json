@@ -2,7 +2,11 @@
   "compilerOptions": {
     "baseUrl": ".",
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -20,9 +24,15 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"],
-      "@/components/*": ["components/*"],
-      "@/hooks/*": ["hooks/*"],
+      "@/*": [
+        "./*"
+      ],
+      "@/components/*": [
+        "components/*"
+      ],
+      "@/hooks/*": [
+        "hooks/*"
+      ]
     }
   },
   "include": [
@@ -34,5 +44,7 @@
     "app/test-components/page.jsx",
     "app/libs/react-test/page.js"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }

@@ -18,14 +18,25 @@ import { Suspense } from "react";
 
 export function CodeSplitting() {
   const SayWelcome = dynamic(
-    () => import("../components/say-hello").then((res) => res.SayWelcome),
+    () => import("../../../components/say-hello").then((res) => res.SayWelcome),
     { loading: () => <p>Loading...</p> }
   );
+
+  const [val, set] = React.useState(false);
+
+  React.useEffect(() => {
+    setTimeout(() => {
+      set(true);
+    }, 5000);
+
+    return () => {};
+  }, []);
+
   return (
     <div>
       hi
       <Suspense fallback={<div>Loading...</div>}>
-        <SayWelcome />
+        {!!val && <SayWelcome />}
         hello
       </Suspense>
     </div>

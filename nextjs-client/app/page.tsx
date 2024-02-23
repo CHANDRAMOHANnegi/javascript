@@ -10,6 +10,7 @@ const links = [
   { link: "/libs", text: "libs" },
   { link: "/machine-coding", text: "machine-coding" },
   { link: "/architecture", text: "architecture" },
+  { link: "/super-comp", text: "super-comp" },
 ];
 
 export default function Home() {

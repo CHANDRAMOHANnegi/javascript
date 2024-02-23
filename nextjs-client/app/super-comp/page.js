@@ -1,10 +1,8 @@
 import Link from "next/link";
 
 const links = [
-  { link: "/libs", text: "libs" },
-  { link: "/libs/react-query", text: "react-query" },
-  { link: "/libs/react-test", text: "react-test" },
-  { link: "/libs/react-beautiful-dnd", text: "react-beautiful-dnd" },
+  { link: "/super-comp", text: "libs" },
+  { link: "/super-comp/virtualized-list", text: "virtualized-list" },
 ];
 
 export default function Home() {
