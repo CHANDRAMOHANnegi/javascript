@@ -3,6 +3,7 @@ import Link from "next/link";
 const links = [
   { link: "/", text: "hello" },
   { link: "/system-design/poll-system", text: "poll-system" },
+  { link: "/system-design/news-feed", text: "news-feed" },
 ];
 
 export default function Home() {
