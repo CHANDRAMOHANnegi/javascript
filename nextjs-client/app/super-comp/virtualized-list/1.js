@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import List from "./virtual-list";
 import "./styles.module.scss";
 
-const data = [...Array(10000).keys()].map(() => ({ height: 100 }));
+const data = [...Array(100).keys()].map(() => ({ height: 100 }));
 
 const VirtualList = () => {
   const [virtualized, setVirtualized] = useState(true);

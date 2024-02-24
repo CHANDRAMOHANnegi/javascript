@@ -59,7 +59,6 @@ const getData = (source) => {
 
 const List = ({ renderItem, className, source = [], overScanCount = 5 }) => {
   const [scrollTop, setScrollTop] = useState(0);
-  const [visibleHeight, setVisibleHeight] = useState(0);
   const data = useMemo(() => getData(source), [source]);
 
   const listWrapperRef = useRef(null);
@@ -80,29 +79,24 @@ const List = ({ renderItem, className, source = [], overScanCount = 5 }) => {
   const getHeight = () => data.totalHeight;
 
   const checkIfVisible = (index) => {
-    const elemPosition = data.mapHeight[index]?.top || 0;
-
+    const elemPosition = data.mapHeight[index].top;
     return (
-      elemPosition >
-        scrollTop - overScanCount * data.maxRowHeight &&
-      elemPosition <
-        scrollTop + visibleHeight + overScanCount * data.maxRowHeight
+      elemPosition > scrollTop &&
+      elemPosition < scrollTop + overScanCount * data.maxRowHeight
     );
   };
 
   return (
-    <div style={style.container()} className={className}>
-      <div style={style.listWrapper} ref={listWrapperRef}>
-        <div style={style.list(getHeight())}>
-          {source.map(
-            (_, index) =>
-              checkIfVisible(index) &&
-              renderItem({
-                index: index,
-                style: style.item(data.mapHeight[index]),
-              })
-          )}
-        </div>
+    <div style={{ ...style.listWrapper }} ref={listWrapperRef}>
+      <div style={style.list(getHeight())}>
+        {source.map(
+          (_, index) =>
+            checkIfVisible(index) &&
+            renderItem({
+              index: index,
+              style: style.item(data.mapHeight[index]),
+            })
+        )}
       </div>
     </div>
   );
