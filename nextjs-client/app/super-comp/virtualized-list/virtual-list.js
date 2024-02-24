@@ -1,5 +1,4 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import PropTypes from "prop-types";
 
 const style = {
@@ -35,124 +34,78 @@ const style = {
   }),
 };
 
-export default class List extends React.Component {
-  constructor() {
-    super();
+const getData = (source) => {
+  const mapHeight = {};
+  let totalHeight = 0;
+  let maxRowHeight = 0;
+  let top = 50;
 
-    this.state = {
-      scrollTop: 0,
-      visibleHeight: 0,
-      mapHeight: {},
-      maxRowHeight: 0,
-      totalHeight: 0,
+  source.forEach((item, index) => {
+    mapHeight[index] = {
+      height: item.height,
+      top: top,
     };
-  }
+    top += item.height;
+    totalHeight += item.height;
+    maxRowHeight = Math.max(maxRowHeight, item.height);
+  });
 
-  static getDerivedStateFromProps(props, state) {
-    const mapHeight = {};
-    let totalHeight = 0;
-    let maxRowHeight = 0;
-    let top = 50;
-    if (props.source.length !== Object.keys(state.mapHeight).length) {
-      props.source.forEach((item, index) => {
-        mapHeight[index] = {
-          height: item.height,
-          top: top,
-        };
-        top += item.height;
-        totalHeight += item.height;
-        maxRowHeight = maxRowHeight > item.height ? maxRowHeight : item.height;
-      });
-      return Object.assign(state, {
-        mapHeight,
-        totalHeight,
-        maxRowHeight,
-      });
-    }
-
-    return state;
-  }
-
-  componentDidMount() {
-    this.getWrapper().addEventListener(
-      "scroll",
-      (e) => {
-        this.setScrollPosition(e);
-      },
-      true
-    );
-
-    const visibleHeight = parseFloat(
-      window
-        .getComputedStyle(this.getWrapper(), null)
-        .getPropertyValue("height")
-    );
-
-    this.setState({ visibleHeight });
-  }
-
-  getCount = () => this.props.source.length;
-
-  getScrollPosition = () => this.state.scrollTop;
-
-  getVisibleHeight = () => this.state.visibleHeight;
-
-  getHeight = () => this.state.totalHeight;
-
-  getWrapper = () => ReactDOM.findDOMNode(this.listWrapper);
-
-  getDefaultHeightWidth = () =>
-    this.props.className ? {} : { height: "100%", width: "100%" };
-
-  setScrollPosition = (event) => {
-    this.setState({
-      scrollTop: event.target.scrollTop,
-    });
+  return {
+    mapHeight,
+    totalHeight,
+    maxRowHeight,
   };
+};
 
-  checkIfVisible = (index) => {
-    const elemPosition = this.state.mapHeight[index].top;
+const List = ({ renderItem, className, source = [], overScanCount = 5 }) => {
+  const [scrollTop, setScrollTop] = useState(0);
+  const [visibleHeight, setVisibleHeight] = useState(0);
+  const data = useMemo(() => getData(source), [source]);
+
+  const listWrapperRef = useRef(null);
+
+  useEffect(() => {
+    const handleScroll = (event) => {
+      setScrollTop(event.target.scrollTop);
+    };
+
+    const wrapper = listWrapperRef.current;
+    wrapper.addEventListener("scroll", handleScroll);
+
+    return () => {
+      wrapper.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const getHeight = () => data.totalHeight;
+
+  const checkIfVisible = (index) => {
+    const elemPosition = data.mapHeight[index]?.top || 0;
 
     return (
       elemPosition >
-        this.getScrollPosition() -
-          this.props.overScanCount * this.state.maxRowHeight &&
+        scrollTop - overScanCount * data.maxRowHeight &&
       elemPosition <
-        this.getScrollPosition() +
-          this.state.visibleHeight +
-          this.props.overScanCount * this.state.maxRowHeight
+        scrollTop + visibleHeight + overScanCount * data.maxRowHeight
     );
   };
 
-  renderList = () => (
-    <div
-      style={style.container(this.getDefaultHeightWidth())}
-      className={this.props.className}
-      ref={(c) => (this.container = c)}
-    >
-      <div style={style.listWrapper} ref={(c) => (this.listWrapper = c)}>
-        <div style={style.list(this.getHeight())} ref={(c) => (this.list = c)}>
-          {this.props.source.map(
+  return (
+    <div style={style.container()} className={className}>
+      <div style={style.listWrapper} ref={listWrapperRef}>
+        <div style={style.list(getHeight())}>
+          {source.map(
             (_, index) =>
-              this.checkIfVisible(index) &&
-              this.props.renderItem({
+              checkIfVisible(index) &&
+              renderItem({
                 index: index,
-                style: style.item(this.state.mapHeight[index]),
+                style: style.item(data.mapHeight[index]),
               })
           )}
         </div>
       </div>
     </div>
   );
-
-  render = () => {
-    return Object.keys(this.state.mapHeight).length ? this.renderList() : null;
-  };
-}
-
-List.defaultProps = {
-  source: [],
-  overScanCount: 5,
 };
 
 List.propTypes = {
@@ -165,3 +118,5 @@ List.propTypes = {
   ),
   overScanCount: PropTypes.number,
 };
+
+export default List;
