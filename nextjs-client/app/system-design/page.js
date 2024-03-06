@@ -4,6 +4,7 @@ const links = [
   { link: "/", text: "hello" },
   { link: "/system-design/poll-system", text: "poll-system" },
   { link: "/system-design/news-feed", text: "news-feed" },
+  { link: "/system-design/autocomplete", text: "autocomplete" },
 ];
 
 export default function Home() {
