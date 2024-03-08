@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRELOAD PREFETCH PRECONNECT</title>
+
+    <!-- PRELOADING STARTS -->
+    <link rel="preload" as="script" href="./preload/preload.js" />
+    <link rel="preload" as="style" href="./preload/preload.css" />
+    <!-- PRELOADING ENDS -->
+
+    <!-- PREFETCH START-->
+    <link rel="prefetch" href="prefetch/prefetch.html" />
+    <link rel="prefetch" as="script" href="prefetch/prefetch.js" />
+    <!-- PREFETCH ENDS -->
+
+
+    <!-- PRECONNECT START-->
+    <!-- <link rel="preconnect" href="https://api.my-app.com/" /> -->
+    <!-- PRECONNECT ENDS -->
+
+    <!-- USING STYLES -->
+    <link rel="stylesheet" href="style1.css" />
+    <link rel="stylesheet" href="style2.css" />
+</head>
+
+<body>
+    <a href="prefetch/prefetch.html">prefetch/prefetch.html</a>
+</body>
+<!-- USING JS -->
+<script src="script1.js"></script>
+<script src="script2.js"></script>
+
+</html>
