@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        li[data-animal-type="bird"] {
+            width: 400px;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li data-animal-type="bird">Owl</li>
+        <li data-animal-type="fish">Salmon</li>
+        <li data-animal-type="spider">Tarantula</li>
+    </ul>
+
+    <article id="electric-cars" data-columns="3" data-index-number="12314" data-parent="cars">
+        Hello
+    </article>
+
+    <script>
+        const article = document.querySelector("#electric-cars");
+        // The following would also work:
+        // const article = document.getElementById("electric-cars")
+
+        console.log(article.dataset)
+
+        article.dataset.columns; // "3"
+        article.dataset.indexNumber; // "12314"
+        article.dataset.parent; // "cars"
+
+    </script>
+</body>
+
+</html>

@@ -26,12 +26,18 @@ function handleToggle() {
   observable.notify("User toggled switch!");
 }
 
+/***
+ *
+ * listeners
+ *
+ * **/
+
 function logger(data) {
   console.log(`${new Date()} ${data}`);
 }
 
 function toastify(data) {
-  console.log("Hello alert click");
+  console.log("Hello alert click", data);
 }
 
 observable.subscribe(logger);
