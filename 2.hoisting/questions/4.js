@@ -1,4 +1,5 @@
 function test() {
+    // console.log(y);
     var x, y;
 
     if (false) {
@@ -9,6 +10,11 @@ function test() {
     console.log(y);
 
     y = 100;
+
+    // function y(params) {
+        
+    // }
+
     console.log(y);
 }
 
