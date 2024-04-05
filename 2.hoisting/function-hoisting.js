@@ -1,11 +1,9 @@
 // // 0
 
-// console.log(x)
-// x=10;
+console.log(x);
+x = 10;
 
-// // here x is not hoisted 
-
-
+// // here x is not hoisted
 
 // // //1
 
@@ -20,10 +18,6 @@
 
 // print()
 
-
-
-
-
 // // //2
 
 // console.log(x)
@@ -37,8 +31,6 @@
 
 // print()
 
-
-
 // // // 3
 
 // console.log(x)
@@ -50,4 +42,3 @@
 // }
 
 // print()
-
