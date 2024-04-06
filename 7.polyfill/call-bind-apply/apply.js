@@ -1,8 +1,17 @@
-// func.call(this,[......])
+// func.apply(thisObj, argumentsArray);
+//
 
-function myCall(ref, ...params) {
-  const func = this;
+Function.prototype.myApply = function (context, params) {
+  context.func = this;
+  context.func(...params);
+};
 
-  ref.func = func;
-  func(...params);
+const obj = {
+  type: "apply",
+};
+
+function print(msg) {
+  console.log(this.type + " " + msg);
 }
+
+print.myApply(obj, ["hello"]);
