@@ -2,7 +2,7 @@
 
 <body>
     <div id="menu">
-        <button data-action="save">Save</button>
+        <button id="abc" data-action="save">Save</button>
         <button data-action="load">Load</button>
         <button data-action="search">Search</button>
     </div>
@@ -35,6 +35,11 @@
             };
         }
 
+        /**
+            here we are able to access menu, abc directally
+        */
+
+        console.log(menu, abc)
         new Menu(menu);
     </script>
 </body>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .grid-container {
+            display: grid;
+            grid-gap: 10px 10px;
+            grid-template-columns: auto auto auto;
+            background-color: #2196F3;
+            padding: 10px;
+        }
+
+        .grid-item {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.8);
+            padding: 10px;
+            font-size: 30px;
+            text-align: center;
+        }
+
+        button {
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="grid-container" id="grid-container" onclick="alert('form')">
+        <div class="grid-item" id="box1" onclick="alert('div')"><button id="button1">1</button></div>
+        <div class="grid-item" id="box2"><button id="button2">2</button></div>
+        <div class="grid-item" id="box3"><button id="button3">3</button></div>
+    </div>
+    <div id="result"></div>
+    <script>
+        /* 
+        
+        document.querySelector("#grid-container").addEventListener("click", (e) => {
+             if (e.target.id === "grid-container") {
+                 console.log("Grid container was clicked");
+             }
+             if (e.target.className === "grid-item") {
+                 console.log(`Button container ${e.target.id} was clicked`);
+             }
+             if (e.target.tagName === "BUTTON") {
+                 console.log(`Button ${e.target.id} was clicked`);
+             }
+         }); 
+         
+         */
+
+        document.querySelector('#button1').addEventListener('click', (e) => {
+            //console.log(e.composedPath())
+            console.log("Button 1 was clicked")
+        }, true)
+
+        document.querySelector('#box1').addEventListener('click', (e) => {
+            console.log("Button 1 container was clicked")
+        }, true)
+
+        document.querySelector('body').addEventListener('click', (e) => {
+            console.log("Body was clicked")
+        }, true)
+
+        document.querySelector('#grid-container').addEventListener('click', (e) => {
+            console.log("Grid container was clicked")
+        }, true)
+
+    </script>
+</body>
+
+</html>
