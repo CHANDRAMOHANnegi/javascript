@@ -11,6 +11,7 @@ const links = [
   { link: "/machine-coding", text: "machine-coding" },
   { link: "/architecture", text: "architecture" },
   { link: "/super-comp", text: "super-comp" },
+  { link: "/lib-implement", text: "lib-implement" },
 ];
 
 export default function Home() {
