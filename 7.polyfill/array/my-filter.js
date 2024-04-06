@@ -1,13 +1,23 @@
 Array.prototype.myFilter = function (fn) {
   const array = this;
-  const length = array.length;
-  const result = [];
-  for (let i = 0; i < length; i++) {
-    const isValid = fn(array[i], i, array);
-    if (isValid) result.push(array[i]);
+  const results = [];
+  for (let i = 0; i < array.length; i++) {
+    const ele = array[i];
+    /**
+     *
+     * here we need to use call and pass
+     * "this" (array) as the "this" keyword
+     *
+     * */
+    // fn(array[i], i, array);
+    if (fn.call(this, ele, i, this)) {
+      results.push(ele);
+    }
   }
-  return result;
+  return results;
 };
 
-const ans = [1, 2, 3].myFilter((ele) => ele > 1);
+const ans = [1, 2, 3].myFilter(function (params) {
+  console.log(this);
+});
 console.log(ans);

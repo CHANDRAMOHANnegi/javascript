@@ -12,6 +12,14 @@ const Provider = ({ store, children }) => {
 
 const connect = (stateProps, dispatchProps) => {
   return (Component) => {
+    /**
+     *
+     * we are making this Connect class so component re-renders
+     * here we are subscribing to store and whenever it changes
+     * we setState of compoennt and it re-renders
+     *
+     * **/
+
     class Connect extends React.Component {
       constructor(props) {
         super(props);
@@ -20,6 +28,11 @@ const connect = (stateProps, dispatchProps) => {
       }
 
       componentDidMount() {
+        /**
+         * this is done to re-render the component
+         * so it gets updated state
+         * otherwise component will not re-render
+         * **/
         this.props.store.subscribe((state) => {
           this.setState(state);
         });

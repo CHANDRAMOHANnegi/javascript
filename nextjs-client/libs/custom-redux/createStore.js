@@ -1,4 +1,10 @@
 const createStore = (rootReducer) => {
+  /**
+   *
+   * give state some initial value , otherwise dispatch to set initial value,
+   * and use proper check in combine reducer
+   *
+   * */
   let state = {};
 
   const listeners = [];
@@ -18,6 +24,8 @@ const createStore = (rootReducer) => {
       listener.splice(idx);
     };
   };
+
+  // dispatch({});
 
   return {
     getState,
