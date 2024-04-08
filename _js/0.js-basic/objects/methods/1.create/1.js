@@ -6,6 +6,7 @@ function Person(name, age) {
 
 // Create a new object
 let person = Object.create(Person.prototype);
+person.name = "cm";
 
 // Add a method to the prototype
 Person.prototype.sayHello = function () {
