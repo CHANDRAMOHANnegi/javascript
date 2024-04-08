@@ -3,7 +3,9 @@ import Link from "next/link";
 const links = [
   { link: "/", text: "hello" },
   { link: "/react/cloneElements", text: "cloneElements" },
-  { link: "/react/setState", text: "setState" },
+  { link: "/react/hooks/useState", text: "useState" },
+  { link: "/react/hooks/useTransition", text: "useTransition" },
+  { link: "/react/hooks/useLayoutEffect", text: "useLayoutEffect" },
 ];
 
 export default function Home() {

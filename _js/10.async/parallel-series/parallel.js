@@ -4,6 +4,35 @@ async function asyncParallel(tasks) {
   return results;
 }
 
+// Async parallel function 2
+async function asyncParallel2(tasks = [], callback) {
+  // store the result
+  const results = [];
+
+  const errors = [];
+
+  // track the task executed
+  let tasksCompleted = 0;
+
+  tasks.forEach((task) => {
+    task
+      .then((res) => {
+        results.push(res);
+      })
+      .catch((err) => {
+        errors.push(err);
+      })
+      .finally(() => {
+        tasksCompleted++;
+        // if all tasks are executed
+        // invoke the callback
+        if (tasksCompleted >= tasks.length) {
+          callback(errors, results);
+        }
+      });
+  });
+}
+
 // Example usage
 async function example() {
   const asyncTasks = [
@@ -33,9 +62,18 @@ async function example() {
     },
   ];
 
-  console.log("Async parallel:");
-  const parallelResults = await asyncParallel(asyncTasks);
-  console.log(parallelResults);
+  // console.log("Async parallel:");
+  // const parallelResults = await asyncParallel(asyncTasks);
+  // console.log(parallelResults);
+
+  // console.log("Async parallel2:");
+  // const parallelResults2 = await asyncParallel2(asyncTasks);
+  // console.log(parallelResults2);
+
+  asyncParallel(asyncTasks, (error, result) => {
+    console.log("errors", error);
+    console.log("results", result);
+  });
 }
 
 example();
