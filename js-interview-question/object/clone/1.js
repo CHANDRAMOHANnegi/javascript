@@ -4,7 +4,7 @@
 //   typeof null 'null'
 //   typeof 1 'number'
 //   typeof 'a' 'string'
-//   typeof someFunc 'function'
+//   typeof someFunc 'Function'
 
 // we have to handle
 // 1. if not an object
