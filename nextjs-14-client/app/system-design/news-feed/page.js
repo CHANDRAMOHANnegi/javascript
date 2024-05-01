@@ -1,6 +1,6 @@
-"use client"
-import React, { useState, useEffect, useRef } from 'react';
-import './module.style.scss';
+"use client";
+import React, { useState, useEffect, useRef } from "react";
+import "./module.style.scss";
 
 function App() {
   const [feeds, setFeeds] = useState([]);
@@ -11,6 +11,7 @@ function App() {
 
   const handleIntersection = (entries) => {
     const [entry] = entries;
+    console.log(entry);
     if (entry.isIntersecting && !isLoading) {
       loadMorePosts();
     }
@@ -19,19 +20,23 @@ function App() {
   const loadMorePosts = () => {
     setIsLoading(true);
     const lastPostId = feeds[feeds.length - 1]?.id || 0;
-    fetch(`https://jsonplaceholder.typicode.com/posts?_start=${lastPostId + 1}&_limit=5`)
-      .then(response => {
+    fetch(
+      `https://jsonplaceholder.typicode.com/posts?_start=${
+        lastPostId + 1
+      }&_limit=5`
+    )
+      .then((response) => {
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error("Network response was not ok");
         }
         return response.json();
       })
-      .then(data => {
-        setFeeds(prevFeeds => [...prevFeeds, ...data]);
+      .then((data) => {
+        setFeeds((prevFeeds) => [...prevFeeds, ...data]);
         setIsLoading(false);
       })
-      .catch(error => {
-        console.error('Error loading posts:', error);
+      .catch((error) => {
+        console.error("Error loading posts:", error);
         setIsLoading(false);
       });
   };
@@ -39,8 +44,8 @@ function App() {
   useEffect(() => {
     const options = {
       root: null,
-      rootMargin: '20px',
-      threshold: 0,
+      rootMargin: "20px",
+      threshold: 0.5,
     };
 
     observer.current = new IntersectionObserver(handleIntersection, options);
@@ -56,12 +61,12 @@ function App() {
   }, [feeds]);
 
   const handleAddFeed = () => {
-    setFeeds(prevFeeds => [
+    setFeeds((prevFeeds) => [
       ...prevFeeds,
       {
         id: feeds.length + 1,
         posts: [],
-      }
+      },
     ]);
   };
 
@@ -72,13 +77,13 @@ function App() {
       {feeds.map((feed, feedIndex) => (
         <div key={feedIndex} className="feed">
           <h2>Feed {feed.id}</h2>
-          <FeedPosts
-            feedIndex={feedIndex}
-            posts={feed.posts}
-          />
+          <FeedPosts feedIndex={feedIndex} posts={feed.posts} />
         </div>
       ))}
-      <div ref={lastPostRef}></div>
+      <div
+        style={{ height: "20vh", backgroundColor: "red" }}
+        ref={lastPostRef}
+      ></div>
       {isLoading && <p className="loading">Loading...</p>}
     </div>
   );
