@@ -1,3 +1,5 @@
+// !It delays the execution of a function until a certain
+//  !amount of time has passed since the last invocation.
 function debounce(fn, delay) {
   let timer;
 
