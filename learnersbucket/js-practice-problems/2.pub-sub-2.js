@@ -15,7 +15,7 @@ function Events() {
             remove: () => {
                 const listeners = this.listeners?.[name]
                 const newListeners = listeners.splice(listeners.length - 1, 1)
-                this.listeners?.[name] = newListeners
+                this.listeners[name] = newListeners
             }
         }
     };
