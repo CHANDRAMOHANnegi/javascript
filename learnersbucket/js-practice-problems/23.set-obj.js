@@ -5,7 +5,15 @@ const set = (obj, path, value) => {
   if (!path || !path.length) {
     return obj
   }
+
+  /***
+   * see question properly properly
+   * **/
   const [curr, ...rest] = Array.isArray(path) ? path : path.replace("[", ".").replace("]", "").split(".")
+
+  /***
+   * use proper checks
+   * */
   if (rest.length > 0) {
     if (curr in obj && isObject(obj[curr])) {
       obj[curr] = set(obj[curr], rest, value)
@@ -16,7 +24,10 @@ const set = (obj, path, value) => {
       } else {// number
         s = []
       }
-      obj[curr] = s
+      /***
+       * what ever is returned from recursion use that,
+       * you were not setting the value to current obj
+       * **/
       obj[curr] = set(obj[curr], rest, value)
     }
   } else {
