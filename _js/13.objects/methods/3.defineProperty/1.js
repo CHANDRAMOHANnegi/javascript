@@ -1,7 +1,7 @@
-const o = {}; // Creates a new object
+const obj = {}; // Creates a new object
 
 let bValue = 38;
-Object.defineProperty(o, "b", {
+Object.defineProperty(obj, "b", {
   get() {
     return bValue;
   },
@@ -13,6 +13,8 @@ Object.defineProperty(o, "b", {
   configurable: true,
 });
 
-o.b; // 38
+obj.b; // 38
+console.log(obj.b);
+obj.b = 20;
+console.log(obj.b);
 
-o.b = 20;
