@@ -4,6 +4,7 @@ const links = [
   { link: "/", text: "hello" },
   { link: "/css/properties", text: "properties" },
   { link: "/css/flex", text: "flex" },
+  { link: "/css/grid", text: "grid" },
 ];
 
 export default function Home() {
