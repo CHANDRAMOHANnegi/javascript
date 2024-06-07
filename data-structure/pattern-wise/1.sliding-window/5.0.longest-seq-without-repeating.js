@@ -8,13 +8,9 @@ var lengthOfLongestSubstring = function (s) {
     const map = new Map()
 
     /***
-     * 
      * map me index set kar dena hai
-     * 
      * jab bhi naya element agar map me hai to 
-     * 
      * hame pata chal jayega ki new left kaha rakhna hai
-     * 
      * **/
 
     let left = 0
@@ -25,6 +21,10 @@ var lengthOfLongestSubstring = function (s) {
     while (right < n) {
         const char = s[right]
         if (map.has(char)) {
+            /***
+             * once the duplicate element is found where to put left,
+             * this is important
+             * */ 
             left = Math.max(map.get(char) + 1, left)
         }
         map.set(char, right)
