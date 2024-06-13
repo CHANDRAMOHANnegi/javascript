@@ -23,7 +23,7 @@ var subarraySum = function(nums, k) {
         const x = sum - k
         /**
          * x is the sum we have to exclude
-         * if it occured 2 times, then we add 2 to count
+         * if it occurs 2 times, then we add 2 to count
          * because there are 2 more ways we can get target
          * by excluding x
          * this x is from beginning to some index
