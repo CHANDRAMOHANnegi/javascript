@@ -29,11 +29,8 @@
  * 1. Can `map` be used to solve it, this can be very useful
  *      use extras space to solve problem
  * 
- * 2.
- * 
- * 
- * 
- * 
+ * 2. When working with linked list try using dummy-nodes
+ * 3. In linked list remember removing unwanted connections to avoid cycles
  * 
  * 
  * 
