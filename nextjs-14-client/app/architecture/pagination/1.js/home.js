@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getData, columns, formatRowData, getDataFromSearch } from "./data";
 import Table from "@/components/table";
-import useDebounce from "@/hooks/useDebounce";
+import useDebounce from "@/hooks/useDebounce/useDebounce";
 import Pagination from "./pagination";
 
 const HomePage = () => {
