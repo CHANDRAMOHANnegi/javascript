@@ -50,5 +50,7 @@ console.log(fib(5));
 
 // 0th fib is 0
 // 1st fib is 1
+// 2nd fib is 1
 // 3rd fib is 2
+// 4th fib is 3
 // 5th fib is 5
