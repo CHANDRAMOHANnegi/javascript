@@ -4,43 +4,64 @@ function sort(nums) {
 }
 
 function mergeSort(nums, start, end) {
-  // console.log(start, end);
   if (start >= end) {
-    return [nums[start]];
+      return
   }
-  const n = nums.length;
-  // console.log(start, end - start);
-  const mid = start + Math.floor((end - start) / 2);
-  // console.log(mid);
-  const left = mergeSort(nums, start, mid);
-  const right = mergeSort(nums, mid + 1, end);
 
-  return merge(left, right);
+  const n = nums.length
+
+  /***
+   * 
+   * mid = start + (end - start) / 2
+   * mid equals start plus half of the length.
+   * 
+   * both are same => (start / 2) + (end / 2) 
+   * 
+   * mid = (start + end) / 2
+   * mid equals the average of start and end
+   * 
+   * **/
+
+  const mid = Math.floor((start + end) / 2)
+
+  mergeSort(nums, start, mid)
+  mergeSort(nums, mid + 1, end)
+  merge2(nums, start, mid, end)
 }
 
-function merge(nums1, nums2) {
-  const finalArray = [];
-  let k = 0;
+function merge(nums, start, mid, end) {
+  const n = nums.length
 
-  while (nums1.length || nums2.length) {
-    if (nums1?.length && nums2.length) {
-      if (nums1[k] < nums2[k]) {
-        finalArray.push(nums1.shift());
+  const finalArray = []
+
+  let i = start
+  let j = mid + 1
+  while (finalArray.length < n) {
+      if (i <= mid && j <= end && nums[i] && nums[j]) {
+          if (nums[i] < nums[j]) {
+              finalArray.push(nums[i])
+              i++
+          } else {
+              finalArray.push(nums[j])
+              j++
+          }
+      } else if (i <= mid && nums[i]) {
+          finalArray.push(nums[i])
+          i++
+      } else if (j <= end) {
+          finalArray.push(nums[j])
+          j++
       } else {
-        finalArray.push(nums2.shift());
+          break
       }
-    }
-    if (nums1.length && !nums2.length) {
-      finalArray.push(nums1.shift());
-    }
-    if (nums2.length && !nums1.length) {
-      finalArray.push(nums2.shift());
-    }
-    k++;
   }
-
-  return finalArray;
+  console.log(finalArray);
+  for (let i = start; i <= end; i++) {
+      nums[i] = finalArray[i - start]
+  }
+  return nums
 }
+
 
 const arr = [1, 2, 3, 4, 5];
 
