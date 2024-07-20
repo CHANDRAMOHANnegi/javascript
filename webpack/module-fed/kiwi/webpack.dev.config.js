@@ -48,7 +48,7 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: [ '@babel/env' ],
+                        presets: ['@babel/env'],
                     }
                 }
             },
@@ -73,6 +73,9 @@ module.exports = {
             filename: 'remoteEntry.js',
             exposes: {
                 './KiwiPage': './src/components/kiwi-page/kiwi-page.js',
+            },
+            remotes: {
+                HelloWorldApp: 'HelloWorldApp@http://localhost:9001/remoteEntry.js',
             }
         })
     ]
