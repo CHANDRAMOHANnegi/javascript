@@ -1,15 +1,30 @@
 const path = require("path");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const TerserPlugin = require("terser-webpack-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin")
+
 module.exports = {
-  entry: "./src/index.js",
-  output: {
-    filename: "bundle.[contenthash].js",
-    path: path.resolve(__dirname, "./dist"),
-    publicPath: "dist/",
+  entry: {
+    "hello-world": "./src/kiwi.js",
+    kiwi: "./src/kiwi.js",
   },
-  mode: "production",
+
+  output: {
+    filename: "[name].[contenthash].js",
+    path: path.resolve(__dirname, "./dist"),
+    publicPath: "",
+  },
+  mode: "development",
+  devServer: {
+    port: 3001,
+    static: {
+      directory: path.resolve(__dirname, "./dist"),
+    },
+    devMiddleware: {
+      index: "index.html",
+      writeToDisk: true,
+    },
+  },
   module: {
     rules: [
       {
@@ -40,17 +55,34 @@ module.exports = {
           loader: "babel-loader",
           options: {
             presets: ["@babel/env"],
-            plugins: ["@babel/plugin-proposal-class-properties"]
-          }
-        }
-      }
+            plugins: ["@babel/plugin-proposal-class-properties"],
+          },
+        },
+      },
+      {
+        test: /\.hbs$/,
+        use: ["handlebars-loader"],
+      },
     ],
   },
   plugins: [
-    new TerserPlugin(),
     new MiniCssExtractPlugin({
-      filename: 'styles.css',
+      filename: "[name].[contenthash].css",
     }),
-    new CleanWebpackPlugin()
-  ]
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      filename: "hello-world.html",
+      chunks: ["hello-world"],
+      title: "Hello world",
+      template: "src/page-template.hbs",
+      description: "dev mode html hello",
+    }),
+    new HtmlWebpackPlugin({
+      filename: "kiwi.html",
+      title: "kiwi ",
+      chunks: ["kiwi"],
+      template: "src/page-template.hbs",
+      description: "dev mode html kiwi",
+    }),
+  ],
 };
