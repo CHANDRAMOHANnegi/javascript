@@ -1,10 +1,10 @@
 import './heading.css'
 
 class Heading {
-    render() {
+    render(pageName) {
         const body = document.querySelector("body")
         const p = document.createElement("h1")
-        p.innerHTML = "webpack is awesome"
+        p.innerHTML = 'webpack is awesome. This is "' + pageName +' page"'
         body.appendChild(p)
     }
 }
