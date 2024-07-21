@@ -5,11 +5,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { ModuleFederationPlugin } = require('webpack').container;
 
 module.exports = {
-    entry: './src/kiwi.js',
+    entry: './src/image-caption.js',
     output: {
         filename: '[name].[contenthash].js',
         path: path.resolve(__dirname, './dist'),
-        publicPath: 'http://localhost:9002/'
+        publicPath: 'http://localhost:9003/'
     },
     mode: 'production',
     optimization: {
@@ -22,19 +22,6 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.(png|jpg)$/,
-                type: 'asset',
-                parser: {
-                    dataUrlCondition: {
-                        maxSize: 3 * 1024
-                    }
-                }
-            },
-            {
-                test: /\.txt/,
-                type: 'asset/source'
-            },
-            {
                 test: /\.scss$/,
                 use: [
                     MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'
@@ -46,7 +33,7 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['@babel/env'],
+                        presets: [ '@babel/env' ],
                     }
                 }
             },
@@ -64,19 +51,16 @@ module.exports = {
         }),
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            filename: 'kiwi.html',
-            title: 'Kiwi',
-            description: 'Kiwi',
+            filename: 'image-caption.html',
+            title: 'image-caption',
+            description: 'image-caption',
             template: 'src/page-template.hbs'
         }),
         new ModuleFederationPlugin({
-            name: 'KiwiApp',
+            name: 'ImageCaptionApp',
             filename: 'remoteEntry.js',
             exposes: {
-                './KiwiPage': './src/components/kiwi-page/kiwi-page.js',
-            },
-            remotes: {
-                ImageCaptionApp: 'ImageCaptionApp@http://localhost:9003/remoteEntry.js',
+                './ImageCaption': './src/components/image-caption/image-caption.js',
             }
         })
     ]

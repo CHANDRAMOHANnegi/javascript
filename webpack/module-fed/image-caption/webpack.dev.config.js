@@ -2,40 +2,26 @@ const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { ModuleFederationPlugin } = require('webpack').container;
-
 module.exports = {
-    entry: './src/kiwi.js',
+    entry: './src/image-caption.js',
     output: {
         filename: '[name].bundle.js',
         path: path.resolve(__dirname, './dist'),
-        publicPath: 'http://localhost:9002/'
+        publicPath: 'http://localhost:9003/'
     },
     mode: 'development',
     devServer: {
-        port: 9002,
+        port: 9003,
         static: {
             directory: path.resolve(__dirname, './dist'),
         },
         devMiddleware: {
-            index: 'kiwi.html',
+            index: 'image-caption.html',
             writeToDisk: true
         }
     },
     module: {
         rules: [
-            {
-                test: /\.(png|jpg)$/,
-                type: 'asset',
-                parser: {
-                    dataUrlCondition: {
-                        maxSize: 3 * 1024
-                    }
-                }
-            },
-            {
-                test: /\.txt/,
-                type: 'asset/source'
-            },
             {
                 test: /\.scss$/,
                 use: [
@@ -48,7 +34,7 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['@babel/env'],
+                        presets: [ '@babel/env' ],
                     }
                 }
             },
@@ -63,19 +49,19 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            filename: 'kiwi.html',
-            title: 'Kiwi',
-            description: 'Kiwi',
+            filename: 'image-caption.html',
+            title: 'image-caption',
+            description: 'image-caption',
             template: 'src/page-template.hbs'
         }),
         new ModuleFederationPlugin({
-            name: 'KiwiApp',
+            name: 'ImageCaptionApp',
             filename: 'remoteEntry.js',
             exposes: {
-                './KiwiPage': './src/components/kiwi-page/kiwi-page.js',
+                './ImageCaption': './src/components/image-caption/image-caption.js',
             },
-            remotes: {
-                ImageCaptionApp: 'ImageCaptionApp@http://localhost:9003/remoteEntry.js',
+            remotes:{
+                ImageCaptionApp:"ImageCaptionApp/@http://localhost:9003/remoteEntry.js'"
             }
         })
     ]
