@@ -1,19 +1,20 @@
-import Heading from "./components/heading/heading.js";
-import KiwiImage from "./components/kiwi-image/kiwi-image.js";
+import KiwiPage from "./components/kiwi-page/kiwi-page.js";
 
-const heading = new Heading();
-heading.render("kiwi");
-const kiwiImage = new KiwiImage();
-kiwiImage.render();
+const kiwiPage = new KiwiPage();
+kiwiPage.render("kiwi");
 
-import("HelloWorldApp/HelloWorldButton")
-  .then((HelloWorldButtonModule) => {
-    const HelloWorldButton = HelloWorldButtonModule.default;
 
-    const button = new HelloWorldButton();
+// const kiwiImage = new KiwiImage();
+// kiwiImage.render();
 
-    button.render();
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+// import("HelloWorldApp/HelloWorldButton")
+//   .then((HelloWorldButtonModule) => {
+//     const HelloWorldButton = HelloWorldButtonModule.default;
+
+//     const button = new HelloWorldButton();
+
+//     button.render();
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
