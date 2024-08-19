@@ -40,6 +40,30 @@ function height(node) {
     return h + 1
 }
 
+function preOrderTraverse(root) {
+    if(!root)
+    return
+
+    console.log(root.data);
+    preOrderTraverse(root)
+
+}
+
+function inOrderTraverse(root) {
+    inOrderTraverse(root)
+}
+
+function postOrderTraverse(root) {
+    postOrderTraverse(root)
+}
+
+function traverse(root) {
+    preOrderTraverse(root)
+    // inOrderTraverse(root)
+    // postOrderTraverse(root)
+}
+
+
 function main() {
     const arr = [10, 20, 50, null, 60, null, null, 30, 70, null, 80, 110, null, 120]
     let root = null
@@ -61,6 +85,7 @@ function main() {
         }
     }
     display(root)
+    traverse(root)
     console.log(size(root))
     console.log(max(root, 0))
     console.log(height(root))
