@@ -47,6 +47,20 @@ function height(node) {
     return Math.max(height(node.left), height(node.right)) + 1
 }
 
+
+function diameter(root) {
+    if (!root)
+        return { height: -1, d: 0 }
+
+    const { height: lh, d: ld } = diameter(root.left)
+    const { height: rh, d: rd } = diameter(root.right)
+
+    const height = Math.max(lh, rh) + 1
+
+    return { height, d: Math.max(ld, rd, lh + rh + 2) }
+
+}
+
 function display(node) {
     if (!node) return;
 
@@ -164,7 +178,7 @@ function createBinaryTree(arr = []) {
     // 3 - pop
     if (arr.length === 0 || arr[0] === null) return null;
 
-    const root = new Node(arr[0], null, null); 
+    const root = new Node(arr[0], null, null);
     const pair = { node: root, state: 1 };
 
     const stack = [];
@@ -208,7 +222,8 @@ const root = createBinaryTree(arr)
 // nodeToRootPath(root, 80, path)
 // console.log(path);
 
-printKLevel(root, 3)
+// printKLevel(root, 3)
+console.log(diameter(root))
 
 // console.log(size(root))
 // console.log(sum(root))
