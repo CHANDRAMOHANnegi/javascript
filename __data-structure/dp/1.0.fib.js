@@ -9,7 +9,7 @@ const fib_rec = (n) => {
 const fib_memo = (n, dp) => {
     if (n <= 1) {
         /*****
-         * Storing in base case is very important, don't forget
+         * Storing in base case is very important, don't forget, it will be useful in tabulation
          * *****/
         return dp[n] = n
     }
