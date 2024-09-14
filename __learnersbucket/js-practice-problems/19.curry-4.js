@@ -26,3 +26,9 @@ console.log(add(1)(2) + 3);
 // true
 // true
 // 6
+
+const x ={
+    valueOf:10
+}
+
+x + 10

@@ -13,7 +13,7 @@ const personProxy = new Proxy(person, {
   },
   set: (obj, prop, value, receiver) => {
     console.log(`${prop} changed from ${obj[prop]} to ${value}`);
-    prop[obj] = value;
+    obj[prop] = value;
     Reflect.set(obj, prop, value, receiver);
   },
 });
@@ -21,3 +21,4 @@ const personProxy = new Proxy(person, {
 personProxy["age"] = 24;
 // console.log(personProxy["age"]);
 // console.log(personProxy["abc"]);
+ 
