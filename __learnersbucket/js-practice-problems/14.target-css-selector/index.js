@@ -1,22 +1,30 @@
 const root = document.getElementById("root");
-const target = document.getElementById("target");
+const target = document.getElementById("target")
 
 // console.log(root.childNodes)
-console.log(root.children)
-
 const generateSelector = function (root, target) {
-    let selectors = []
-    while (target !== root) {
-        const nthChild = Array.from(target.parentNode.children).indexOf(target) + 1
-        const selector = `${target.tagName.toLowerCase()}:nth-child(${nthChild})`//
 
-        selectors.unshift(selector)
-        target = target.parentNode
+    const selectors = []
+
+    while (true) {
+        const parent = target.parentNode
+        console.log('=>',parent);
+        
+
+        const children = parent.childNodes
+        const n = [...children].indexOf(target) + 1
+
+        console.log(children);
+        
+
+        selectors.unshift(`${target.tagName.toLowerCase()}:nth-child(${n})`);  // lowercase tag names for CSS selectors
+        if (root === target) break
+        target = parent
+
     }
 
-    selectors.unshift(`${root.tagName.toLowerCase()}:[id="${target.id}"]`)
-
     return selectors.join(" > ")
+
 }
 
 console.log(generateSelector(root, target));

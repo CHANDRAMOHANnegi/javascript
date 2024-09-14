@@ -1,3 +1,14 @@
+/*****
+ * for-of loop is the simplest
+ * 
+ * 1. for loop with await ensures sequential execution, 
+ * each iteration waiting for the previous one to finish.
+ * it waits for each operation to finish before moving to the next.
+ * 
+ * 2. map() with Promise.all() allows parallel execution of asynchronous tasks.
+ * 
+ * ****/
+
 const asyncSeriesExecuterForOf = async function (promises) {
     console.log('start');
     const results = []

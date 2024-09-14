@@ -1,29 +1,26 @@
 const fetchWithTimeout = async function (url, options) {
-    const { timeout, ...restOptions } = options
-    let timer = timeout
-
-    const abortController = new AbortController()
-    const signal = abortController.signal
-
-    const timerId = setTimeout(() => {
-        abortController.abort()
-    }, timeout);
 
     return new Promise((resolve, reject) => {
-        try {
-            fetch(url, { ...restOptions, signal }).then(response => {
-                clearTimeout(timerId)
-                resolve(response.json())
-            })
-        } catch (error) {
-            reject("Timeout", error)
-        } finally{
+        const { timeout, ...restOptions } = options
+        let timer = timeout
+
+        const abortController = new AbortController()
+        const signal = abortController.signal
+
+        let timerId = setTimeout(() => {
+            console.log('Aborted');
+            abortController.abort()
+        }, timeout);
+        fetch(url, { ...restOptions, signal }).then(response => {
             clearTimeout(timerId)
-        }
+            resolve(response.json())
+        }).catch((error) => {
+            reject("Timeout", error)
+        })
     })
 }
 
-fetchWithTimeout('https://jsonplaceholder.typicode.com/todos/1', 100).then((resp) => {
+fetchWithTimeout('https://jsonplaceholder.typicode.com/todos/1', { timeout: 1000 }).then((resp) => {
     console.log(resp);
 }).catch((error) => {
     console.error(error);

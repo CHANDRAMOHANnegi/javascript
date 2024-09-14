@@ -2,12 +2,11 @@ let obj = {
   i: 0,
 };
 
-
 obj = new Proxy(obj, {
-  get: (target, phrase, receiver) => {
-    target.i+=1
-    return target.i
-  },
+  get: (target, path, receiver) => {
+    target[path] = target[path] + 1
+    return target[path]
+  }
 })
 
 // modify the object so that it can return the following output

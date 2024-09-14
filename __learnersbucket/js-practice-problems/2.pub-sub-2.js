@@ -1,21 +1,21 @@
 function Events() {
 
-    this.listeners = {}
+    this.subscriptionList = {}
     this.subscribeOnceList = new Map()
     this.subscribeOnceAsyncList = new Map()
 
     this.subscribe = function (name, callback) {
-        if (name in this.listeners) {
-            this.listeners[name].push(callback)
+        if (name in this.subscriptionList) {
+            this.subscriptionList[name].push(callback)
         } else {
-            this.listeners[name] = [callback]
+            this.subscriptionList[name] = [callback]
         }
 
         return {
             remove: () => {
-                const listeners = this.listeners?.[name]
-                const newListeners = listeners.splice(listeners.length - 1, 1)
-                this.listeners[name] = newListeners
+                const subscriptionList = this.subscriptionList?.[name]
+                const newListeners = subscriptionList.splice(subscriptionList.length - 1, 1)
+                this.subscriptionList[name] = newListeners
             }
         }
     };
@@ -45,19 +45,19 @@ function Events() {
     };
 
     this.publish = function (name, data) {
-        this.listeners?.[name]?.forEach(listener => listener(data))
+        this.subscriptionList?.[name]?.forEach(listener => listener(data))
 
         this.subscribeOnceList?.[name]?.(data)
-        this.subscribeOnceList.set(name,[])
+        this.subscribeOnceList.set(name, [])
 
         this.subscribeOnceAsyncList?.[name]?.forEach(listener => listener(data))
-        this.subscribeOnceAsyncList.set(name,[])
+        this.subscribeOnceAsyncList.set(name, [])
     };
 
     this.publishAll = function (data) {
-        const listenersKeys = Object.keys(this.listeners)
+        const listenersKeys = Object.keys(this.subscriptionList)
         listenersKeys.forEach(key => {
-            const listenerArray = this.listeners[key]
+            const listenerArray = this.subscriptionList[key]
             listenerArray.forEach(listener => {
                 listener(data)
             })

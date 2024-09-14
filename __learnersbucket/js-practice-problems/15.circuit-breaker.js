@@ -1,53 +1,49 @@
-const circuitBreaker = function (fn, failCount, halt) {
+const circuitBreaker = (fn, times, delay) => {
+    let failures = times;
+    let isOpen = false; // Prevents unwanted calls when service is unavailable
+    let timer = null;
 
-    let isHalted = false
-
-    const inner = () => {
-        // console.log('service', isHalted);
-        if (isHalted) {
+    const inner = function () {
+        if (isOpen) {
             console.log("service unavailable");
-            return
-            /**
-             * if you throw error here, that error need to be caught in
-             * the return function call
-             * */
-            // throw "service unavailable"
+            return; // Prevent further execution when the circuit is open
         }
 
         try {
-            const res = fn()
-            return res
+            return fn(); // Try executing the function
         } catch (error) {
-            failCount--
-            console.log('error', error, failCount);
-            if (failCount > 0) {
-                circuitBreaker(fn, failCount, halt)
-            } else {
-                isHalted = true
-                console.log("service halted");
-                setTimeout(() => {
-                    isHalted = false
-                }, halt);
+            console.log(error); // Log the error
+            failures--;
+
+            if (failures <= 0) {
+                isOpen = true; // Open the circuit
+                console.log("Circuit open, service unavailable");
+
+                timer = setTimeout(() => {
+                    failures = times; // Reset failure count
+                    isOpen = false;    // Close the circuit
+                    console.log("Service is now available");
+                }, delay);
             }
         }
+    };
 
-    }
+    return inner;
+};
 
-    return inner
-}
 
-// test function
+// Test function
 const testFunction = () => {
     let count = 0;
 
     return function () {
         count++;
         if (count < 4) {
-            throw "failed";
+            throw "failed"; // Throw an error until the 4th call
         } else {
-            return "hello";
+            return "hello"; // Return "hello" after 3 failures
         }
-    }
+    };
 };
 
 let t = testFunction();
@@ -57,12 +53,12 @@ c(); // "error"
 c(); // "error"
 c(); // "error"
 
-// service is closed for 200 MS
+// Service is closed for 200ms
 c(); // "service unavailable" 
 c(); // "service unavailable"
 c(); // "service unavailable"
-c(); // "service unavailable"
-c(); // "service unavailable"
 
-// service becomes available after 300ms
-setTimeout(() => { console.log(c()); }, 300); // "hello";
+// Service becomes available after 300ms
+setTimeout(() => {
+    console.log(c()); // "hello" (service restored after delay)
+}, 300);
