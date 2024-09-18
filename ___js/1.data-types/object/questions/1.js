@@ -6,11 +6,11 @@ let obj = {
     }
 };
 
-var objclone = Object.assign({},obj);
+var objClone = Object.assign({},obj);
 
-console.log('objclone: ', objclone);
+console.log('objClone: ', objClone);
 
 obj.c.age = 45;
 
 console.log('After Change - obj: ', obj);  // 45 - This also changes
-console.log('After Change - objclone: ', objclone); // 45
+console.log('After Change - objClone: ', objClone); // 45

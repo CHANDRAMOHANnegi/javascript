@@ -12,6 +12,6 @@ var variable = 10;
 
 // !
 
-console.log(variable_2);
+console.log(variable_2);// !this will not give reference error, as this variable will be in global
 // console.log(variable_3); // !ReferenceError: variable_3 is not defined
 // // var variable = 30;

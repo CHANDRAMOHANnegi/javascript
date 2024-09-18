@@ -1,0 +1,63 @@
+.normalImage {
+    position: relative;
+    cursor: zoom-in;
+    border: 1px solid #ddd;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  .zoomedImage {
+    pointer-events: none;
+    background-repeat: no-repeat;
+    display: none;
+    background-position: center;
+    transition: background-position 0.1s ease-in-out;
+  }
+  
+  .zoomOutCursor {
+    cursor: zoom-out;
+  }
+  
+  /* Placement handling */
+.top-left {
+    top: 0;
+    left: 0;
+  }
+  
+.top-right {
+    top: 0;
+    right: 0;
+  }
+  
+.bottom-left {
+    bottom: 0;
+    left: 0;
+  }
+  
+.bottom-right {
+    bottom: 0;
+    right: 0;
+  }
+  
+.center {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .flex {
+    display: flex;
+  }
+  
+  .justify-center {
+    justify-content: center;
+  }
+  
+  .items-center {
+    align-items: center;
+  }
+  
+  .flex-col {
+    flex-direction: column;
+  }
+  

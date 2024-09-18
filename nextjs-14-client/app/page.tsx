@@ -13,6 +13,7 @@ const links = [
   { link: "/super-comp", text: "super-comp" },
   { link: "/lib-implement", text: "lib-implement" },
   { link: "/hooks", text: "hooks" },
+  { link: "/learners-bucket/machine-coding", text: "learners-bucket/machine-coding" },
 ];
 
 export default function Home() {

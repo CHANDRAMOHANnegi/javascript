@@ -1,43 +1,45 @@
+/***********
+ * is obj[curr] is object or not
+ * 
+ * bas yaha ye dekh rahe hai ki, next jo object aa raha hai , vo to valid hai na
+ * 
+ * *********/
 
-const isObject = (obj) => obj != null && (typeof obj === "object" || Array.isArray(obj));
+
+const isObject = (obj) => obj != null && (typeof obj === 'object' || Array.isArray(obj))
 
 const set = (obj, path, value) => {
-  if (!path || !path.length) {
-    return obj
-  }
+  if (!path || !path.length) return obj
+  const [prop, ...rest] = Array.isArray(path) ? path : path.replace("[", ".").replace("]", "").split('.')
 
-  /***
-   * see question properly properly
-   * **/
-  const [curr, ...rest] = Array.isArray(path) ? path : path.replace("[", ".").replace("]", "").split(".")
+  if (rest.length) {
 
-  /***
-   * use proper checks
-   * */
-  if (rest.length > 0) {
-    if (!obj[curr]) {
-      obj[curr] = isNaN(rest[0] * 1) ? {} : []
+    /*****
+     * below step is super necessary
+     * 
+     * ***/
+    if (!obj[prop]) {
+      obj[prop] = isNaN(rest[0] * 1) ? {} : []
     }
-    if (curr in obj && isObject(obj[curr])) {
-      obj[curr] = set(obj[curr], rest, value)
+    if (prop in obj && isObject(obj[prop])) {
+      obj[prop] = set(obj[prop], rest, value)
     } else {
-      let s = {}
-      if (isNaN(rest[0] * 1)) {// string
-        s = {}
-      } else {// number
-        s = []
+      let val = {}
+      if (isNaN(rest[0] * 1)) {
+        val = {}
+      } else {
+        val = []
       }
-      /***
-       * what ever is returned from recursion use that,
-       * you were not setting the value to current obj
-       * **/
-      obj[curr] = set(obj[curr], rest, value)
+      obj[prop] = set(obj[prop], rest, value)
     }
   } else {
-    obj[curr] = value
+    obj[prop] = value
   }
-
   return obj
+}
+
+const obj = {
+  a: [{ b: { c: 3 } }]
 }
 
 const abc = {

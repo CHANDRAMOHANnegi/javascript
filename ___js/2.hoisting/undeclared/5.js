@@ -4,7 +4,7 @@ var variable = 10;
   variable = 20;
   console.log(variable);
 })();
-var variable = 30;
+var variable = 30; // re-declaring
 console.log(variable);
 
 // 10
