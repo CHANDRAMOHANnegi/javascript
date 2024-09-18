@@ -1,6 +1,6 @@
 function task(message) {
   // emulate time consuming task
-  let n = 10000000000;
+  let n = 1000000000;
   while (n > 0) {
     n--;
   }

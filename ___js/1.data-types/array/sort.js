@@ -2,6 +2,6 @@ function sort(arr) {
   mergeSort(arr);
 }
 
-function mergeSort() {}
+function mergeSort() { }
 
-function merge() {}
+function merge() { }

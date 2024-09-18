@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="entry"></div>
+    <div class="">
+        <span>
+            In queue <span id="queueCount"></span>
+        </span>
+    </div>
+    <button id="addBtn">Add animation</button>
+
+    <script>
+        let barCount = 0
+        let styleSheet = null
+
+        const updateBarCount = (val) => {
+            barCount += val
+            document.getElementById("queueCount").innerText = barCount
+        }
+
+        const addLoadingBar = () => {
+            // Ensure keyframes are created before applying the animation
+            const animationName = `loadingBars${barCount}`
+            startAnimation(animationName, `
+                0% {width: 0%;}
+                100% {width: 100%;}
+            `)
+
+            // Create the bar element and apply the animation
+            const bar = document.createElement('div')
+            bar.style.height = '20px'
+            bar.style.width = '0%'
+            bar.style.backgroundColor = 'red'
+            bar.style.animation = `${animationName} 3s forwards`
+
+            const entry = document.getElementById('entry')
+            entry.appendChild(bar)
+
+
+            bar.addEventListener("animationend", function () {
+                updateBarCount(-1)
+                if (barCount > 0) {
+                    addLoadingBar()
+                }
+            })
+
+            bar.removeEventListener("animationend", () => { console.log("removed") })
+        }
+
+        const startAnimation = (animationName, animationStyle) => {
+            if (!styleSheet) {
+                const styleElement = document.createElement("style")
+                document.head.appendChild(styleElement)
+                styleSheet = styleElement.sheet
+            }
+
+            // Insert the unique keyframe rule
+            const rule = `
+                @keyframes ${animationName} {
+                    ${animationStyle}
+                }
+            `
+            styleSheet?.insertRule(rule, styleSheet.cssRules.length)
+        }
+
+        document.getElementById("addBtn").addEventListener("click", function () {
+            // start animation
+            if (barCount === 0) {
+                addLoadingBar()
+            }
+            updateBarCount(1)
+        })
+
+    </script>
+
+</body>
+
+</html>

@@ -12,12 +12,12 @@ var variable = 10;
 
 // !
 
-// console.log(variable_2);
-// console.log(variable_3);
+console.log(variable_2); // Undeclared variables are always global.
+console.log(variable_3);
 // // var variable = 30;
 // // //
 
-// the ouput will be like this-
+// the output will be like this-
 // 35
 // 10
 // 15
@@ -31,15 +31,15 @@ var variable = 10;
 
 // console.log(x, this.x);
 
-function print(params) {
-  console.log(this.x);
-  //   var  x = undefined
-  console.log(x);
-  x = 11;
-  //   var x = 10;
-}
+// function print(params) {
+//   console.log(this.x);
+//   //   var  x = undefined
+//   console.log(x);
+//   x = 11;
+//   //   var x = 10;
+// }
 
-print();
+// print();
 
 //
 

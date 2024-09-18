@@ -12,29 +12,22 @@
 // }
 
 const aggregate = (arr, on, who) => {
-    return Object.values([...arr].reduce((acc, item) => {
-        const onValue = item[on]
-        const whoValue = item[who]
-        if (acc[onValue]) {
-            /**
-             * don't use colon ":" , use "=" , keep focus
-             *  acc[onValue] : {
-             *   [on]: onValue,
-             *   [who]: [...acc[onValue][who], whoValue]
-             *  }
-             * **/
-            acc[onValue] = {
-                [on]: onValue,
-                [who]: [...acc[onValue][who], whoValue]
+    const values = [...arr].reduce((acc, item) => {
+        if (acc[on]) {
+            acc[on] = {
+                [on]: on,
+                [who]: [...acc[on][who], item[who]]
             }
         } else {
-            acc[onValue] = {
-                [on]: onValue,
-                [who]: [whoValue]
+            acc[on] = {
+                [on]: on,
+                [who]: [item[who]]
             }
         }
         return acc
-    }, {}))
+    }, {})
+
+    return Object.values(values)
 }
 
 const endorsements = [

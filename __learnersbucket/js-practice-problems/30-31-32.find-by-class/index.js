@@ -1,19 +1,19 @@
-// const findByClass = function (className) {
-//     const nodes = []
-//     const root = document.body
+const findByClass = function (className) {
+    const nodes = []
+    const root = document.body
 
-//     function search(node) {
-//         if ([...node.classList].includes(className)) {
-//             nodes.push(node)
-//         }
-//         for (const child of node.children) {
-//             search(child)
-//         }
-//     }
+    function search(node) {
+        if ([...node.classList].includes(className)) {
+            nodes.push(node)
+        }
+        for (const child of node.children) {
+            search(child)
+        }
+    }
 
-//     search(root)
-//     return nodes
-// }
+    search(root)
+    return nodes
+}
 
 // console.log('=-=-=-', findByClass('a'));
 
