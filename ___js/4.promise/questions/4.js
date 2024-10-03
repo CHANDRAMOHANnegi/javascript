@@ -1,9 +1,9 @@
-const p = new Promise(() => {});
+const p = new Promise(res=>res(2));
 
 console.log(Promise.resolve(p) === p); // true
 
 // Promise.resolve returns promise
-Promise.resolve(3).then((a) => {
+Promise.resolve(p).then((a) => {
   console.log("tick ", a); // tick 3
 });
 

@@ -20,7 +20,7 @@ const res = Promise.myRace([
       res("I won but lost the race");
     }, 1000)
   ),
-  new Promise((res,rej) => rej("i lost but won the race")),
+  new Promise((res, rej) => rej("i lost but won the race")),
 ]);
 
-res.then((re) => console.log(re)).catch((e)=>console.log(e));
+res.then((re) => console.log(re)).catch((e) => console.log(e));
