@@ -31,6 +31,7 @@ var twoSum = function (nums, target) {
 /********
  * What was i doing wrong here
  * 
+ * i was setting all elements in map using a separate loop
  * 
  * 
  * *******/
