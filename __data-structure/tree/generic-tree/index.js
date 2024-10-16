@@ -41,8 +41,8 @@ function height(node) {
 }
 
 function preOrderTraverse(root) {
-    if(!root)
-    return
+    if (!root)
+        return
 
     console.log(root.data);
     preOrderTraverse(root)
