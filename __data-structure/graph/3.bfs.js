@@ -16,6 +16,8 @@ const bfs = (graph, src) => {
 
         // mark
         visited[curr.src] = true
+
+        // work
         console.log(curr.src + "@" + curr.psf);
 
         // add children
@@ -33,3 +35,10 @@ const graph = createGraph(edges)
 console.log(graph);
 
 bfs(graph, 0)
+
+/*****
+ * 
+ * When traversing we have to use vertices, not edges,
+ * all vertices are in graph 
+ * 
+ * *****/
