@@ -7,7 +7,7 @@
  * connects all the vertices (the point where the sides meet) 
  * together so that the total weight of the edges 
  * is minimized without forming a cycle.
- * 
+ * https://www.freecodecamp.org/news/prims-algorithm-explained-with-pseudocode/
  * ****/
 
 // Define a graph as an adjacent list

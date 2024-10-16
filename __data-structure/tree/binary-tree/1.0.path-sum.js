@@ -1,12 +1,12 @@
 
-var pathSum = function(root, targetSum) {
-    const path =[]
-    print(root,path,[],targetSum)
+var pathSum = function (root, targetSum) {
+    const path = []
+    print(root, path, [], targetSum)
     return path
 };
 
-var print = function(node,path,ans,targetSum){
-    if(!node){
+var print = function (node, path, ans, targetSum) {
+    if (!node) {
         return
     }
 
@@ -17,22 +17,22 @@ var print = function(node,path,ans,targetSum){
     ans.push(node.val)
     targetSum -= node.val
 
-    if(!node.left && !node.right){
-        if(targetSum === 0)
+    if (!node.left && !node.right) {
+        if (targetSum === 0)
             path.push([...ans])
         return
     }
-        
-    if(node.left){
-        print(node.left,path, [...ans],targetSum )
-    } 
+
+    if (node.left) {
+        print(node.left, path, [...ans], targetSum)
+    }
 
     /*****
      * If u got ans from one path, then u need to reset the references
-     * ****/ 
+     * ****/
 
-    if(node.right){
-        print(node.right,path, [...ans],targetSum)
+    if (node.right) {
+        print(node.right, path, [...ans], targetSum)
     }
 }
 
