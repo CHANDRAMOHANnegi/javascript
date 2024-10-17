@@ -5,7 +5,7 @@
  * @return {number}
  */
 
-var characterReplacement = function(s, k) {
+var characterReplacement = function (s, k) {
     const n = s.length
     let left = 0, right = 0
 
@@ -13,12 +13,25 @@ var characterReplacement = function(s, k) {
     let maxFreq = 0
     let maxLen = 0
 
-    while(right < n){
+    while (right < n) {
+        /***
+         * we add new char to the map, and increase frequency
+         * 
+         * ***/
         const currChar = s[right]
-        charMap[currChar]= (charMap[currChar] || 0) + 1
+        charMap[currChar] = (charMap[currChar] || 0) + 1
         maxFreq = Math.max(maxFreq, charMap[currChar])
 
-        while(right - left + 1 - maxFreq > k){
+        /***
+         * const len = right - left + 1
+         * !don't use constants in while looping, they don't change
+         * **/
+
+        /****
+         * we are removing character from left
+         * 
+         * ***/
+        while (right - left + 1 > k + maxFreq) {
             /*****
              * HERE we din't update the maxFrequency
              * reducing frequency will not help increasing my answer 
@@ -26,14 +39,13 @@ var characterReplacement = function(s, k) {
              * !=====IMPORTANT ======
              * This is very important
              * https://youtu.be/_eNhaDCr6P0?list=PLgUwDviBIf0q7vrFA_HEWcqRqMpCXzYAL&t=1349
-             * ***/ 
-            charMap[s[left]]-=1
-            left++
+             * ***/
+            charMap[s[left++]] -= 1
         }
 
-        maxLen = Math.max(maxLen,right - left + 1)
+        maxLen = Math.max(maxLen, right - left + 1)
         right++
     }
-     
+
     return maxLen
 };

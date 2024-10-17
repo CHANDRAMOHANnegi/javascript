@@ -54,4 +54,4 @@ function merge2(nums, start, mid, end) {
 
 const nums = [2, 4, 1, 3, 5]
 sort(nums)
-console.log('=-=',cnt, nums);
+console.log('=-=', cnt, nums);

@@ -5,11 +5,11 @@ function findMissingRepeatingNumbers(a) {
     let realSum = (n * (n + 1)) / 2;
     let realSquareSum = (n * (n + 1) * (2 * n + 1)) / 6;
 
-    console.log(realSum,realSquareSum);
+    console.log(realSum, realSquareSum);
 
     let [currSum, currSquareSum] = a.reduce((a, e) => [a[0] + e, a[1] + e * e], [0, 0])
 
-    console.log(currSum,currSquareSum);
+    console.log(currSum, currSquareSum);
 
     let val1 = currSum - realSum
     let dup, mis
@@ -28,10 +28,10 @@ function findMissingRepeatingNumbers(a) {
      * so 1. dup - mis = currSum - realSum
      * so 2. dup + mis = (val2) / (dup - mis)
      * so 3. dup + mis = (val2) / val1
-     * */ 
-    
+     * */
+
     // 2 * dup  = val2 + val1
-    
+
     // dup + mis = (val2) / val1
     val2 = val2 / val1
 

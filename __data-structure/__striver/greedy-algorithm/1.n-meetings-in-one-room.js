@@ -19,7 +19,7 @@ class Solution {
         /*****
          * 1. store the data in array
          * 2. sort the data by endTime, and index (if endTime are same)
-         * ***/ 
+         * ***/
 
         for (let i = 0; i < n; i++) {
             let subArr = [start[i], end[i], i + 1]

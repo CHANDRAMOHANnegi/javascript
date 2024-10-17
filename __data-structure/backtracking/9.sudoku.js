@@ -26,7 +26,7 @@ var solveRec = function (board) {
                             /****
                              * if even after setting number, on further recursion we find that it is not solving sudoku,
                              * we revert and make place for other recursion calls
-                             * ***/ 
+                             * ***/
                             board[row][col] = "."
                         }
                     }

@@ -11,7 +11,7 @@ var combinationSum = function (candidates, target) {
 };
 
 var sets = function (nums, idx, target, result, final) {
-    console.log(result,nums[idx]);
+    console.log(result, nums[idx]);
     if (idx == nums.length) {
         if (target === 0) {
             final.push([...result])
@@ -60,6 +60,6 @@ var sets = function (nums, idx, target, result, final) {
 /*********
  * The recursion call is this way, so we can get all the combinations
  * 
- * ***/ 
+ * ***/
 
-combinationSum([2,3,5],8)
+combinationSum([2, 3, 5], 8)
