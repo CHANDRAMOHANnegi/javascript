@@ -12,21 +12,21 @@
  * @param {TreeNode} root
  * @return {boolean}
  */
-var isValidBST = function(root) {
+var isValidBST = function (root) {
     return isValid(root).valid
 };
 
 
-function isValid(root){
-    if(!root){
-        return {valid:true,min:Infinity,max:-Infinity}
+function isValid(root) {
+    if (!root) {
+        return { valid: true, min: Infinity, max: -Infinity }
     }
 
-    const {valid:isLeftValid,min:leftMin,max:leftMax} = isValid(root.left)
-    const {valid:isRightValid,min:rightMin,max:rightMax} = isValid(root.right)
+    const { valid: isLeftValid, min: leftMin, max: leftMax } = isValid(root.left)
+    const { valid: isRightValid, min: rightMin, max: rightMax } = isValid(root.right)
 
-    if(isLeftValid&&isRightValid&&leftMax<root.val&&rightMin>root.val){
-        return {valid: true,min:Math.min(root.val,leftMin),max:Math.max(root.val,rightMax) }
+    if (isLeftValid && isRightValid && leftMax < root.val && rightMin > root.val) {
+        return { valid: true, min: Math.min(root.val, leftMin), max: Math.max(root.val, rightMax) }
     }
-    return {valid:false}
+    return { valid: false }
 }
