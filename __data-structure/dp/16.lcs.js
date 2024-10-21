@@ -28,6 +28,13 @@ var longestCommonSubsequence = function (text1, text2) {
 
 // https://www.youtube.com/watch?v=0Ql40Llp09E
 
+/******
+ * 
+ * s1 = c1 + r1
+ * s2 = c2 + r2
+ * 
+ * ****/ 
+
 /*******
  * 
  * 
