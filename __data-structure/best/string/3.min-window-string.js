@@ -33,7 +33,7 @@ var minWindow = function (s, t) {
                  * "<="" is for checking if, in total, we haven’t exceeded the required count of characters, and we can still keep adding characters to the window.
                  * 
                  * 
-                 * ****/ 
+                 * ****/
                 if (windowFreqMap.get(charR) <= freqMap.get(charR)) {
                     count++
                 }
@@ -48,7 +48,7 @@ var minWindow = function (s, t) {
              * (let winLength = right - left + 1)   
              * no
              * 
-             * ***/ 
+             * ***/
             let winLength = right - left
             if (winLength < min) {
                 min = winLength
@@ -73,7 +73,7 @@ var minWindow = function (s, t) {
  * 
  * Best question
  * 
- * 
+ * Here we are learning acquire and release
  * 
  * 
  * ***/ 
