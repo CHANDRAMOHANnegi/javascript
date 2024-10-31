@@ -1,0 +1,1 @@
+neighbor nodes should be in different sets
