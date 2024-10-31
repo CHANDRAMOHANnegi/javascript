@@ -26,7 +26,7 @@ const bfs = (src, graph, visited) => {
                     queue.push({ src: nbr, level: curr.level + 1 })
                 } else {
                     /**
-                     * if adjacent nodes have same levels
+                     * if adjacent nodes have same levels then its not bipartite
                      * **/
                     if (visited[nbr] === curr.level) {
                         return false
