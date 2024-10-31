@@ -11,7 +11,7 @@ var numIslands = function (grid) {
         for (let j = 0; j < grid[0].length; j++) {
             /*****
              * use proper checks here
-             * ****/ 
+             * ****/
             if (!visited[i][j] && grid[i][j] === "1") {
                 count++
                 captureIsland(grid, visited, i, j)

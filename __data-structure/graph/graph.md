@@ -4,3 +4,8 @@ https://www.youtube.com/watch?v=t0r04fYdT7U&list=PL-Jc9J83PIiHfqDcLZMcO9SsUDY4S3
 2 bfs
 3 connected graphs
 4 cycle 
+
+
+
+
+ * bfs is good for levels
