@@ -6,6 +6,5 @@ https://www.youtube.com/watch?v=t0r04fYdT7U&list=PL-Jc9J83PIiHfqDcLZMcO9SsUDY4S3
 4 cycle 
 
 
-
-
  * bfs is good for levels
+ * there can be a node which is not part of any edge
