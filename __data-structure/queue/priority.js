@@ -4,21 +4,29 @@ class PriorityQueue {
     }
 
     enqueue(vertex, priority) {
-        this.queue.push({ vertex, priority });
-        this.sort();
+        const element = { vertex, priority };
+        let added = false;
+
+        // Insert element in the correct position
+        for (let i = 0; i < this.queue.length; i++) {
+            if (priority > this.queue[i].priority) { // Change to < for min-priority queue
+                this.queue.splice(i, 0, element);
+                added = true;
+                break;
+            }
+        }
+        
+        // If not added, push it at the end
+        if (!added) {
+            this.queue.push(element);
+        }
     }
 
     dequeue() {
         return this.queue.shift();
     }
 
-    sort() {
-        this.queue.sort((a, b) => a.priority - b.priority);
-    }
-
     isEmpty() {
-        return !this.queue.length;
+        return this.queue.length === 0;
     }
 }
-
-module.exports = { PriorityQueue }
