@@ -1,24 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from 'react';
+import { PollWidget } from './components/poll';
+import { PollType } from './types';
+import { fetchPoll } from './db/api';
 
 function App() {
+  const [pollData, setPollData] = useState<PollType | null>(null)
+
+  useEffect(() => {
+    const loadPoll = async () => {
+
+      try {
+        const data = await fetchPoll(41)
+        setPollData(data)
+      } catch (error) {
+
+      }
+    }
+    loadPoll()
+  }, [])
+
+  if (!pollData)
+    return <div>
+      ...loading
+    </div>
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      hello
+      <PollWidget
+      />
     </div>
   );
 }
