@@ -1,0 +1,64 @@
+
+body{
+    margin: 0;
+    font-family: sans-serif;
+}
+
+.app-container{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header,footer{
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.container{
+    display: flex;
+    /* parent ke pass jo bhi space hota hai use le lega */
+    flex: 1;
+}
+
+.main-content{
+    flex: 1;
+    padding: 20px;
+    background-color: rgb(142, 195, 27);
+}
+
+.side-content{
+    width: 200px;
+    padding: 20px;
+}
+
+.side-left{
+    background-color: rgb(255, 0, 81);
+}
+
+.side-right{
+    background-color: rgb(0, 255, 213);
+}
+
+/*
+
+ The ```only``` keyword is used to prevent older browsers 
+ that do not support media queries with media
+ features from applying the specified styles.
+
+*/
+
+@media only screen and (max-width : 480px){
+    .container{
+        flex-direction: column;
+    }
+    .side-content,.main-content{
+        width: 100%;
+    }
+
+    .side-content{
+        padding: 15px;
+    }
+}
