@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { PollWidget } from '../../components/poll';
-import { PollType } from '../../types';
-import { fetchPoll, handleRemoveVote, handleSubmitVote } from '../../db/api';
+import { PollWidget } from './components/poll';
+import { PollType } from './types';
+import { fetchPoll, handleRemoveVote, handleSubmitVote } from './db/api';
 
 function PollApp() {
     const [pollData, setPollData] = useState<PollType | null>(null)
