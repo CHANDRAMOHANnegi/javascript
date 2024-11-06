@@ -7,6 +7,6 @@ export type PollType = {
 
 export type OptionType = {
     id: number
-    label: string
+    title: string
     votes: number
 }
