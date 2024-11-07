@@ -1,5 +1,9 @@
 const ngetr = (arr = []) => {
     const stack = []
+    /*******
+     * we can sometime fill it with arr.length
+     * to mark that next greater for this element fis outside window
+     * ***/ 
     const res = Array(arr.length).fill(-1);
 
     let idx = arr.length - 1
