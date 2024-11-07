@@ -21,6 +21,8 @@ function findCelebrity(n, knows) {
              * 
              * so here we have to check that also B should not know A
              * 
+             * FOCUS, ram bharose nahi chalega
+             * 
              * ****/
             if (knows(potentialCelebrity, i) || !knows(i, potentialCelebrity)) {
                 return -1
