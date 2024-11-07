@@ -1,11 +1,11 @@
-const ngetr = (arr = []) => {
+const nsetr = (arr = []) => {
     const stack = []
     const res = Array(arr.length).fill(-1);
 
     let idx = arr.length - 1
 
     while (idx >= 0) {
-        while (stack.length && arr[idx] >= arr[stack[stack.length - 1]]) {
+        while (stack.length && arr[idx] <= arr[stack[stack.length - 1]]) {
             stack.pop()
         }
         if (stack.length) {
@@ -19,7 +19,7 @@ const ngetr = (arr = []) => {
 
 
 const arr = [2, 5, 9, 3, 1, 12, 6, 8, 7]
-console.log(ngetr(arr))
+console.log(nsetr(arr))
 
 /****
  * 

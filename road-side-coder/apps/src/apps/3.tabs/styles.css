@@ -1,0 +1,25 @@
+
+ul{
+    display: flex;
+    padding: 0;
+    background-color: azure;
+}
+
+li{
+    padding: 10px 10px;
+    list-style: none;
+    border-radius: 5px;
+    background-color: rgba(127, 255, 195,0.3);
+    margin: 0 20px;
+}
+
+
+.tabContentContainer{
+    border: 1px solid aqua;
+    padding: 10px;
+    margin-left: 20px;
+}
+
+.selected{
+    background-color: aquamarine;
+}
