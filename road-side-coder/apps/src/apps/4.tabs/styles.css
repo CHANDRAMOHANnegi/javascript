@@ -1,0 +1,32 @@
+
+ul{
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    background-color: azure;
+}
+
+li{
+    padding:0;
+    list-style: none;
+    border-radius: 5px;
+    background-color: rgba(127, 255, 195,0.3);
+    margin: 0 20px;
+    border: 1px solid aqua;
+    margin: 5px 0px;
+}
+
+.hidden{
+    display: none;
+}
+
+.title{
+    cursor: pointer;
+    padding:10px 10px;
+}
+
+.content{
+    border-top: 1px solid rgba(128, 34, 0,0.2);
+    padding: 10px;
+    margin: 5px 0px;
+}
