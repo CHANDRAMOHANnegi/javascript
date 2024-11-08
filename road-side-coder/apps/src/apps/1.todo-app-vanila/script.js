@@ -58,7 +58,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 editMode = true
                 editElement = todoItem
                 /***
-                 * firstChild, to access first child
+                 * beware
+                 * firstChild, to access first child, it can give text, commentNodes
+                 * 
+                 * we can use firstElementChild
                  * ***/ 
                 todoInput.value = todoItem.firstChild.textContent
                 addButton.innerText = "Edit todo"
