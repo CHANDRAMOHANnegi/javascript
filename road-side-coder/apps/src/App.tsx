@@ -1,11 +1,14 @@
+import { CarouselApp } from './apps/5.carousel/CarouselApp';
 import PollApp from './apps/polls/poll-app';
+import "./App.css"
 
 function App() {
 
   return (
-    <div className="min-h-screen flex items-start pt-20 justify-center bg-gray-100">
-      <PollApp/>
-    </div>
+    <>
+      {/* <PollApp/> */}
+      <CarouselApp />
+    </>
   );
 }
 

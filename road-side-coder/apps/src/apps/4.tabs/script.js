@@ -31,11 +31,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     ul.addEventListener("click", function (event) {
         /****
-         * classList contains
+         * classList contains, not includes
          * ***/ 
         if (event.target.classList.contains("title")) {
         /****
          * closest parent element
+         * 
+         * 
          * ***/ 
             const targetLi = event.target.closest("li");
             targetLi.children[1].classList.toggle("hidden");

@@ -12,7 +12,6 @@ function PollApp() {
                 const data = await fetchPoll(41)
                 setPollData(data)
                 // console.log('data', data);
-
             } catch (error) {
                 console.log(error);
             }
