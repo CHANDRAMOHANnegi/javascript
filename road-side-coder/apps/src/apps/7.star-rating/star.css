@@ -1,0 +1,14 @@
+
+.star{
+    color: aqua;
+}
+
+
+.star.hover{
+    color: rgb(149, 255, 0);
+}
+
+
+.star.active{
+    color: rgb(0, 255, 106);
+}
