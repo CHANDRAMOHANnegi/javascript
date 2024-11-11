@@ -1,0 +1,21 @@
+#div-1 { background-color: #FF5C35; }
+
+#div-2 {
+  position: fixed;
+  /* top: 30px; */
+  /* left: 30px; */
+  background-color: #0068B1;
+}
+
+#div-3 { background-color: #4FB06D; }
+
+div {
+  width: 75px;
+  height: 75px;
+  margin: 10px;
+  border-radius: 10px;
+  text-align: center;
+  line-height: 75px;
+  color: white;
+  font-size: 24px;
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>absolute-relative</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h2>static</h2>
+        <p>I'm the first paragraph;</p>
+        <p id="static-p">I'm the second paragraph;</p>
+        <p>I'm the third paragraph;</p>
+    </div>
+
+    <div class="container">
+        <h2>relative</h2>
+        <p>I'm the first paragraph;</p>
+        <p id="relative-p">I'm the second paragraph;</p>
+        <p>I'm the third paragraph;</p>
+    </div>
+
+    <div class="container">
+        <h2>absolute</h2>
+        <p>I'm the first paragraph;</p>
+        <p id="absolute-p">I'm the second paragraph;</p>
+        <p>I'm the third paragraph;</p>
+    </div>
+</body>
+
+</html>
+
+
+<!-- 
+
+"When using position: relative, the z-index value should be set to auto unless you want to create a new stacking context. 
+Essentially" https://blog.hubspot.com/website/css-position?ref=dailydev
+-->

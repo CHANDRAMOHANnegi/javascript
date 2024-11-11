@@ -1,0 +1,92 @@
+.container {
+    width: 150px;
+    height: 150px;
+    border: solid 3px;
+    margin: 10px;
+    border-radius: 10px;
+    position: relative;
+  }
+
+  .child {
+    position: absolute;
+    width: 75px;
+    height: 75px;
+    border-radius: 10px;
+    color: white;
+    padding: 5px;
+    text-align: right;
+    opacity: 1;
+  }
+  
+  #container-1 {
+    z-index: 0;
+  }
+    
+  #first {
+    z-index: 8;
+    background-color: #FF5C35;
+    top: 10px;
+    left: 15px;
+  }
+  
+  #second {
+    z-index: 2;
+    background-color: #192733;
+    top: 30px;
+    left: 35px;
+  }
+  
+  #container-2 {
+    position: absolute;
+    z-index: 5;
+    top: 30px;
+  }
+  
+  #third {
+    z-index: 6;
+    background-color: #4FB06D;
+    top: 10px;
+    left: 5px;
+  }
+  
+  #fourth {
+    z-index: 7;
+    background-color: #ED2D40;
+    top: 30px;
+    left: 25px;
+  }
+
+/* 
+  #fifth {
+    z-index: 5;
+    background-color: #4f4fb0;
+    top: 10px;
+    left: 5px;
+  }
+  
+  #sixth {
+    z-index: 6;
+    background-color: #ed2db0;
+    top: 30px;
+    left: 25px;
+  } */
+   
+  /* 
+  
+  Notice here that div 4 is in front of div 1, 
+  even though div 1 has a higher z-index value than div 4.
+  
+  This is because container-2 itself has a higher z-index than container-1. 
+  Therefore, all child elements inside container-2 will sit in front of all
+  child elements inside container-1, no matter their z-index values. 
+  The z-index values only determine position relative to other 
+  elements in the same container (i.e., the same stacking context).
+
+
+
+"z-index will apply to elements with a position of relative, fixed, absolute, or sticky."
+"z-index value positions an element on the z-axis relative to other elements in the same stacking context. 
+A stacking context is a group of elements that share the same 
+parent element and whose z-index values are compared with each other."
+  
+  */
