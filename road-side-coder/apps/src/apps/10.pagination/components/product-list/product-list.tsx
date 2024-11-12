@@ -1,6 +1,6 @@
 import { StarRating } from "../../../7.star-rating/star-rating";
-import { MAX_RATING } from "../../../9.ecommerce-filters/constants/CONSTANTS";
-import { ProductType } from "../../../9.ecommerce-filters/types";
+import { MAX_RATING } from "../../../9.ecommerce/constants/CONSTANTS";
+import { ProductType } from "../../../9.ecommerce/types";
 import "./style.css"
 
 export const ProductList = ({ products = [] }: { products: ProductType[] }) => {
