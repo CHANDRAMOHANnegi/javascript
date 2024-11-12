@@ -1,0 +1,22 @@
+
+
+.pagination{
+    padding: 10px;
+    margin: 15px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.pagination > .btn{
+    padding: 10px 15px;
+    border: 1px solid black;
+}
+
+.pagination > .btn:hover{
+    background-color: antiquewhite;
+}
+
+.disable_pagination{
+    opacity: 0;
+    display: none;
+}

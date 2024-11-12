@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { Carousel } from "./Carousel"
-
+import "./style.css"
 
 const getUrl = (limit) => `https://jsonplaceholder.typicode.com/photos?_limit=${limit}`
 

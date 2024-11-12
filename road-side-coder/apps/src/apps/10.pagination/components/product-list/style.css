@@ -1,0 +1,22 @@
+.products-list{
+    margin: 20px;
+    padding: 0;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.product_single{
+    height: 250px;
+    padding: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 2px solid gray;
+}
+
+.product_single > img{
+    width: 100%;
+    height: 85%;
+    object-fit: cover;
+    margin-bottom: 3px;
+}
