@@ -1,11 +1,11 @@
 import { useMemo, useState } from "react";
-import { Pagination } from "../../10.pagination/components/pagination/pagination";
-import { ProductList } from "../../10.pagination/components/product-list/product-list";
-import { useShoppingCartService } from "../context/cart-context/context"
-import { PRODUCT_PER_PAGE } from "../constants/CONSTANTS";
-import { CartFilters } from "./filters";
-import { useFilterService } from "../context/filter-context/context";
-import { filterItemsByKey } from "../utils/filter-utils";
+import { Pagination } from "../../../10.pagination/components/pagination/pagination";
+import { ProductList } from "../../../10.pagination/components/product-list/product-list";
+import { useShoppingCartService } from "../../context/cart-context/context"
+import { PRODUCT_PER_PAGE } from "../../constants/CONSTANTS";
+import { CartFilters } from "../../components/filters/filters";
+import { useFilterService } from "../../context/filter-context/context";
+import { filterItemsByKey } from "../../utils/filter-utils";
 
 export const Home = () => {
     const { state: { products } = {} } = useShoppingCartService()

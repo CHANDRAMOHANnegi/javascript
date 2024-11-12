@@ -5,7 +5,7 @@
 // import { ProgressBarApp } from './apps/progress-bar/progress-bar-app';
 import "./App.css"
 // import { PaginationApp } from "./apps/10.pagination/app";
-import { EcomApp } from './apps/9.ecommerce-filters/app';
+import { EcomApp } from './apps/9.ecommerce/app';
 
 function App() {
 
