@@ -1,6 +1,8 @@
-
+.star-container{
+    display: flex;
+}
 .star{
-    color: aqua;
+    color: rgb(216, 237, 237);
 }
 
 
