@@ -1,42 +1,26 @@
-import { createContext, ReactElement, useContext, useEffect, useReducer } from "react"
-import { shoppingCartReducer } from "./reducer"
+import { createContext, ReactElement, useContext, useReducer } from "react"
+import { cartReducer } from "./reducer"
 import { CART_INITIAL_STATE } from "./constant"
 import { ProductType } from "../../types"
 
-type ActionType = "FETCH_PRODUCTS"
-type StateType = { products: ProductType[] }
+type ActionType = "ADD_TO_CART" | "REMOVE_FROM_CART" | "EDIT_CART_PRODUCT"
+type StateType = { products: Record<string, ProductType> }
 
-type ContextProp = {
+export type CartContextProp = {
     state?: StateType
-    dispatch?: (state, action: ActionType) => void
+    dispatch?: (action: { type: ActionType, payload?: unknown }) => void
 }
 
-const ShoppingContext = createContext<ContextProp>({})
+const CartContext = createContext<CartContextProp>({})
 
-export const ShoppingProvider = ({ children }: { children: ReactElement }) => {
-    const [state, dispatch] = useReducer(shoppingCartReducer, CART_INITIAL_STATE)
-
-    const fetchProducts = async () => {
-        const res = await fetch("./products.json")
-        const data = await res.json()
-
-        if (data?.products) {
-            dispatch({
-                type: "FETCH_PRODUCTS",
-                payload: data.products
-            })
-        }
-    }
-    useEffect(() => {
-        fetchProducts()
-    }, [])
+export const CartProvider = ({ children }: { children: ReactElement }) => {
+    const [state, dispatch] = useReducer(cartReducer, CART_INITIAL_STATE)
 
     return (
-        <ShoppingContext.Provider value={{ state, dispatch }}>
+        <CartContext.Provider value={{ state, dispatch }}>
             {children}
-        </ShoppingContext.Provider>
+        </CartContext.Provider>
     )
 }
 
-
-export const useShoppingCartService = () => useContext(ShoppingContext)
+export const useCartService = () => useContext(CartContext)

@@ -1,6 +1,7 @@
 import { useRef } from "react"
 import { useFilterService } from "../../context/filter-context/context"
 import { Link } from "react-router-dom"
+import { CartStateIcon } from "./cart-state-button"
 
 export const Header = () => {
   const { dispatch: filterDispatch } = useFilterService()
@@ -22,6 +23,7 @@ export const Header = () => {
       <input ref={inputRef} type="text" placeholder='Search a Product...' className="p-2"
         onChange={handleSearchDispatch}
       />
+      <CartStateIcon />
     </nav>
   )
 }

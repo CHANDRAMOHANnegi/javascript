@@ -1,11 +1,12 @@
 import { useMemo, useState } from "react";
 import { Pagination } from "../../../10.pagination/components/pagination/pagination";
 import { ProductList } from "../../../10.pagination/components/product-list/product-list";
-import { useShoppingCartService } from "../../context/cart-context/context"
+import { useShoppingCartService } from "../../context/app-context/context"
 import { PRODUCT_PER_PAGE } from "../../constants/CONSTANTS";
 import { CartFilters } from "../../components/filters/filters";
 import { useFilterService } from "../../context/filter-context/context";
 import { filterItemsByKey } from "../../utils/filter-utils";
+import { ProductCard } from "../../components/product-card/product-card";
 
 export const Home = () => {
     const { state: { products } = {} } = useShoppingCartService()
@@ -47,7 +48,8 @@ export const Home = () => {
         <>
             <div className="flex py-9">
                 <CartFilters />
-                <ProductList products={newProducts} />
+                <ProductList products={newProducts}
+                    renderItem={(item) => <ProductCard product={item} />} />
             </div>
             {totalPages > 0 && <Pagination
                 totalPages={totalPages}
