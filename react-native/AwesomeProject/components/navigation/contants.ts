@@ -1,0 +1,6 @@
+export const SCREENS = {
+    HOME_SCREEN: 'HOME',
+    PROFILE_SCREEN: 'PROFILE',
+    TODO_SCREEN: 'TODO',
+    SIGN_IN_SCREEN: 'SIGN_IN',
+};

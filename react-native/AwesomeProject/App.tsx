@@ -1,26 +1,12 @@
-// In App.js in a new project
-
 import * as React from 'react';
-import { View, Text } from 'react-native';
-import { createStaticNavigation } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { RootStack } from './components/navigation/stack';
 
-function HomeScreen() {
+const AppStack = () => {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center',backgroundColor:'red' }}>
-      <Text>Home Screen</Text>
-    </View>
+    <RootStack />
   );
-}
-
-const RootStack = createNativeStackNavigator({
-  screens: {
-    Home: HomeScreen,
-  },
-});
-
-const Navigation = createStaticNavigation(RootStack);
+};
 
 export default function App() {
-  return <Navigation />;
+  return <AppStack />;
 }
