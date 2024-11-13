@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { RootStack } from './components/navigation/stack';
+import { RootStack } from './navigation/stack';
 
 const AppStack = () => {
   return (
