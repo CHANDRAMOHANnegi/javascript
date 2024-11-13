@@ -8,3 +8,5 @@ export type ProductType = {
     "thumbnail": string,
     "inStock": boolean
 }
+
+export type CartProductType = ProductType & { cart_qty?: number }
