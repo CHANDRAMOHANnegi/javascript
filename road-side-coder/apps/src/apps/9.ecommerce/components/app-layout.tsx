@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom"
-import { Header } from "./header"
+import { Header } from "./header/header"
 import { ShoppingProvider } from "../context/cart-context/context"
 import { FilterProvider } from "../context/filter-context/context"
 

@@ -1,5 +1,6 @@
 import { useRef } from "react"
-import { useFilterService } from "../context/filter-context/context"
+import { useFilterService } from "../../context/filter-context/context"
+import { Link } from "react-router-dom"
 
 export const Header = () => {
   const { dispatch: filterDispatch } = useFilterService()
@@ -15,7 +16,9 @@ export const Header = () => {
 
   return (
     <nav className='h-5 flex items-center justify-between'>
-      <h2 className='text-2xl font-mono'>Road side coder</h2>
+      <Link to={"/"}>
+        <h2 className='text-2xl font-mono'>Road side coder</h2>
+      </Link>
       <input ref={inputRef} type="text" placeholder='Search a Product...' className="p-2"
         onChange={handleSearchDispatch}
       />
