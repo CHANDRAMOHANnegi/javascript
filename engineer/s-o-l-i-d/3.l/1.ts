@@ -1,3 +1,8 @@
+/**
+ * LSP Violation Indication : Can't replace object 'rectangle' (superclass) with 'square' (subclass)
+ * 
+ * since the results would be different
+ * */
 
 class Rectangle {
 
