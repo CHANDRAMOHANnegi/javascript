@@ -4,7 +4,7 @@ import React from 'react';
 import Header from '../../components/header';
 import { useNavigation } from '@react-navigation/native';
 import Button from '../../components/button';
-import { SCREENS } from '../../components/navigation/contants';
+import { SCREENS } from '../../navigation/contants';
 
 const TITLE = 'HomeScreen';
 
@@ -13,10 +13,13 @@ const HomeScreen = ({ }) => {
 
     return (
         <View style={styles.home}>
-            <Header title={TITLE} onBackPress={() => { navigation.goBack(); }} />
-            <View style={{ flex: 1 }}>
-                <Button text="Go To TODO-screen"
-                    onPress={() => navigation.navigate(SCREENS.TODO_SCREEN as never)} />
+            <Header title={TITLE} onBackPress={() => { navigation.goBack(); }} showBackIcon={false} />
+            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 20 }}>
+                <Button
+                    buttonStyle={{ borderWidth: 1, borderRadius: 50 }}
+                    text="Go To TODO-screen"
+                    onPress={() => navigation.navigate(SCREENS.TODO_SCREEN as never)}
+                />
             </View>
         </View>
     );

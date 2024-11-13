@@ -20,7 +20,7 @@ export default Button;
 
 const styles = StyleSheet.create({
     button: {
-        backgroundColor: 'gray',
+        backgroundColor: 'white',
     },
     text: {
         textAlign: 'center',

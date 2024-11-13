@@ -3,13 +3,13 @@
 import * as React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
-import ProfileScreen from '../../../screens/profile-screen';
-import SignInScreen from '../../../screens/sign-in-screen';
-import SignUpScreen from '../../../screens/sign-up-screen';
-import HelpScreen from '../../../screens/help-screen';
-import InviteScreen from '../../../screens/invite-screen';
+import ProfileScreen from '../../screens/profile-screen';
+import SignInScreen from '../../screens/sign-in-screen';
+import SignUpScreen from '../../screens/sign-up-screen';
+import HelpScreen from '../../screens/help-screen';
+import InviteScreen from '../../screens/invite-screen';
 import { HomeTabs } from '../tabs';
-import TodoScreen from '../../../screens/todo-screen';
+import TodoScreen from '../../screens/todo-screen';
 import { SCREENS } from '../contants';
 
 const Stack = createNativeStackNavigator();
@@ -26,7 +26,7 @@ export const RootStack = () => {
                     // Screens for logged in users
                     <Stack.Group>
                         <Stack.Screen
-                            name={SCREENS.HOME_SCREEN}
+                            name={SCREENS.HOME_SCREEN+"a"}
                             component={HomeTabs}
                         />
                         <Stack.Screen name={SCREENS.PROFILE_SCREEN} component={ProfileScreen} />

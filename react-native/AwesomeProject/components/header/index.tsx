@@ -7,12 +7,13 @@ import Button from '../button';
 export type HeaderProps = {
     title: string
     onBackPress: () => void
+    showBackIcon?: boolean
 }
 
-const Header = ({ title, onBackPress }: HeaderProps) => {
+const Header = ({ title, onBackPress, showBackIcon = true }: HeaderProps) => {
     return (
         <View style={styles.header}>
-            <Button text={'<-'} onPress={onBackPress} />
+            {showBackIcon && <Button text={'<='} onPress={onBackPress} buttonStyle={{ borderRadius: '50%' }} />}
             <View style={styles.titleView}>
                 <Text style={styles.text}>
                     {title}
@@ -28,15 +29,15 @@ const styles = StyleSheet.create({
     header: {
         display: 'flex',
         flexDirection: 'row',
+        alignItems: "center",
+        backgroundColor: "gray",
+        paddingVertical: 10
     },
     titleView: {
-        backgroundColor: 'blue',
+        paddingLeft: 10,
         display: 'flex',
         flex: 1
-        // alignItems: 'center',
     },
     text: {
-        paddingVertical: 10,
-        // alignItems: 'center',
     },
 });
