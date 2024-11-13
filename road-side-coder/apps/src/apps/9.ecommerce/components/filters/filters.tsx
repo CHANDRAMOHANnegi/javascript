@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
-import { useFilterService } from '../context/filter-context/context'
-import { StarRating } from '../../7.star-rating/star-rating'
+import { useFilterService } from '../../context/filter-context/context'
+import { StarRating } from '../../../7.star-rating/star-rating'
 import { useSearchParams } from 'react-router-dom'
 
 const filterMap = {
