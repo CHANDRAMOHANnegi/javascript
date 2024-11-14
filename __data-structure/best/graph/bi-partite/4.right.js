@@ -1,29 +1,39 @@
 
 const { createGraph } = require("../1.js")
 
+/*****
+ * bfs is good for levels
+ * ***/
 
 const bfs = (src, graph, visited) => {
     const queue = []
-    queue.push(src)
-    let level = 0
+    queue.push({ src, level: 0 })
 
     while (queue.length) {
         const curr = queue.shift()
 
-        if (visited[curr] === -1) {
-            visited[curr] = level
-        } else {
-            if (visited[curr] != level) {
-                return false
-            }
-        }
+        /*****
+         * This was giving TLE
+         * ****/
 
-        for (const nbr of graph[curr]) {
-            if (visited[nbr] === -1) {
-                queue.push(nbr)
+        /***
+         * check for vertex with no edges
+         * ***/
+        if (graph[curr.src]) {
+            for (const nbr of graph[curr.src]) {
+                if (visited[nbr] === -1) {
+                    visited[nbr] = curr.level + 1;
+                    queue.push({ src: nbr, level: curr.level + 1 })
+                } else {
+                    /**
+                     * if adjacent nodes have same levels then its not bipartite
+                     * **/
+                    if (visited[nbr] === curr.level) {
+                        return false
+                    }
+                }
             }
         }
-        level++
     }
 
     return true

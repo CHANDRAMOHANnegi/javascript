@@ -1,5 +1,5 @@
 
-const { createGraph } = require("../1.js")
+const { createGraph } = require("../../../data-structure/graph/1.js")
 
 const bfs = (src, graph, visited) => {
     const queue = []

@@ -12,21 +12,22 @@ const bfs = (src, graph, visited) => {
     while (queue.length) {
         const curr = queue.shift()
 
-        /*****
-         * This was giving TLE
-         * ****/
-
         /***
          * check for vertex with no edges
          * ***/
         if (graph[curr.src]) {
             for (const nbr of graph[curr.src]) {
                 if (visited[nbr] === -1) {
+                    /**
+                     * mark the levels here
+                     * **/
                     visited[nbr] = curr.level + 1;
                     queue.push({ src: nbr, level: curr.level + 1 })
                 } else {
                     /**
                      * if adjacent nodes have same levels then its not bipartite
+                     * if child and parent has same level, they are not bipartite, 
+                     * !means they are in same set
                      * **/
                     if (visited[nbr] === curr.level) {
                         return false
@@ -40,6 +41,9 @@ const bfs = (src, graph, visited) => {
 }
 
 const bipartite = (graph, n) => {
+    /****
+     * visited will store the levels
+     * ****/
     const visited = Array(n).fill(-1)
 
     let vtx = 0

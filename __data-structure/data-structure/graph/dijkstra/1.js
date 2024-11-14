@@ -1,6 +1,7 @@
 
 /***
  * get distances of all other nodes from the start node
+ * GREEDY ALGORITHM
  * **/
 
 function dijkstra2(graph, start) {
@@ -32,7 +33,9 @@ function dijkstra2(graph, start) {
     /***
      * KEY STEP
      * value of start point
-     * **/ 
+     * ! in both prims and dijkstra there is key step
+     * don't forget the key step
+     * **/
     distances[start] = 0;
 
 
@@ -45,9 +48,9 @@ function dijkstra2(graph, start) {
          * ***/
 
         nodes.sort((a, b) => distances[a] - distances[b])
-
         const closestNode = nodes.shift()
 
+        // important check
         if (distances[closestNode] === Infinity) continue
 
         visited.add(closestNode)
@@ -63,6 +66,10 @@ function dijkstra2(graph, start) {
                  * why this check
                  * if current distance is less than some other path
                  * then we set this as min distance
+                 * 
+                 * if distance to the nbr is less than its previous distance so update the distance of that nbr,
+                 * means we have found some smaller way
+                 * 
                  * ****/
                 if (closestDistanceOfNbr < distances[nbr]) {
                     distances[nbr] = closestDistanceOfNbr
@@ -82,3 +89,10 @@ const graph = {
 };
 
 console.log(dijkstra2(graph, "A"))
+// { A: 0, B: 1, C: 3, D: 4 }
+
+
+
+// Dijkstra's Algorithm: Solves the single-source shortest path problem,
+// where it finds the shortest path from a single source node to all other
+// nodes in a weighted graph (all edge weights must be non-negative).

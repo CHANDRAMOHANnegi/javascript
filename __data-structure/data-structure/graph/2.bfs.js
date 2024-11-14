@@ -4,7 +4,9 @@ const { createGraph } = require("./1.js");
 
 const bfs = (graph, src) => {
     const queue = []
+    
     queue.push({ src, psf: src + "" })
+
     const visited = [...Array(graph.length)]
 
     while (queue.length) {

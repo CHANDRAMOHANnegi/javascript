@@ -37,6 +37,8 @@ function prim(graph) {
     edgesPool[startNode] = graph[startNode];
 
     while (visited.size < Object.keys(graph).length) {
+        console.log('=>',edgesPool);
+        
         const [from, to, weight] = findMinEdge(edgesPool);
 
         if (to === null) break;
@@ -59,4 +61,5 @@ function prim(graph) {
     return mstEdges;
 }
 
+console.log((graph));
 console.log(prim(graph));
