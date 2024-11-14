@@ -29,19 +29,21 @@ const curry = function (fn) {
     return inner
 }
 
-// const curry = function (fn) {
-//     const inner = (...args) => {
-//         // we have all args
-//         if (args.length >= fn.length) {
-//             return fn(...args)
-//         } else {
-//             return (...args2) => {
-//                 return inner(...args,...args2)
-//             }
-//         }
-//     }
-//     return inner
-// }
+/******
+ * 
+ * 
+ * *****/
+const curry2 = function (fn) {
+    const inner = (...args) => {
+        // we have all args
+        if (args.length >= fn.length) {
+            return fn(...args)
+        } else {
+            return (...args2) => inner(...args, ...args2)
+        }
+    }
+    return inner
+}
 
 function sum(a, b, c, d) {
     return a + b + c + d;

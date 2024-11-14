@@ -6,7 +6,7 @@ const curry = function (fn) {
             return args1.reduce((acc, ele) => acc + ele, 0)
         }
         const temp = (...args2) => {
-            inner(...args1, args2)
+            return inner(...args1, args2)
         }
 
         return temp
@@ -19,7 +19,7 @@ function sum(a, b, c, d) {
     return a + b + c + d;
 }
 
-let curriedSum = curry(sum);  
+let curriedSum = curry(sum);
 
 /**
  * 
@@ -29,7 +29,7 @@ let curriedSum = curry(sum);
  * 
  * which in turn can return recursive functions
  * 
- * */ 
+ * */
 
 console.log(curriedSum(1, 2, 3, 4, 5));
 console.log(curriedSum(1)(2, 3)(4));

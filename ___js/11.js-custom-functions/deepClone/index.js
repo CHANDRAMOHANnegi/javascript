@@ -12,10 +12,7 @@ function cloneDeep(originalObj) {
   const newObj = {};
 
   for (const [key, value] of Object.entries(originalObj)) {
-    const val = originalObj[key];
-    const newVal = cloneDeep(val);
-
-    newObj[key] = newVal;
+    newObj[key] = cloneDeep(value);
   }
   return newObj;
 }
