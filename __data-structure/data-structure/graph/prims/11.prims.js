@@ -21,47 +21,49 @@ const graph = {
 
 // Find the minimum edge in the edge list
 function findMinEdge(edgesPool) {
-    return Object.keys(edgesPool).reduce((acc, edge) => {
-        let [minEd, minWei] = acc
-        if (edgesPool[edge] < minWei) {
-            minEd = edge
-            minWei = edgesPool[edge]
+    return Object.keys(edgesPool).reduce((acc, node) => {
+        let [minEd, minWeight] = acc
+        if (edgesPool[node] < minWeight) {
+            minEd = node
+            minWeight = edgesPool[node]
         }
-        return [minEd, minWei]
+        return [minEd, minWeight]
     }, [null, Infinity])
 }
 
 function prims2(graph) {
-    const vSet = new Set()
+    const visited = new Set()
     const nodes = Object.keys(graph)
 
-    const startV = nodes[0]
+    const startNode = nodes[0]
 
     /*****
      * 
      * very important point,
      * add start to set
-     * 
+     * ! MOST important POINT, Mark start as visited
      * ***/
-    vSet.add(startV)
+    visited.add(startNode)
 
     let edgesPool = {}
-    edgesPool = { ...graph[startV] }
+    edgesPool = { ...graph[startNode] }
 
-    while (vSet.size < nodes.length) {
-        const [minEdge, minWeight] = findMinEdge(edgesPool)
+    while (visited.size < nodes.length) {
+        console.log(edgesPool);
 
-        vSet.add(minEdge)
+        const [minNode, minWeight] = findMinEdge(edgesPool)
 
-        for (const [nbr, wei] of Object.entries(graph[minEdge])) {
-            if (!vSet.has(nbr)) {
-                edgesPool[nbr] = wei
+        visited.add(minNode)
+
+        for (const [nbr, weight] of Object.entries(graph[minNode])) {
+            if (!visited.has(nbr)) {
+                edgesPool[nbr] = weight
             }
         }
 
-        delete edgesPool[minEdge]
+        delete edgesPool[minNode]
     }
-    return Array.from(vSet);
+    return Array.from(visited);
 }
 
 console.log(prims2(graph));

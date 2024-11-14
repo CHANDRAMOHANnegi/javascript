@@ -25,5 +25,5 @@ const isConnected = (edges = []) => {
 }
 
 const edges = [[0, 1], [1, 2], [2, 0], [3, 4], [3, 4], [5, 4]]
-const comps = connectedComponents(edges)
+const comps = isConnected(edges)
 console.log(comps);
