@@ -56,8 +56,9 @@ function diameter(root) {
     const { height: rh, d: rd } = diameter(root.right)
 
     const height = Math.max(lh, rh) + 1
+    const dia = Math.max(ld, rd, lh + rh + 2)
 
-    return { height, d: Math.max(ld, rd, lh + rh + 2) }
+    return { height, d: dia }
 
 }
 

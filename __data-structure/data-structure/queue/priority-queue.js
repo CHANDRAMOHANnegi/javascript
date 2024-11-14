@@ -84,5 +84,7 @@ pq.add(6)
 pq.add(1)
 
 console.log(pq)
-// console.log(pq.remove(), pq)
-// console.log(pq.remove(), pq)
+// console.log(pq.remove(), pq) // 1
+// console.log(pq.remove(), pq) // 2
+// console.log(pq.remove(), pq) // 5
+// console.log(pq.remove(), pq) // 6

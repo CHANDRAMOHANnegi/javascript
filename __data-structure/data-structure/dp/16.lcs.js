@@ -37,8 +37,7 @@ var longestCommonSubsequence = function (text1, text2) {
 
 /*******
  * 
- * 
- * const dp = Array(n1 + 1).fill(Array(n2 + 1).fill(0));
+ * !const dp = Array(n1 + 1).fill(Array(n2 + 1).fill(0));
  *
  * This creates an array where each element points to the same subarray, 
  * so changing one subarray affects them all. 
