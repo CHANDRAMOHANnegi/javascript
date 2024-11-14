@@ -33,7 +33,11 @@ export const AddTodoModal = ({ addTodo, setVisible, visible }: TodoModalProp) =>
         setVisible(false);
     };
 
-    return <Modal style={styles.modal} transparent visible={visible} onRequestClose={handleDismiss}>
+    return <Modal style={styles.modal}
+        transparent
+        visible={visible} onRequestClose={handleDismiss}
+        animationType='fade'
+    >
         <TouchableOpacity style={styles.overlay} onPressOut={() => { setVisible(false); }}>
             <View style={styles.content}>
                 <TextInput onChangeText={setText} value={text}

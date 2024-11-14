@@ -8,6 +8,7 @@ import { TodoProp } from './types';
 import { TodoList } from './component/todo/todo-list';
 import { AddTodoModal } from './component/todo/add-todo-modal';
 import Button from '../../components/button';
+import AutoCompleteApp from '../../components/auto-complete';
 
 const { height } = Dimensions.get('screen');
 
@@ -34,6 +35,7 @@ const TodoScreen = () => {
     return (
         <ScrollView style={styles.todo} keyboardShouldPersistTaps="always">
             <Header title={TITLE} onBackPress={() => navigation.goBack()} />
+            <AutoCompleteApp />
             <TodoList todos={todos} removeTodo={removeTodo} />
             <AddTodoModal addTodo={addTodo}
                 visible={isTodoModalOpen}
