@@ -29,8 +29,6 @@ const pipe2 = (obj) => {
             }
         })
         return obj
-
-        return resolve(obj)
     }
 
     return inner

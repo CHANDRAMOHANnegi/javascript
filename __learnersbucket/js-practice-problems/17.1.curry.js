@@ -1,4 +1,8 @@
 
+/****
+ * add numbers till no more numbers are provided in args
+ * ***/
+
 const sum = (...args1) => {
     if (!args1.length)
         return 0

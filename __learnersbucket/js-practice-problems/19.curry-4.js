@@ -11,7 +11,7 @@ const add = function (...args) {
         return sum
     }
 
-    inner.value = valueOf
+    inner.value = inner.valueOf
 
     return inner
 }
@@ -27,8 +27,8 @@ console.log(add(1)(2) + 3);
 // true
 // 6
 
-const x ={
-    valueOf:10
+const x = {
+    valueOf: 10
 }
 
 x + 10

@@ -24,6 +24,8 @@ let curriedSum = curry(sum);
  * Very important point to remember
  * consecutive calls will be accessing same "closure"
  * 
+ * so this arg variable will be shared among all closures
+ * 
  * ********/ 
 
 console.log(curriedSum(1, 2, 3, 4, 5));

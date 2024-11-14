@@ -10,7 +10,7 @@ class InMemorySearch {
             this.#store.set(key, { ...this.#store.get(key), ...value })
         }
     }
-    search(key, callback, {key: searchKey, asc }) {
+    search(key, callback, { key: searchKey, asc }) {
         if (this.#store.has(key)) {
             const list = this.#store.get(key).filter(callback)
             list.sort((a, b) => asc ? a[searchKey] - b[searchKey] : b[searchKey] - a[searchKey])
@@ -25,7 +25,7 @@ searchEngine.addDocuments(
     'Movies',
     { name: 'Avenger', rating: 8.5, year: 2017 },
     { name: 'Black Adam', rating: 8.7, year: 2022 },
-    { name: 'Jhon Wick 4', rating: 8.2, year: 2023 },
+    { name: 'John Wick 4', rating: 8.2, year: 2023 },
     { name: 'Black Panther', rating: 9.0, year: 2022 }
 );
 
