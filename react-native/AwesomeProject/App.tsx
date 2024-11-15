@@ -1,12 +1,7 @@
 import * as React from 'react';
-import { RootStack } from './src/navigation/stack';
+import { View } from 'react-native';
 
-const AppStack = () => {
-  return (
-    <RootStack />
-  );
-};
 
 export default function App() {
-  return <AppStack />;
+  return  <View></View> 
 }
