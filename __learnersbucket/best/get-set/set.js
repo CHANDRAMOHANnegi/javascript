@@ -4,7 +4,9 @@ const set = (obj, path, value) => {
 
     let [key, ...rest] = path
 
-    if (rest.length) {
+    if (rest.length === 0) {
+        obj[key] = value
+    } else {
         /****
          * this check fix everything
          * obj is primitive, then this check will run
@@ -16,10 +18,7 @@ const set = (obj, path, value) => {
              * ***/
             obj[key] = isNaN(Number(rest[0])) ? {} : []
         }
-
         obj[key] = set(obj[key], rest, value)
-    } else {
-        obj[key] = value
     }
 
     return obj

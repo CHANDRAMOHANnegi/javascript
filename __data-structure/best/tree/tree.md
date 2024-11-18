@@ -1,0 +1,1 @@
+* REPLACE data instead of removing node
