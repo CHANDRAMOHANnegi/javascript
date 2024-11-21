@@ -11,3 +11,5 @@ function print() {
 
 // undefined
 // 20
+
+// if we comment declaration then there will be reference error

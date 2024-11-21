@@ -30,11 +30,7 @@ function max(node) {
         return 0
     }
 
-    return Math.max(
-        Math.max(
-            max(node.left),
-            max(node.right)
-        ), node.data)
+    return Math.max(max(node.left), max(node.right), node.data)
 }
 
 function height(node) {
@@ -113,7 +109,7 @@ function postOrderTraverse(root) {
     console.log(root.data);
 }
 
-function levelOrderTraversal(root) {
+function levelOrderTraversal(root) {// bfs
     if (!root) return
 
     const queue = []
@@ -173,6 +169,11 @@ function printKLevel(root, level) {
     }
 }
 
+/****
+ * 
+ * 
+ * **/
+
 function createBinaryTree(arr = []) {
     // 1 - l
     // 2 - r
@@ -180,27 +181,26 @@ function createBinaryTree(arr = []) {
     if (arr.length === 0 || arr[0] === null) return null;
 
     const root = new Node(arr[0], null, null);
-    const pair = { node: root, state: 1 };
 
-    const stack = [];
-    stack.push(pair);
+    const stack = [[root, 1]];
     let idx = 0;
 
     while (stack.length > 0) {
-        let top = stack[stack.length - 1];
+        const curr = stack[stack.length - 1];
+        const [top, state] = curr
 
-        if (top.state === 1 || top.state === 2) {
+        if (state === 1 || state === 2) {
             idx++;
             if (idx < arr.length && arr[idx] !== null) {
-                if (top.state === 1) {
-                    top.node.left = new Node(arr[idx], null, null);
-                    stack.push({ node: top.node.left, state: 1 });
-                } else if (top.state === 2) {
-                    top.node.right = new Node(arr[idx], null, null);
-                    stack.push({ node: top.node.right, state: 1 });
+                if (state === 1) {
+                    top.left = new Node(arr[idx], null, null);
+                    stack.push([top.left, 1]);
+                } else if (state === 2) {
+                    top.right = new Node(arr[idx], null, null);
+                    stack.push([top.right, 1]);
                 }
             }
-            top.state++;
+            curr[1]++;
         } else {
             stack.pop();
         }
@@ -209,13 +209,11 @@ function createBinaryTree(arr = []) {
     return root
 }
 
-
-
 const arr = [10, 20, 50, null, 60, null, null, 30, 70, null, 80, 110, null, 120]
 
 const root = createBinaryTree(arr)
 
-// console.log(root);
+console.log(JSON.stringify(root));
 
 // display(root)
 // levelOrderTraversal(root)
