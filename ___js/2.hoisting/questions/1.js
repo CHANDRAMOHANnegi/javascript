@@ -1,17 +1,18 @@
 var a = 1;
 function b() {
-  console.log(a); // ! undefined here
+  console.log(a); 
   a = 10;
-  // console.log(a); // but not here
+  console.log(a); // but not here
   return;
+  var a = 11
   function a() {}
-  // var a = 11
 }
 b();
 
 console.log(a);
 
 // function are also hoisted during memory creation phase
+// Function declarations take precedence over variable declarations when they share the same name. 
 
 /*****
  * during memory creation, ignore return,

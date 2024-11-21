@@ -7,13 +7,13 @@ function test() {
     }
 
     console.log(x);
-    console.log(y);
+    console.log(y); // [Function y]
 
     y = 100;
 
-    // function y(params) {
-        
-    // }
+    function y(params) {
+
+    }
 
     console.log(y);
 }

@@ -4,8 +4,9 @@
 // import InfiniteScrollingApp from './apps/8.infinite-scrolling/infinite-scrolling';
 // import { ProgressBarApp } from './apps/progress-bar/progress-bar-app';
 import "./App.css"
+import { AutoCompleteApp } from "./apps/11.auto-complete/auto-complete-app";
 // import { PaginationApp } from "./apps/10.pagination/app";
-import { EcomApp } from './apps/9.ecommerce/app';
+// import { EcomApp } from './apps/9.ecommerce/app';
 
 function App() {
 
@@ -16,7 +17,8 @@ function App() {
       {/* <StarRatingApp /> */}
       {/* <InfiniteScrollingApp/> */}
       {/* <ProgressBarApp /> */}
-      <EcomApp />
+      {/* <EcomApp /> */}
+      <AutoCompleteApp />
       {/* <PaginationApp /> */}
     </>
   );

@@ -44,6 +44,7 @@ export const InfiniteScrollingApp = () => {
     // Trigger data fetching whenever the `page` changes
     useEffect(() => {
         getData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [page]);
 
     // Scroll event handler with debouncing
