@@ -1,7 +1,8 @@
 function binarySearch(arr, target, start, end) {
+    let mid = -1
     while (start <= end) {
-        let mid = Math.floor((start + end) / 2);
-
+        mid = Math.floor((start + end) / 2);
+        console.log(mid);
         if (arr[mid] === target) {
             return mid; // Target found at index mid
         } else if (arr[mid] < target) {
@@ -11,17 +12,19 @@ function binarySearch(arr, target, start, end) {
         }
     }
 
-    return -1; // Target not found
+    return mid; // Target not found
 }
 
 const arr = [2, 3, 4, 10, 40];
-const target = 10;
+const target = 0;
 const start = 1;
 const end = 4;
 
 const result = binarySearch(arr, target, start, end);
-if (result !== -1) {
-    console.log("Element found at index " + result);
-} else {
+console.log(result);
+
+if (result == -1) {
     console.log("Element not found");
+} else {
+    console.log("Element found at index " + result);
 }

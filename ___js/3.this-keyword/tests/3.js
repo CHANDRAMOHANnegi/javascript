@@ -32,36 +32,14 @@ const counter = {
 
 const obj = { name: "obj", count: 5 };
 
-// counter.getThis();
-
-// counter.increase.call(obj); // ()
-// const arrowIn = counter.increase(); //.call(obj);
-// arrowIn();
-const arrowDec = counter.decrease(); //.call(obj);
-arrowDec(5);
+// const arrowDec = counter.decrease.call(obj);
+// arrowDec(5);
 // arrowDec(6);
-// counter.increase();
-// counter.increase()
-// console.log(counter);
 
-// const print = (t, cb) => {
-//   console.log(t, this);
-//   cb();
-// };
 
-// print("hello ", counter.increase);
+const print = (t, cb) => {
+  console.log(t, this);
+  cb();
+};
 
-// function inc() {
-//   console.log("inc", this);
-//   let x = 0;
-//   function arrow() {
-//     x++;
-//     console.log("arrow inc : ", x, this);
-//   }
-//   return arrow;
-// }
-
-// const i = inc();
-
-// i(); // 1
-// i(); // 2
+print("hello ", counter.increase);

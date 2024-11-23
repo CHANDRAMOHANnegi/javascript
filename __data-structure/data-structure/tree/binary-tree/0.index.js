@@ -169,6 +169,37 @@ function printKLevel(root, level) {
     }
 }
 
+const iterativeTraversal = (root) => {
+    const stack = [[root, 1]]
+
+    let pre = ""
+    let ino = ""
+    let post = ""
+
+    while (stack.length) {
+        const [currNode, state] = stack[stack.length - 1]
+        if (state == 1) {
+            pre += " " + currNode.data
+            stack[stack.length - 1][1]++
+            if (currNode.left)
+                stack.push([currNode.left, 1])
+        } else if (state === 2) {
+            ino += " " + currNode.data
+            stack[stack.length - 1][1]++
+            if (currNode.right)
+                stack.push([currNode.right, 1])
+        } else {
+            post += " " + currNode.data
+            stack.pop()
+        }
+    }
+
+    console.log('===pre', pre);
+    console.log('===ino', ino);
+    console.log('===post', post);
+}
+
+
 /****
  * 
  * 
@@ -178,35 +209,39 @@ function createBinaryTree(arr = []) {
     // 1 - l
     // 2 - r
     // 3 - pop
+
     if (arr.length === 0 || arr[0] === null) return null;
 
-    const root = new Node(arr[0], null, null);
-
-    const stack = [[root, 1]];
+    const root = new Node(arr[0]); // Root node
+    const stack = [[root, 1]]; // Stack to track nodes and their states
     let idx = 0;
 
     while (stack.length > 0) {
-        const curr = stack[stack.length - 1];
-        const [top, state] = curr
+        const [top, state] = stack[stack.length - 1]; // Peek the stack
 
-        if (state === 1 || state === 2) {
+        if (state === 1) {
+            // Process left child
+            stack[stack.length - 1][1] = 2; // Update state to process right child next
             idx++;
             if (idx < arr.length && arr[idx] !== null) {
-                if (state === 1) {
-                    top.left = new Node(arr[idx], null, null);
-                    stack.push([top.left, 1]);
-                } else if (state === 2) {
-                    top.right = new Node(arr[idx], null, null);
-                    stack.push([top.right, 1]);
-                }
+                top.left = new Node(arr[idx]);
+                stack.push([top.left, 1]); // Push left child
             }
-            curr[1]++;
+        } else if (state === 2) {
+            // Process right child
+            stack[stack.length - 1][1] = 3; // Mark this node as fully processed
+            idx++;
+            if (idx < arr.length && arr[idx] !== null) {
+                top.right = new Node(arr[idx]);
+                stack.push([top.right, 1]); // Push right child
+            }
         } else {
+            // Both children processed, pop the node
             stack.pop();
         }
     }
 
-    return root
+    return root;
 }
 
 const arr = [10, 20, 50, null, 60, null, null, 30, 70, null, 80, 110, null, 120]
@@ -222,7 +257,8 @@ console.log(JSON.stringify(root));
 // console.log(path);
 
 // printKLevel(root, 3)
-console.log(diameter(root))
+// console.log(diameter(root))
+// iterativeTraversal(root)
 
 // console.log(size(root))
 // console.log(sum(root))
@@ -231,3 +267,5 @@ console.log(diameter(root))
 // preOrderTraverse(root)
 // inOrderTraverse(root)
 // postOrderTraverse(root)
+
+module.exports = { createBinaryTree }
