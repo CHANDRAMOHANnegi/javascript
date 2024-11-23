@@ -24,7 +24,7 @@ var print = function (node, path, ans, targetSum) {
     }
 
     if (node.left) {
-        print(node.left, path, [...ans], targetSum)
+        print(node.left, path, [...ans, node.val], targetSum)
     }
 
     /*****
@@ -32,7 +32,7 @@ var print = function (node, path, ans, targetSum) {
      * ****/
 
     if (node.right) {
-        print(node.right, path, [...ans], targetSum)
+        print(node.right, path, [...ans, node.val], targetSum)
     }
 }
 

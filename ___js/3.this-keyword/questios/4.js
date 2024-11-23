@@ -8,19 +8,18 @@ let testThis = {
         // console.log(this);
     },
     test() {
-        //the result is NaN
+        //64 as expected
         this.add({
             a: this.x,
             b: this.y,
             c: () => {
-                //this here is testThis, NOT the object literal here
-                console.log(this);
-                // console.log(this.a, this.b);
-                return this.a + this.b;
+                return this.x + this.y;
             },
         });
     },
 };
 
 // testThis.add()
+// testThis.test()
+// testThis.test2()
 testThis.test()

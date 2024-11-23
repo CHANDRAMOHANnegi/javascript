@@ -9,10 +9,10 @@ const obj = {
     this.age++;
     // console.log("this1", this);
 
-    ((params) => {
+    (function (params) {
       //   console.log(age);
       var age = 10;
-      console.log(age, this.age);
+      console.log(age, this);
 
       //   console.log("this2", this);
     })();
@@ -25,9 +25,7 @@ const obj = {
 // const myBind = getThis.bind(obj)
 
 console.log(obj.increase());
+// const { increase } = obj
+// console.log(increase());
 
 // myBind()
-
-// console.log(x, y);
-// var x = 10;
-// y = 20;

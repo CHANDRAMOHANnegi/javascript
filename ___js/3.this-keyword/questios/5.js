@@ -4,19 +4,20 @@ let testThis = {
     add(obj) {
         // const { a, b, c } 
         let d = obj.a + obj.b + obj.c();
+        // let d = obj.a + obj.b + obj.c.call(this);
         console.log('==', obj, d);
         // console.log(this);
     },
     test() {
-        //the result is NaN
+        //NaN
         this.add({
             a: this.x,
             b: this.y,
-            c: () => {
-                //this here is testThis, NOT the object literal here
-                console.log(this);
-                // console.log(this.a, this.b);
-                return this.a + this.b;
+            c: function () {
+                console.log('---', this);
+
+                //this here is the global object
+                return this.x + this.y;
             },
         });
     },
