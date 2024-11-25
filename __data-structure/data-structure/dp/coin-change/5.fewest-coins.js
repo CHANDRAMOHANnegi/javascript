@@ -32,7 +32,7 @@ const coinsRec = function (coins, target, idx) {
  * 
  * ratta mar le bhai
  * 
- * ********/ 
+ * ********/
 
 const coinsRecDP = function (coins, target) {
     const dp = Array(target + 1).fill(Infinity)
@@ -53,3 +53,16 @@ var coinChange = function (coins, amount) {
     // return coinsRec(coins, amount, 0)
     return coinsRecDP(coins, amount)
 };
+
+/*****
+ * 
+ * 
+ * this question is NUMBER of coins needed, so dp[0]=0
+ * 
+ * 
+ * coins loop can be inside or outside, doesn't matter
+ * 
+ * other question are not of ways, so dp[0]=0
+ * 
+ * 
+ * ***/ 
