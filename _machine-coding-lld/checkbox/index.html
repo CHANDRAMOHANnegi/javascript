@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="">
+        <input type="checkbox" name="" id="hero_checkbox">
+        <ul>
+            <input type="checkbox" name="box_1">
+            <input type="checkbox" name="box_2">
+            <input type="checkbox" name="box_3">
+            <input type="checkbox" name="box_4">
+            <input type="checkbox" name="box_5">
+            <input type="checkbox" name="box_6">
+            <input type="checkbox" name="box_7">
+            <input type="checkbox" name="box_8">
+            <input type="checkbox" name="box_9">
+            <input type="checkbox" name="box_10">
+        </ul>
+    </div>
+    <script>
+        function initApp() {
+            const heroCheckbox = document.getElementById("hero_checkbox")
+
+            document.addEventListener("click", handleClick)
+
+            function toggleSelection(checked) {
+                const ul = document.querySelector("ul");
+                const inputList = ul.children
+                Array.from(inputList).map((input => {
+                    input.checked = checked
+                }))
+            }
+
+            function handleClick(event) {
+                const clickTarget = event.target
+                if (clickTarget.tagName === "INPUT" && clickTarget.id === "hero_checkbox") {
+                    const isHeroClicked = clickTarget.checked
+                    toggleSelection(isHeroClicked)
+                }
+            }
+        }
+        window.addEventListener("DOMContentLoaded", initApp)
+    </script>
+</body>
+
+</html>
