@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .pulser {
+            width: 30px;
+            height: 30px;
+            background: rebeccapurple;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .pulser::after {
+            animation: 1s pulse linear infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 0.4;
+                scale: 1.4;
+
+            }
+        }
+
+        .pulser::after {
+            content: " ";
+            display: inline-block;
+            width: 100%;
+            height: 100%;
+            background-color: rgb(255, 0, 0);
+            border-radius: 50%;
+        }
+
+
+
+
+        /* Decorative styles */
+        body {
+            display: grid;
+            place-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="pulser"></div>
+</body>
+
+</html>
