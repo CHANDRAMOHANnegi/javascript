@@ -20,7 +20,7 @@ counter.increase.call(obj);
 
 /*****
  * !
- * with arrow functions, this does not work because the 
+ * with arrow functions, this binding does not work because the 
  * this value is already lexically bound and cannot be changed.
  * ***/
 
