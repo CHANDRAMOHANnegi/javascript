@@ -29,6 +29,25 @@ const subsetSum = (SUM, nums) => {
 
 }
 
+const subsetSum2 = (SUM, nums) => {
+    const dp = Array.from({ length: nums.length + 1 },
+        () => Array.from({ length: SUM + 1 }).fill(0))
+
+    for (let i = 0; i <= nums.length; i++) {
+        dp[i][0] = 1
+    }
+
+    for (let i = 1; i <= nums.length; i++) {
+        for (let j = 0; j <= SUM; j++) {
+            dp[i][j] = dp[i - 1][j]
+            if (j >= nums[i - 1]) {
+                dp[i][j] += dp[i - 1][j - nums[i - 1]]
+            }
+        }
+    }
+    return dp[nums.length][SUM]
+}
+
 const helperDP = (nums, target) => {
     const totalSum = nums.reduce((all, curr) => all + curr, 0)
 

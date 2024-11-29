@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .pulser {
+            width: 30px;
+            height: 30px;
+            background: rebeccapurple;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .pulser::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 10px;
+            left: 0;
+            background: blueviolet;
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        /* Decorative styles */
+        body {
+            display: grid;
+            place-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="pulser"></div>
+</body>
+
+</html>
+
+<!-- 
+
+
+lets you style a specific part of the selected element(s).
+
+ In CSS, ::after creates a pseudo-element that is the last child of the selected element.
+ It is often used to add cosmetic content to an element with the content property. 
+ It is inline by default.
+
+-->

@@ -15,7 +15,7 @@ import { SCREENS } from '../contants';
 const Stack = createNativeStackNavigator();
 
 export const RootStack = () => {
-    const isLoggedIn = true
+    const isLoggedIn = true;
     return (
         <NavigationContainer>
             <Stack.Navigator
@@ -26,7 +26,7 @@ export const RootStack = () => {
                     // Screens for logged in users
                     <Stack.Group>
                         <Stack.Screen
-                            name={SCREENS.HOME_SCREEN+"a"}
+                            name={SCREENS.HOME_SCREEN + 'a'}
                             component={HomeTabs}
                         />
                         <Stack.Screen name={SCREENS.PROFILE_SCREEN} component={ProfileScreen} />
