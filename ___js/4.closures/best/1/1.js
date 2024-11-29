@@ -3,9 +3,10 @@ function showHelp(help) {
 }
 
 function makeHelpCallback(help) {
-  return function () {
+  console.log(help);
+  return () => {
     showHelp(help);
-  };
+  }
 }
 
 function setupHelp() {
@@ -16,9 +17,8 @@ function setupHelp() {
   ];
 
   for (var i = 0; i < helpText.length; i++) {
-    var item = helpText[i];
-    document.getElementById(item.id).onfocus =
-      makeHelpCallback(item.help);
+    const item = helpText[i];
+    document.getElementById(item.id).onfocus = makeHelpCallback(item.help);
   }
 }
 
