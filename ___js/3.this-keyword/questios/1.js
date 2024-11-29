@@ -9,9 +9,11 @@ const obj = {
     },
     d: function () {
         console.log(this);
-        this.b(this.c)
-        // this.b(this.c.bind(this))
+        // this.b(this.c)
+        this.b(this.c.bind(this))
     }
 }
 
+// obj.b()
+// obj.c()
 obj.d()

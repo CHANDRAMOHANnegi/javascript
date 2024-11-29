@@ -52,8 +52,5 @@ console.log(appController.avgScore); // null
 
 
 //!
-
-
-
 const button = document.getElementById('button')
 button.onclick = appController.avg.bind(gameController)

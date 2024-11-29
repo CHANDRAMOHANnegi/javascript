@@ -21,7 +21,8 @@ var user = {
 // Assign the user.showData to a variable
 var showUserData = user.showData;
 
-// When we execute the showUserData function, the values printed to the console are from the global data array, not from the data array in the user object
+// When we execute the showUserData function, the values printed to the console are 
+// from the global data array, not from the data array in the user object
 //
 showUserData(); // Samantha 12 (from the global data array)
 
