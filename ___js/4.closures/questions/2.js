@@ -1,8 +1,7 @@
+// closure in loop
 
-for (var i = 0; i < 3; i++) {
-
-  ((i) => setTimeout(() => {
-    console.log(i)
-  }, 1000))(i)
-
+for (let id = 0; id < 3; id++) {
+    setTimeout(function () {
+        console.log('seconds: ' + id);
+    }, id * 1000);
 }

@@ -53,29 +53,29 @@ function CustomPromise(executor) {
   executor(resolve, reject);
 }
 
-const doWork = (res, rej) => {
-  setTimeout(() => {
-    res("Hello world");
-  }, 2000);
-};
+// const doWork = (res, rej) => {
+//   setTimeout(() => {
+//     res("Hello world");
+//   }, 2000);
+// };
 
-const doOtherWork = (res, rej) => {
-  setTimeout(() => {
-    res("How are you");
-  }, 3000);
-};
+// const doOtherWork = (res, rej) => {
+//   setTimeout(() => {
+//     res("How are you");
+//   }, 3000);
+// };
 
-let someText = new Promise(doWork);
-// console.log(someText);
+// let someText = new Promise(doWork);
+// // console.log(someText);
 
-someText
-  .then((val) => {
-    console.log("1st log: " + val);
-    return new Promise(doOtherWork);
-  })
-  .then((val) => {
-    console.log("=-=-=-val", val);
-  });
+// someText
+//   .then((val) => {
+//     console.log("1st log: " + val);
+//     return new Promise(doOtherWork);
+//   })
+//   .then((val) => {
+//     console.log("=-=-=-val", val);
+//   });
 
 // someText.then((val) => {
 //     console.log('2nd log: ' + val);
@@ -93,3 +93,31 @@ someText
 
 // https://www.youtube.com/watch?v=fyGSyqEX2dw&ab_channel=TonyAlicea
 // https://youtu.be/fyGSyqEX2dw?t=1823
+
+
+
+
+const executor = (resolve, reject) => {
+  setTimeout(() => {
+      console.log("hello");
+      resolve("5")
+  }, 1000)
+}
+
+const p2 = new CustomPromise(executor)
+
+p2.then(d => {
+  console.log("->1", d);
+  return "then return"
+}).then(d => {
+  console.log('->2', d);
+}).then(() => {
+  console.log("->3",);
+})
+
+
+p2.then(d => {
+  console.log('->4', d);
+}).then(() => {
+  console.log("->5",);
+})
