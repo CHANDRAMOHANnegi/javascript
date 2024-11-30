@@ -1,26 +1,25 @@
-
 function CustomPromise(executor) {
     if (typeof executor !== 'function') {
         throw new TypeError('CustomPromise resolver must be a function');
     }
 
     const self = this;
-    self.state = 'pending'; // 'fulfilled', 'rejected', or 'pending'
-    self.value = undefined; // Holds the resolved value or rejection reason
-    self.handlers = []; // Stores the .then/.catch callbacks
+    self.state = 'pending';  // 'fulfilled', 'rejected', or 'pending'
+    self.value = undefined;  // Holds the resolved value or rejection reason
+    self.handlers = [];      // Stores the .then/.catch callbacks
 
     function resolve(value) {
         if (self.state !== 'pending') return;
         self.state = 'fulfilled';
         self.value = value;
-        self.handlers.forEach(handle);
+        self.handlers.forEach(handle);  // Process all handlers when promise is resolved
     }
 
     function reject(reason) {
         if (self.state !== 'pending') return;
         self.state = 'rejected';
         self.value = reason;
-        self.handlers.forEach(handle);
+        self.handlers.forEach(handle);  // Process all handlers when promise is rejected
     }
 
     function handle(handler) {
@@ -32,8 +31,10 @@ function CustomPromise(executor) {
     }
 
     self.then = function (onFulfilled, onRejected) {
+        // Create a new promise that will handle chaining
         return new CustomPromise((resolve, reject) => {
-            handle({
+            // Add the handler to the handlers array
+            self.handlers.push({
                 onFulfilled: function (value) {
                     try {
                         const result = typeof onFulfilled === 'function' ? onFulfilled(value) : value;
@@ -51,6 +52,12 @@ function CustomPromise(executor) {
                     }
                 }
             });
+
+            // If the promise is already settled (either fulfilled or rejected),
+            // we need to immediately handle the state, otherwise it will be handled later
+            if (self.state !== 'pending') {
+                handle(self.handlers[self.handlers.length - 1]);
+            }
         });
     };
 
@@ -58,12 +65,14 @@ function CustomPromise(executor) {
         return self.then(null, onRejected);
     };
 
+    // Execute the executor function to kick-start the promise
     try {
         executor(resolve, reject);
     } catch (err) {
         reject(err);
     }
 }
+
 
 // Add the static `resolve` and `reject` methods
 CustomPromise.resolve = function (value) {
