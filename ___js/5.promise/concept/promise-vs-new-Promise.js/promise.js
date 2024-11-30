@@ -25,7 +25,7 @@ Promise.resolve(p).then((a) => {
 
 // new Promise((resolve) => resolve(p)).then((a) => console.log(a)); // 5
 
-//  if p is promise then above line return a new promise which gets resolved after p get resolved
+// if p is promise then above line return a new promise which gets resolved after p get resolved
 // only after above steps then is executed
 
 // means, first the then of p will be executed, and after that then of outer will be executed
@@ -43,9 +43,8 @@ p.then(() => {
   console.log("tick 4"); // 4
 });
 
-// If the value is a promise, Promise.resolve(value)
-// would return value exactly.
-// Promise.resolve(value) === value would be true.
+// If the value is a promise, Promise.resolve(value) would return value exactly.
+// "Promise.resolve(value) === value" would be true.
 
-// if p is promise, then  p === Promise.resolve(p)
-// if p is not promise, then  Promise.resolve(p) will return some promise
+// if p is promise, then  "p === Promise.resolve(p)"
+// if p is not promise, then Promise.resolve(p) will return some promise
