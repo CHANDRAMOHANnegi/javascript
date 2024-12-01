@@ -1,53 +1,5 @@
+
 const JSONStringify = (obj) => {
-
-    const isArray = (value) => {
-        return Array.isArray(value) && typeof value === 'object';
-    };
-
-    const isObject = (value) => {
-        return typeof value === 'object' && value !== null && !Array.isArray(value);
-    };
-
-    const isString = (value) => {
-        return typeof value === 'string';
-    };
-
-    const isBoolean = (value) => {
-        return typeof value === 'boolean';
-    };
-
-    const isNumber = (value) => {
-        return typeof value === 'number';
-    };
-
-    const isNull = (value) => {
-        return value === null && typeof value === 'object';
-    };
-
-    const isNotNumber = (value) => {
-        return typeof value === 'number' && isNaN(value);
-    };
-
-    const isInfinity = (value) => {
-        return typeof value === 'number' && !isFinite(value);
-    };
-
-    const isDate = (value) => {
-        return typeof value === 'object' && value !== null && typeof value.getMonth === 'function';
-    };
-
-    const isUndefined = (value) => {
-        return value === undefined && typeof value === 'undefined';
-    };
-
-    const isFunction = (value) => {
-        return typeof value === 'function';
-    };
-
-    const isSymbol = (value) => {
-        return typeof value === 'symbol';
-    };
-
     const restOfDataTypes = (value) => {
         return isNumber(value) || isString(value) || isBoolean(value);
     };
@@ -70,7 +22,6 @@ const JSONStringify = (obj) => {
         return tempArr.join('');
     };
 
-
     if (ignoreDataTypes(obj)) {
         return undefined;
     }
@@ -86,7 +37,6 @@ const JSONStringify = (obj) => {
     if (isSymbol(obj)) {
         return undefined;
     }
-
 
     if (restOfDataTypes(obj)) {
         const passQuotes = isString(obj) ? `"` : '';
@@ -115,4 +65,52 @@ const JSONStringify = (obj) => {
         });
         return `{` + removeComma(objStr) + `}`;
     }
+};
+
+const isArray = (value) => {
+    return Array.isArray(value) && typeof value === 'object';
+};
+
+const isObject = (value) => {
+    return typeof value === 'object' && value !== null && !Array.isArray(value);
+};
+
+const isString = (value) => {
+    return typeof value === 'string';
+};
+
+const isBoolean = (value) => {
+    return typeof value === 'boolean';
+};
+
+const isNumber = (value) => {
+    return typeof value === 'number';
+};
+
+const isNull = (value) => {
+    return value === null && typeof value === 'object';
+};
+
+const isNotNumber = (value) => {
+    return typeof value === 'number' && isNaN(value);
+};
+
+const isInfinity = (value) => {
+    return typeof value === 'number' && !isFinite(value);
+};
+
+const isDate = (value) => {
+    return typeof value === 'object' && value !== null && typeof value.getMonth === 'function';
+};
+
+const isUndefined = (value) => {
+    return value === undefined && typeof value === 'undefined';
+};
+
+const isFunction = (value) => {
+    return typeof value === 'function';
+};
+
+const isSymbol = (value) => {
+    return typeof value === 'symbol';
 };

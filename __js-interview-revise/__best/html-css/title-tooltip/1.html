@@ -1,0 +1,62 @@
+<!-- 
+ 
+Tooltip in Html - No extra HTML element to be used, no js. Add a button with title and change background of tooltip only with css.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Tooltip</title>
+    <style>
+        /* Button styles */
+        button {
+            position: relative;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        /* Custom tooltip on hover */
+        button:hover::after {
+            content: attr(title);
+            /* Use the title attribute as tooltip text */
+            position: absolute;
+            bottom: 120%;
+            /* Position above the button */
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.75);
+            /* Custom background color */
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            white-space: nowrap;
+            opacity: 1;
+            transition: opacity 0.3s;
+            font-size: 14px;
+            pointer-events: none;
+            /* Prevent interaction with the tooltip */
+        }
+
+        body {
+            margin-top: 50px;
+            margin-left: 100px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button title="This is a custom tooltip">Hover Me</button>
+
+</body>
+
+</html>
+
+
+
+<!-- button:hover::after  -->
+<!-- button::after:hover -->
