@@ -7,9 +7,6 @@
  * The window.requestIdleCallback() method queues a
  * function to be called during a browser's idle periods.
  *
- *
- * ! key take-away is Date.now()
- *
  * **/
 
 function createSetTimeout() {
@@ -18,12 +15,7 @@ function createSetTimeout() {
 
   function setTimeoutPoly(callback, delay, ...args) {
     var id = timerId++;
-    timerMap[id] = true;
-
-    //! Date.now()
-    // 1706460218221
-    // new Date()
-    // Sun Jan 28 2024 22:13:46 GMT+0530 (India Standard Time)
+    timerMap[id] = Math.random() * Number.MAX_SAFE_INTEGER;
 
     var start = Date.now();
     function triggerCallback(idleTimeLeftForBrowser) {
