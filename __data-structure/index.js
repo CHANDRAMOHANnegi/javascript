@@ -1,7 +1,6 @@
 /**
  * 
  * 
- * 
  * ******************* HOW TO APPROACH A PROBLEM ****************
  * 
  * 1. Read question 2 times properly
@@ -14,6 +13,8 @@
  * 5. Think what question wants, YOU don't know answer, don't assume
  * 
  * 6. Think again
+ * 
+ * 7. write approach algo
  * 
  * *******************
  * 

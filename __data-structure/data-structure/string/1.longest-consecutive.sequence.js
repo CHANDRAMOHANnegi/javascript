@@ -14,7 +14,7 @@ var longestConsecutive = function (nums) {
         let i = 1
         /****
          * if its previous value exist, then it is not starting point, an we skip it
-         * if its previous value do not exist then this is starting point making it O(n)
+         * if its previous value do not exist then this is starting point
          * ****/ 
         if (!set.has(value - 1)) {
             while (set.has(value + i)) {
