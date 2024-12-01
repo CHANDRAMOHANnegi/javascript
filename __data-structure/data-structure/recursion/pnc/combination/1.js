@@ -25,7 +25,9 @@ var combinationSum = function (candidates, target) {
              * "push to array and pop" is better 
              * 
              * **/
-            helper(nums, target - nums[idx], idx, final, [...curr, nums[idx]])
+            curr.push(nums[idx])
+            helper(nums, target - nums[idx], idx, final, curr)
+            curr.pop()
         }
 
         // exclude
