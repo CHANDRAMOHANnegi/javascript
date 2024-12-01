@@ -11,7 +11,7 @@ var combinationSum = function (candidates, target) {
 };
 
 var sets = function (nums, idx, target, result, final) {
-    console.log(result,nums[idx]);
+    console.log(result, nums[idx]);
     if (idx == nums.length) {
         if (target === 0) {
             final.push([...result])
@@ -26,6 +26,8 @@ var sets = function (nums, idx, target, result, final) {
         result.push(nums[idx])
         /****
          * Because repetition  is allowed to we make a call to current index
+         * 
+         * since we are making combination we can use a number multiple times, so no need to increase index
          * 
          * */
         sets(nums, idx, target - nums[idx], result, final)
@@ -60,6 +62,6 @@ var sets = function (nums, idx, target, result, final) {
 /*********
  * The recursion call is this way, so we can get all the combinations
  * 
- * ***/ 
+ * ***/
 
-combinationSum([2,3,5],8)
+combinationSum([2, 3, 5], 8)

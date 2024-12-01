@@ -32,7 +32,7 @@ const robDP2 = (nums, n, dp) => {
     return dp[n] = Math.max(robDP2(nums, n - 2, dp) + nums[n], robDP2(nums, n - 1, dp))
 }
 
-const robDP = (houses) => {
+const robTab = (houses) => {
     let include = houses[0]
     let exclude = 0
 
@@ -53,5 +53,5 @@ const robDP = (houses) => {
 
 var rob = function (nums) {
     return robRec(nums, nums.length - 1)
-    // return robDP(nums)
+    // return robTab(nums)
 };
