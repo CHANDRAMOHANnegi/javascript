@@ -2,6 +2,8 @@
  * @param {string} s
  * @param {number} k
  * @returns {number}
+ * 
+ * this is same as fruits basket problem
  */
 
 class Solution {

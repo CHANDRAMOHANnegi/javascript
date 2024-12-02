@@ -24,6 +24,9 @@ var findMin = function (nums) {
  * we will find mid, 
  * and depending on that mid we can find in which direction array is rotated
  * and then we can update low and high
+ * 
+ * once half of array is sorted in rotated array
+ * 
  * ****/ 
 
 /***
