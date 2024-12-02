@@ -38,6 +38,14 @@ var longestOnes = function(nums, k) {
             left++
         }
 
+        /****
+         * 
+         * only calculate length when zeroes is "0"
+         * 
+         * if zeroes is -ve, increase left
+         * 
+         * ***/ 
+
         maxLen = Math.max(maxLen, right - left + 1)
         right++
     }
