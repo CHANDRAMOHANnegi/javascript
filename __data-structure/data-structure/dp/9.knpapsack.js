@@ -4,7 +4,6 @@ const knapsackRec = (values, weights, n, w) => {
         return 0;
     }
 
-    let include = Number.MIN_VALUE;
     if (weights[n] <= w) {
         return Math.max(values[n] +
             knapsackRec(values, weights, n + 1, w - weights[n]),
@@ -22,7 +21,6 @@ const knapsackDp = (values, weights, n, w, dp) => {
         return dp[w][n]
     }
 
-    let include = Number.MIN_VALUE;
     if (weights[n] <= w) {
         return dp[w][n] = Math.max(values[n] +
             knapsackDp(values, weights, n + 1, w - weights[n], dp),

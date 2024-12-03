@@ -29,9 +29,6 @@ function subsetSumToK(n, k, arr) {
  * 
  * in coin change
  * 
- * 
- * 
- * 
  * ****/
 
 

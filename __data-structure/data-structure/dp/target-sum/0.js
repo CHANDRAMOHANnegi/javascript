@@ -1,8 +1,20 @@
 const subsetSum = (target, nums) => {
     const dp = Array.from({ length: (target) + 1 }, () => 0)
+    /****
+     * this condition is important
+     * we can get 0 target, YES
+     * no of ways we can get 0, give nothing
+     * 
+     * SINGLE MOST IMPORTANT CONDITION
+     * 
+     * ***/ 
     dp[0] = 1
 
     for (const num of nums) {
+        /**
+         * in target sum this loop is in reverse order,
+         * while in coin change PnC this is not in reverse
+         * ***/  
         for (let sum = target; sum >= num; sum--) {
             dp[sum] = dp[sum] + dp[sum - num]
         }
