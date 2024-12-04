@@ -3,10 +3,14 @@
   "version": "0.0.1",
   "main": "src/index.ts",
   "scripts": {
-     "test": "vitest run"
+    "test": "vitest run",
+    "dev": "vite",
+    "build": "vite build"
   },
   "devDependencies": {
     "typescript": "^5.7.2",
-    "vitest": "^2.1.8"
+    "vitest": "^2.1.8",
+    "vite": "^6.0.1",
+    "@vitejs/plugin-react-swc": "^3.5.0"
   }
 }
