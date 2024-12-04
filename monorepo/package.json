@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "pnpm --filter web dev",
     "web": "pnpm --filter web",
+    "next": "pnpm --filter next",
     "test:all": "pnpm -r  test"
   },
   "keywords": [],
