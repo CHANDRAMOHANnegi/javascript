@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="canvas" height="300"></canvas>
+</body>
+
+<script>
+    const canvas = document.getElementById("canvas")
+
+    const context = canvas.getContext("2d")
+
+    canvas.style.background = "#ff8"
+
+    const window_height = window.innerHeight
+    const window_width = window.innerWidth
+
+    canvas.width = window_width
+    canvas.height = window_height
+
+
+    class Circle {
+        constructor(xpos, ypos, radius, color, text, speed) {
+            this.xpos = xpos
+            this.ypos = ypos
+            this.radius = radius
+            this.color = color
+            this.text = text
+            this.speed = speed
+            this.dx = 1 * this.speed
+            this.dy = 1 * this.speed
+        }
+        draw(context) {
+            context.beginPath()
+
+            context.textAlign = "center"
+            context.textBaseline = "middle"
+            context.font = "20px Arial"
+            context.fillText(this.text, this.xpos, this.ypos)
+
+            context.lineWidth = 5
+            context.arc(this.xpos, this.ypos, this.radius, 0, Math.PI * 2, false)
+            context.stroke()
+            context.closePath()
+        }
+        update() {
+            context.clearRect(0, 0, window_width, window_height)
+            this.draw(context)
+            this.xpos += this.dx
+            this.ypos += this.dy
+
+            if (this.xpos + this.radius > window_width) {
+                this.dx = - this.dx
+            }
+
+            if (this.xpos - this.radius < 0) {
+                this.dx = - this.dx
+            }
+
+            if (this.ypos - this.radius < 0) {
+                this.dy = - this.dy
+            }
+
+            if (this.ypos + this.radius > window_height) {
+                this.dy = - this.dy
+            }
+        }
+    }
+
+    const all_circles = []
+
+    const random_x = Math.random() * window_width
+    const random_y = Math.random() * window_height
+
+    const createCircle = (circle) => {
+        circle.draw(context)
+    }
+
+    let my_circle = new Circle(random_x, random_y, 50, "black", 1, 1)
+    my_circle.draw(context)
+
+    let update_circle = function () {
+        requestAnimationFrame(update_circle)
+        my_circle.update()
+    }
+
+    update_circle()
+
+    for (let num = 0; num < 1; num++) {
+        const random_x = Math.random() * window_width
+        const random_y = Math.random() * window_height
+        const circle = new Circle(
+            random_x,
+            random_y,
+            50,
+            "black",
+            num + 1
+        )
+        all_circles.push(circle)
+        createCircle(all_circles[num])
+    }
+
+</script>
+
+</html>

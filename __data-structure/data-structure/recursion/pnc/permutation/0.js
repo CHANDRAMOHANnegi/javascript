@@ -1,6 +1,7 @@
 /**
  * @param {number[]} nums
  * @return {number[][]}
+ * https://www.youtube.com/watch?v=QKkHCS5bq0I&list=PL-Jc9J83PIiHO9SQ6lxGuDsZNt2mkHEn0&index=20
  */
 
 var permute = function (nums) {
@@ -11,10 +12,16 @@ var permute = function (nums) {
         }
 
         for (let i = 0; i < box.length; i++) {
-            if (box[i] !== false) continue;
-            box[i] = nums[idx]
-            helper(nums, idx + 1, result, box)
-            box[i] = false
+            /****
+             * 
+             * nums[idx] ke pass choices hai ki vo kon se box me jaye
+             * 
+             * ***/
+            if (box[i] === false) {
+                box[i] = nums[idx]
+                helper(nums, idx + 1, result, box)
+                box[i] = false
+            }
         }
     }
 
@@ -26,7 +33,7 @@ var permute = function (nums) {
 };
 
 /****
- * 
+ * https://www.youtube.com/watch?v=QKkHCS5bq0I&list=PL-Jc9J83PIiHO9SQ6lxGuDsZNt2mkHEn0&index=20
  * 
  * boxes options hai
  * 
