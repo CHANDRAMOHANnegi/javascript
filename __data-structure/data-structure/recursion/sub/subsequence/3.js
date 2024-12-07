@@ -2,26 +2,22 @@
 // A subsequence is an array that can be derived from another array by deleting
 // some or no elements without changing the order of the remaining elements.
 
-function subSequence(str = "", result = [], asf = "", n) {
-    if (str.length === 0) {
+function subSequence(idx, str = "", result = [], asf = "", n) {
+    if (idx === str.length) {
         result.push(asf)
         return
     }
 
-    const ch = str[0]
-    const roq = str.substring(1)
+    const ch = str[idx]
 
-    subSequence(roq, result, asf + ch, n)
-    subSequence(roq, result, asf + "", n)
+    subSequence(idx + 1, str, result, asf + ch)
+    subSequence(idx + 1, str, result, asf + "")
 }
 
-
-let str = "abc"
-let n = str.length
-
+const str = "abc"
 const result = []
 
-subSequence(str, result, "", n)
+subSequence(0, str, result, "")
 
 console.log(result);
 
@@ -31,3 +27,11 @@ console.log(result);
 
 // -===>Subsequence order is maintained and not continuos
 // Subsequence	[], [1], [2], [3], [1, 2], [1, 3], [2, 3], [1, 2, 3]
+
+
+/*****
+ * 
+ * here we are getting answer going to the end
+ * 
+ * 
+ * ***/ 

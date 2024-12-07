@@ -1,4 +1,6 @@
-const topNavigationMenu = [
+import { MenuItem } from "@/components/navigation/types";
+
+const topNavigationMenu: MenuItem[] = [
   {
     id: "menu-1",
     label: "Home",

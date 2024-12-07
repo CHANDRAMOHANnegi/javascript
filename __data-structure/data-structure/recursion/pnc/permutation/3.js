@@ -2,13 +2,14 @@
 function permutation(str, asf) {
     if (str.length === 0) {
         console.log(asf + " ");
-
         return
     }
 
     for (let i = 0; i < str.length; i++) {
         const ch = str[i];
-        const roq = str.substring(0, i) + str.substring(i + 1)
+        const left = str.substring(0, i)
+        const right = str.substring(i + 1)
+        const roq = left + right
 
         permutation(roq, asf + ch)
     }
