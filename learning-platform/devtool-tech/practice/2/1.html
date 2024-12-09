@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="test">
+        <div class="test">
+            <span class="test"></span>
+            <p>Not matching</p>
+        </div>
+    </div>
+    <script>
+
+        function getElementsByClassName(search, root) {
+            if (!root) {
+                root = (this instanceof HTMLElement) ? this : document.body
+            }
+            const childNodes = root.children
+            const nodes = [];
+
+            [...childNodes].forEach(node => {
+                if (node) {
+                    nodes.push(...getElementsByClassName(search, node))
+                }
+            })
+
+            if (root.classList?.contains(search)) {
+                nodes.push(root)
+            }
+
+            return [...nodes]
+        }
+
+
+        //console.log(getElementsByClassName("test"))
+
+        console.log(getElementsByClassName.call(document, "test"))
+
+    </script>
+</body>
+
+</html>
