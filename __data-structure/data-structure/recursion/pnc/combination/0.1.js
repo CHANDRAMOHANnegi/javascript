@@ -6,11 +6,12 @@
 
 var combine = function (n, k) {
     const helper = (currentBox, currentAns, totalBoxes, totalItems, result) => {
-        if (currentAns.length === totalItems) {
-            result.push([...currentAns])
-            return
-        }
         if (currentBox > totalBoxes) {
+            console.log(currentAns);
+            if (currentAns.length === totalItems) {
+                result.push([...currentAns])
+                return
+            }
             return
         }
 
@@ -25,7 +26,7 @@ var combine = function (n, k) {
          * ***/
 
         helper(currentBox + 1, [...currentAns, currentBox], totalBoxes, totalItems, result)
-        helper(currentBox + 1, currentAns, totalBoxes, totalItems, result)
+        helper(currentBox + 1, [...currentAns, 0], totalBoxes, totalItems, result)
     }
 
     const result = []
@@ -33,6 +34,9 @@ var combine = function (n, k) {
 
     return result
 };
+
+console.log(combine(4, 2));
+
 
 
 /****
