@@ -13,9 +13,7 @@ var permute = function (nums) {
 
         for (let i = 0; i < box.length; i++) {
             /****
-             * 
              * nums[idx] ke pass choices hai ki vo kon se box me jaye
-             * 
              * ***/
             if (box[i] === false) {
                 box[i] = nums[idx]
