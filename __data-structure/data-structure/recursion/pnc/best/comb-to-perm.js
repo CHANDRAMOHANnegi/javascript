@@ -23,6 +23,7 @@ const combToPerm = (totalBoxes, totalItems) => {
     return result
 }
 
+// boxes level par hai
 
 console.log(combToPerm(3, 2))
 

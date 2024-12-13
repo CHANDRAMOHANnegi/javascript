@@ -21,7 +21,7 @@ const permutations = (boxes, items, result) => {
 // items level par hai
 
 
-const items = 2
+const items = [1, 2]
 const box = 3
 
 const result = []
