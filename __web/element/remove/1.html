@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="div-01">Here is div-01</div>
+    <div id="div-02">Here is div-02</div>
+    <div id="div-03">Here is div-03</div>
+
+    <script>
+
+        setTimeout(() => {
+            const element = document.getElementById("div-02");
+            element.remove();
+            // remove
+        }, 1000)
+
+        setTimeout(() => {
+            const parent = document.querySelector("body");
+            const child = document.getElementById("div-03");
+            //console.log(parent, child)
+            const throwawayNode = parent.removeChild(child);
+            // removeChild
+        }, 2000)
+
+    </script>
+</body>
+
+</html>
