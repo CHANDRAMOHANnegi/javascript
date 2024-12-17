@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .navbar {
+            height: 50px;
+            position: sticky;
+            top: 0;
+            border-bottom: 1.5px solid black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .content {
+            height: 2000px;
+            position: relative;
+        }
+
+        #go-to-bottom {
+            position: absolute;
+            top: 10px;
+            /* Without this, the button will be aligned to the top of the page
+            instead of bottom of navbar when scrolled */
+            scroll-margin-top: 60px;
+            background-color: aqua;
+        }
+
+        #go-to-top {
+            position: absolute;
+            bottom: 10px;
+            scroll-margin-bottom: 0;
+            background-color: cadetblue;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="navbar">Navbar</header>
+    <main class="content">
+        <button id="go-to-bottom">Go to bottom</button>
+        <button id="go-to-top">Go to top</button>
+    </main>
+
+    <script>
+
+        const goToTop = document.getElementById("go-to-top");
+        const goToBottom = document.getElementById("go-to-bottom");
+        goToBottom.addEventListener("click", () => {
+            goToTop.scrollIntoView({ behavior: "instant", block: "end" });
+        });
+        goToTop.addEventListener("click", () => {
+            goToBottom.scrollIntoView({ behavior: "instant", block: "start" });
+        });
+    </script>
+</body>
+
+</html>

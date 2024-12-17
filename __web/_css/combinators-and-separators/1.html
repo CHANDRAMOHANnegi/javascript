@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /*
+    next sibling selector
+    matches the second element only if it immediately follows the first element
+    both are children of the same parent 
+    */
+
+    div+span {
+      color: green;
+    }
+
+
+    /*
+    subsequent sibling selector
+    matches all instances of the second element that follow the first element 
+    (not necessarily immediately) and 
+    share the same parent element.
+    */
+    p~span {
+      color: red;
+    }
+
+    /*
+    
+    Child combinator
+    It matches only those elements matched by the second selector 
+    that are the direct children of elements matched by the first.
+
+    direct children
+    */
+
+    ul>li {
+      background-color: aqua;
+    }
+
+
+    /*
+    
+    Descendant combinator
+    */
+
+    li li {
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+
+  <ul>
+    <li>li 1</li>
+    <li>li 2</li>
+    <li>
+      <ul>
+        <li>li 3</li>
+        <li>li 4</li>
+      </ul>
+    </li>
+  </ul>
+
+
+  <article>
+    <div>next sibling selector</div>
+    <span>This is green because it appears directly after paragraph. | next sibling selector</span>
+    <p>Here is a paragraph.</p>
+    <code>Here is some code.</code>
+
+    <span>
+      This span is red because it appears after the paragraph, even though there
+      are other nodes in between.
+    </span>
+
+    <p>Whatever it may be, keep smiling.</p>
+    <h1>Dream big</h1>
+    <span>
+      Doesn't matter how many or what kind of nodes are in between, all spans from
+      the same parent after a paragraph are red.
+    </span>
+  </article>
+  <span>
+    This span is not red because it doesn't share a parent with a paragraph.
+  </span>
+
+
+
+</body>
+
+</html>
