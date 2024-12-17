@@ -1,0 +1,28 @@
+*{
+    list-style: none;
+}
+
+.todo_container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    height: 100vh;
+}
+
+.col{
+    border: 1px solid red;
+}
+
+ul li{
+
+    margin:20px 0;
+    border: 1px solid ;
+
+}
+
+ul{
+    min-height: 100vh;
+}
+
+.dragging{
+    background-color: aquamarine;
+}
