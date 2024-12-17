@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <form>
+            <input type="text" name="inputbox" value="" />
+            <input type="button" name="button" value="Click" onClick="submitForm(this.form)" />
+        </form>
+
+        <div class="todo_container">
+            <div class="col todo">
+                <h3>Todo</h3>
+                <ul>
+                    <li draggable="true">
+                        <span class="title">Task 1</span>
+                        <span class="status">status</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="col doing">
+                <h3>doing</h3>
+                <ul>
+                    <li draggable="true">Task 1</li>
+                </ul>
+            </div>
+            <div class="col done">
+                <h3>done</h3>
+                <ul>
+                    <li draggable="true">Task 1</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="./drag.js"></script>
+    <script src="./todo.js"></script>
+</body>
+
+</html>
