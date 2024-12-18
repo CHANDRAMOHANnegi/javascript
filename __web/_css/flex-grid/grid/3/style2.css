@@ -1,0 +1,36 @@
+.item {
+    border: 1px solid red;
+}
+
+.container {
+    border: 1px solid red;
+    display: grid;
+    grid-template-rows: 100px 300px 100px;
+    grid-template-columns: 3fr 1fr;
+    grid-template-areas: 
+    "header header"
+    "main aside"
+    "footer footer";
+}
+
+.item-1 {
+    grid-area: header;
+    background-color: rgba(11, 111, 13, 0.2);
+    border: 2px solid black !important;
+}
+
+.item-2 {
+    grid-area: main;
+    background-color: rgba(111, 11, 123, 0.2);
+    border: 2px solid green !important;
+}
+
+.item-3 {
+    grid-area: aside;
+    background-color: rgba(11, 111, 123, 0.2);
+} 
+
+.item-4 {
+    grid-area: footer;
+    background-color: rgba(11, 111, 123, 0.2);
+} 

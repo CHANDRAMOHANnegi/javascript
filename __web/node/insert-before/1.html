@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="parentElement">
+        <span id="childElement">foo bar</span>
+    </div>
+
+    <script>
+        // Create a new, plain <span> element
+        let sp1 = document.createElement("span");
+        sp1.innerHTML = "<p style=color:red;font-size:20px;>inserted before </p>"
+
+        // Get the reference element
+        let sp2 = document.getElementById("childElement");
+        // Get the parent element
+        let parentDiv = sp2.parentNode;
+
+        // Insert the new element into before sp2
+        parentDiv.insertBefore(sp1, sp2);
+    </script>
+
+</body>
+
+</html>
