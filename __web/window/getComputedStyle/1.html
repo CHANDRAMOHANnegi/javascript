@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p {
+            width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            font: 2rem/2 sans-serif;
+            text-align: center;
+            background: purple;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <p>Hello</p>
+
+    <script>
+        const para = document.querySelector("p");
+        const compStyles = window.getComputedStyle(para);
+        para.textContent =
+            `My computed font-size is ${compStyles.getPropertyValue("font-size")},\n` +
+            `and my computed line-height is ${compStyles.getPropertyValue(
+                "line-height",
+            )}.`;
+
+    </script>
+
+</body>
+
+</html>
+
+<!-- 
+
+window.getComputedStyle(document.querySelector("p"))['font-size']
+
+window.getComputedStyle(document.querySelector("p")).getPropertyValue("font-size")
+
+-->
