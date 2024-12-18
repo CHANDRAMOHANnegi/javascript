@@ -8,14 +8,13 @@
     border: 1px solid rgb(25, 0, 255);
     display: grid;
     height: 600px;
-    /* grid-auto-flow: column; */
-    grid-template-columns: repeat(4,100px) ;
-    /* grid-template-rows: repeat(2,100px) ; */
-    /* grid-template-rows: 1fr; */
-    /* justify-items: end; */
-    /* align-items: center; */
+    grid-template-rows: repeat(1,100px);
+    grid-template-columns: repeat(4,100px);
     justify-content: center;
     align-content: center;
+    /* grid-auto-flow: column; */
+    justify-items: center;
+    align-items: center;
 }
 
 
