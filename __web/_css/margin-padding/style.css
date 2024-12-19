@@ -2,9 +2,11 @@
 
 #div-2 {
   /* position: absolute; */
-  /* top: 20px;
-  left: 30px; */
+  /* top: 20px; */
+  /* left: 30px; */
   background-color: #0068B1;
+  border: 1px solid;
+  /* margin-top: 20px; */
 }
 
 #div-3 { background-color: #4FB06D; }
@@ -12,18 +14,12 @@
 div {
   width: 75px;
   height: 75px;
-  margin: 10px;
+  /* margin: 10px; */
   border-radius: 10px;
   text-align: center;
   line-height: 75px;
   color: white;
   font-size: 24px;
-  /* 
-    gave padding to prevent margin collapse
-    we can give border, padding to prevent margin collapse
-  */
-
-  padding: 1px;
 }
 
 #container {
@@ -32,14 +28,3 @@ div {
   height: 150px;
   /* position: relative; */
 }
-
-
-/* 
-give item position absolute, 
-1. it will not move is top left ... are not give
-2. it will move to previous not static element if top left.. are given
-3. 
-
-
-
-*/

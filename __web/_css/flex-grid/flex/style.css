@@ -1,0 +1,16 @@
+.container{
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+
+/*
+
+align-content -> only works when there is flex wrap
+it kind of works for 2d 
+
+*/
+
+
+
