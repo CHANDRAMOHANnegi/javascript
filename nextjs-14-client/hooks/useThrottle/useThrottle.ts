@@ -1,18 +1,43 @@
-import { useRef } from "react"
+import { useRef, useCallback } from "react";
 
-export const useThrottle = (fn: () => void, delay: number, immediate?: boolean) => {
-    const timerId = useRef<ReturnType<typeof setTimeout>>()
+/**
+ * A custom hook to throttle a function call.
+ *
+ * @param fn - The function to throttle.
+ * @param limit - The throttle interval in milliseconds.
+ * @returns The throttled function.
+ */
+export const useThrottle = <T extends (...args: any[]) => void>(
+    fn: T,
+    limit: number
+): ((...args: Parameters<T>) => void) => {
+    const lastCallTime = useRef<number | null>(null);
+    const timerId = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-    const throttled = () => {
-        
-        if (timerId.current) {
+    const throttledFn = useCallback(
+        (...args: Parameters<T>) => {
+            const now = Date.now();
 
-        } else {
-            timerId.current = setTimeout(() => {
-                fn()
-            }, delay)
-        }
-    }
+            if (lastCallTime.current === null || now - lastCallTime.current >= limit) {
+                fn(...args);
+                lastCallTime.current = now;
+                if (timerId.current) {
+                    clearTimeout(timerId.current);
+                    timerId.current = null;
+                }
+            } else if (!timerId.current) {
+                const remainingTime = limit - (now - lastCallTime.current);
+                timerId.current = setTimeout(() => {
+                    fn(...args);
+                    lastCallTime.current = Date.now();
+                    timerId.current = null;
+                }, remainingTime);
+            }
+        },
+        [fn, limit]
+    );
 
-    return throttled
-}
+    return throttledFn;
+};
+
+export default useThrottle;

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="height=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas></canvas>
+
+    <script>
+        const canvas = document.querySelector('canvas')
+        const context = canvas.getContext("2d")
+        const window_width = window.innerWidth
+        const window_height = window.innerHeight
+
+        canvas.width = window_width
+        canvas.height = window_height
+
+        const width = 50
+        const height = 50
+
+        const speed = 5
+        let x = 0
+        let y = 0
+
+        context.fillStyle = "red"
+        context.fillRect(x, y, width, height)
+
+        let direction = "right"
+
+        const run = () => {
+            context.clearRect(0, 0, window_width, window_height)
+            if (direction === "right") {
+                x += speed
+                if (x > window_width - width) {
+                    x = window_width - width
+                    direction = "down"
+                }
+            } else if (direction === "down") {
+                y += speed
+                if (y > window_height - height) {
+                    y = window_height - height
+                    direction = "left"
+                }
+            } else if (direction === "left") {
+                x -= speed
+                if (x < 0) {
+                    x = 0
+                    direction = "top"
+                }
+            } else if (direction === "top") {
+                y -= speed
+                if (y < 0) {
+                    y = 0
+                    direction = "right"
+                }
+            }
+            context.fillRect(x, y, width, height)
+            requestAnimationFrame(run)
+        }
+        run()
+    </script>
+</body>
+
+</html>

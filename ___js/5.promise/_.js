@@ -15,15 +15,6 @@ const p = new Promise((resolve) => setTimeout(resolve));
  * 
  * ***/
 
-/***
- * 
- * 
- * 
- * 
- * 
- * ***/
-
-
 new Promise((resolve) => resolve(p))
 .then(() => {
   console.log("tick 3");
