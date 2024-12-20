@@ -12,7 +12,7 @@ const set = (obj, path, value) => {
          * obj is primitive, then this check will run
          * 
          * ****/
-        if (!obj[key]) {
+        if (!obj[key] || typeof obj[key] != "object") {
             /**
              * we have to check the next key, not the current key
              * ***/
@@ -26,9 +26,7 @@ const set = (obj, path, value) => {
 
 const abc = {
     a: {
-        b: {
-            c: [1, 2, 3]
-        },
+        b: 1,
         d: {
             a: "hello"
         }

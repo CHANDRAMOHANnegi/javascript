@@ -59,14 +59,15 @@
 
         document.querySelector('#box1').addEventListener('click', (e) => {
             console.log("Button 1 container was clicked")
-        }, true)
-
-        document.querySelector('body').addEventListener('click', (e) => {
-            console.log("Body was clicked")
+            //e.stopPropagation()
         }, true)
 
         document.querySelector('#grid-container').addEventListener('click', (e) => {
             console.log("Grid container was clicked")
+        }, true)
+
+        document.querySelector('body').addEventListener('click', (e) => {
+            console.log("Body was clicked")
         }, true)
 
     </script>

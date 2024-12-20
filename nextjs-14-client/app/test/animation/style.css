@@ -1,0 +1,60 @@
+@keyframes trip {
+    0% {
+      transform: translate(0, 0); /* Start at the top-left corner */
+    }
+  
+    25% {
+      transform: translate(calc(100vw - 100px), 0); /* Move to the top-right corner */
+    }
+  
+    50% {
+      transform: translate(calc(100vw - 100px), calc(100vh - 100px)); /* Move to the bottom-right corner */
+    }
+  
+    75% {
+      transform: translate(0, calc(100vh - 100px)); /* Move to the bottom-left corner */
+    }
+  
+    100% {
+      transform: translate(0, 0); /* Return to the top-left corner */
+    }
+  }
+  
+  .box {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    animation: trip 4s linear;
+  }
+
+
+  /* 
+    transform: translate(100px, 50px);
+    This moves the element by 100px horizontally 
+    and by 50px vertically from its current position.
+
+
+
+    50% {
+      transform: translate(calc(100vw - 100px), calc(100vh - 100px)); // Move to the bottom-right corner
+    }
+
+
+    when time will be 50%, box should be 
+
+
+    75% {
+      transform: translate(0, calc(100vh - 100px));  Move to the bottom-left corner 
+    }
+
+    when time is 75%, box should be 0 in x, and (100vh-100px) in y
+    
+  */  
+
+
+
+  /* 
+  
+  translate is by initial position
+  
+  */

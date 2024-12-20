@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="height=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas></canvas>
+
+    <script>
+        const canvas = document.querySelector('canvas')
+        const context = canvas.getContext("2d")
+        const window_width = window.innerWidth
+        const window_height = window.innerHeight
+
+        canvas.width = window_width
+        canvas.height = window_height
+
+    </script>
+</body>
+
+</html>

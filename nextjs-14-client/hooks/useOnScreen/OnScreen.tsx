@@ -3,7 +3,7 @@ import { useRef } from "react"
 import { useOnScreen } from "."
 
 const Element = ({ number }: { number: number }) => {
-    const ref = useRef()
+    const ref = useRef<HTMLDivElement>(null)
 
     const isVisible = useOnScreen(ref)
 

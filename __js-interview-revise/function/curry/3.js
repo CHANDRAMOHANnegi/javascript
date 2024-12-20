@@ -2,11 +2,11 @@ const curry = function (fn) {
 
     const inner = (...args1) => {
 
-        if (args1.length === fn.length) {
-            return args1.reduce((acc, ele) => acc + ele, 0)
+        if (args1.length >= fn.length) {
+            return args1.slice(0, fn.length).reduce((acc, ele) => acc + ele, 0)
         }
         const temp = (...args2) => {
-            return inner(...args1, args2)
+            return inner(...args1, ...args2)
         }
 
         return temp
