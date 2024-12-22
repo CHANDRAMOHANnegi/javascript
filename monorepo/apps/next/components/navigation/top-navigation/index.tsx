@@ -1,6 +1,7 @@
 import topNavigationMenu from "@/config/nav-config";
 import React, { useState } from "react";
 import { MenuItem } from "../types";
+import { AutoComplete } from "@/components/auto-complete/auto-complete";
 
 const Header: React.FC = () => {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
@@ -52,12 +53,13 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className="bg-gray-900 text-white">
+    <header className="bg-gray-900 ">
       <div className="container mx-auto flex justify-between items-center py-4 px-6">
-        <div className="text-2xl font-bold">
+        <div className="text-2xl font-bold text-white">
           <a href="/">E-Shop</a>
         </div>
-        <nav>
+        <AutoComplete />
+        <nav className="bg-gray-900 text-white">
           <ul className="flex space-x-6">
             {topNavigationMenu.map((menu) => (
               <li

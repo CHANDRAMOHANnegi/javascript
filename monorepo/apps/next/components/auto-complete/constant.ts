@@ -9,3 +9,8 @@ export const mockData: ListItemType[] = [
 ]
 
 export const SEARCH_URL = `https://www.google.com/complete/search?client=firefox&q=`
+
+
+export const CACHE_CLEAR_TIME = 10000
+
+export const SEARCH_DEBOUNCE_TIME = 300
