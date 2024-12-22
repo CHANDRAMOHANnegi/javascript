@@ -8,7 +8,7 @@ type InputProps = {
     placeHolder?: string
 }
 
-export const Input = ({ onChange, onFocus, inputClass = "", inputContainerClass = "", placeHolder = "" }: InputProps) => {
+export const Input = ({ onChange, onFocus, inputClass = "", inputContainerClass = "", placeHolder = "Search..." }: InputProps) => {
     return (
         <div className={`my-3 ${inputContainerClass}`}>
             <input

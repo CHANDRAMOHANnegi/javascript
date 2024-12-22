@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useEffect, useRef, useState } from 'react'
 import { Input } from './input'
 import { List } from './list'
-import { mockData, SEARCH_URL } from './constant'
+import { CACHE_CLEAR_TIME, mockData, SEARCH_DEBOUNCE_TIME, SEARCH_URL } from './constant'
 import { ListItemType } from './types'
 import { useClickOutside } from './useClickOutside'
 
@@ -13,31 +13,40 @@ export const AutoComplete = () => {
 
     const [CACHE, setCache] = useState({})
 
-    useClickOutside(containerRef.current, (event) => {
-        console.log(event);
+    useClickOutside(containerRef.current, () => {
         setShowItems(false)
     })
 
-
     const fetchData = async (text: string) => {
-        let results = []
-        if (CACHE[text as keyof typeof CACHE]) {
-            results = CACHE[text as keyof typeof CACHE]
-        } else {
+        let data = []
+        let inCache = (text in CACHE)
+
+        if (inCache) {
+            const { results, time } = CACHE[text as keyof typeof CACHE]
+            data = results
+            inCache = time + CACHE_CLEAR_TIME >= Date.now()
+        }
+
+        if (!inCache) {
             const response = await fetch(SEARCH_URL + text)
             const jsonData = await response.json()
-            results = jsonData[1].map((d: string) => ({ id: Date.now(), label: d }))
+            data = jsonData[1].map((d: string) => ({ id: Date.now(), label: d }))
+            setCache({ ...CACHE, [text]: { results: data, time: Date.now() } })
         }
-        setItems(results)
-        setShowItems(true)
+
+        setItems(data)
+        !showItems && setShowItems(true)
     }
 
     useEffect(() => {
-        fetchData(text)
+        // simple debounce
+        const timerId = setTimeout(() => {
+            fetchData(text)
+        }, SEARCH_DEBOUNCE_TIME);
         return () => {
+            clearTimeout(timerId)
         }
     }, [text])
-
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         setText(event.target.value)
@@ -48,9 +57,13 @@ export const AutoComplete = () => {
     }
 
     return (
-        <div className='' ref={containerRef}>
+        <div className='relative' ref={containerRef}>
             <Input onChange={handleChange} onFocus={handleInputFocus} />
-            {showItems && <List items={items} />}
+            {showItems &&
+                <div className='absolute max-h-[200px] overflow-scroll bg-white'>
+                    <List items={items} />
+                </div>
+            }
         </div>
     )
 }
