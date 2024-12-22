@@ -49,6 +49,18 @@ export const InfiniteScrollingApp = () => {
 
     // Scroll event handler with debouncing
     const handleScroll = debounce(() => {
+        console.log('==', window.innerHeight , document.documentElement.scrollTop,
+            document.documentElement.offsetHeight);
+        /****
+         * window.innerHeight + document.documentElement.scrollTop ==== document.documentElement.offsetHeight
+         * 
+         * window ki inner height + jitna scroll hua hai
+         * vo poore document ki height ke barabar hai
+         * 
+         * 
+         * offsetHeight wo height hai jo element ko inspect karte waqt dikhti hai
+         * 
+         * ***/ 
         if (
             window.innerHeight + document.documentElement.scrollTop >=
             document.documentElement.offsetHeight - 500 &&
@@ -66,6 +78,8 @@ export const InfiniteScrollingApp = () => {
 
     // Set up the scroll event listener
     useEffect(() => {
+        console.log('=====');
+        
         document.addEventListener("scroll", handleScroll);
         return () => document.removeEventListener("scroll", handleScroll);
 
