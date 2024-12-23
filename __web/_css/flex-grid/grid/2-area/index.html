@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            padding: 60px;
+        }
+
+        .container {
+            display: grid;
+            grid-template-areas:
+                "header header header"
+                "sidebar content1 content1"
+                "sidebar content2 content3"
+                "footer footer footer"
+            ;
+        }
+
+        .item {
+            border: 6px solid red;
+            background-color: pink;
+            padding: 3px;
+        }
+
+        .item-1 {
+            grid-area: header;
+        }
+
+        .item-2 {
+            grid-area: sidebar;
+        }
+
+        .item-3 {
+            grid-area: content1;
+        }
+
+        .item-4 {
+            grid-area: content2;
+        }
+
+        .item-5 {
+            grid-area: content3;
+        }
+
+        .item-6 {
+            grid-area: footer;
+        }
+
+    </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="item item-1">1</div>
+        <div class="item item-2">2</div>
+        <div class="item item-3">3</div>
+
+        <div class="item item-4">4</div>
+        <div class="item item-5">5</div>
+        <div class="item item-6">6</div>
+    </div>
+</body>
+
+</html>

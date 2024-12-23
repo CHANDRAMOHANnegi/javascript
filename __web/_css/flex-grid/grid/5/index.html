@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            padding: 60px;
+        }
+
+        .center-grid {
+            display: grid;
+            justify-content: center;
+            align-content: center;
+        }
+
+        .container {
+            width: 600px;
+            height: 600px;
+        }
+
+        .first {
+            width: 400px;
+            height: 400px;
+        }
+
+        .second {
+            width: 200px;
+            height: 200px;
+        }
+
+        .third {
+            width: 100px;
+            height: 100px;
+        }
+
+        div{
+            border: 1px solid;
+        }
+    </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container center-grid">
+        <div class="first center-grid">
+            <div class="second center-grid">
+                <div class="third center-grid"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
