@@ -14,9 +14,9 @@ function calculateElementVisibility(element) {
   return percentageVisible;
 }
 
-function findIntersectionNodes(observers, broadcast) {
+function findIntersectionNodes(observers, broadcast, options) {
   for (let i = 0; i < observers.length; i++) {
-    if (calculateElementVisibility(observers[i]) >= 0.5) {
+    if (calculateElementVisibility(observers[i]) >= options.threshold) {
       observers[i].isIntersected = true;
       broadcast();
     } else {
@@ -27,18 +27,19 @@ function findIntersectionNodes(observers, broadcast) {
 }
 
 class IO {
-  constructor(cb) {
+  constructor(cb, options = { threshold = 0.5 }) {
     this.observers = [];
     this.cb = cb;
     window.addEventListener("scroll", () => {
       this.observers = findIntersectionNodes(
         this.observers,
-        this.broadcast.bind(this)
+        this.broadcast.bind(this),
+        options
       );
     });
   }
 
-  subscribe(el) {
+  observe(el) {
     const idx = this.observers.length;
     this.observers.push(el);
     return () => {
@@ -57,4 +58,4 @@ let observer = new IO((entries) => {
   entries.forEach((entry) => console.log(entry.isIntersected, "test"));
 });
 
-const unSubscribe = observer.subscribe(boxElement);
+const unSubscribe = observer.observe(boxElement);

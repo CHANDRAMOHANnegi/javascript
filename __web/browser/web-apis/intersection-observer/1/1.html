@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="demo">
+        <div id="container">
+            <div id="elem"></div>
+            <div id="gutter"></div>
+        </div>
+        <div id="marginIndicator"></div>
+    </div>
+    <div class="controls">
+        <label>
+            Set the right margin of the root:
+            <input id="margin" type="number" value="0" step="5" />px
+        </label>
+        <label>
+            You can also use this slider to scroll the container:
+            <input id="scrollAmount" type="range" min="0" max="300" value="0" />
+        </label>
+        <p>Current intersection ratio: <span id="output"></span></p>
+    </div>
+
+    <script>
+
+        let observer;
+        function createObserver() {
+            if (observer) {
+                observer.disconnect();
+            }
+            observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        output.textContent = entry.intersectionRatio.toFixed(2);
+                    });
+                },
+                {
+                    threshold: Array.from({ length: 1000 }, (_, i) => i / 1000),
+                    root: container,
+                    rootMargin: `0px ${margin.value}px 0px 0px`,
+                },
+            );
+            if (margin.valueAsNumber < 0) {
+                marginIndicator.style.width = `${-margin.valueAsNumber}px`;
+                marginIndicator.style.left = `${margin.valueAsNumber}px`;
+                marginIndicator.style.backgroundColor = "blue";
+            } else {
+                marginIndicator.style.width = `${margin.valueAsNumber}px`;
+                marginIndicator.style.left = "0px";
+                marginIndicator.style.backgroundColor = "green";
+            }
+            observer.observe(elem);
+        }
+        createObserver();
+        margin.addEventListener("input", () => {
+            createObserver();
+        });
+        scrollAmount.addEventListener("input", () => {
+            container.scrollLeft = scrollAmount.value;
+        });
+
+
+    </script>
+</body>
+
+</html>

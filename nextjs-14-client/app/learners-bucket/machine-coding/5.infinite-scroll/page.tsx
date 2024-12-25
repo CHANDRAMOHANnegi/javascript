@@ -12,9 +12,9 @@ export const InfiniteScroll = () => {
 
     useEffect(() => {
         const handleScroll = () => {
-            const dim = scrollRef.current?.getBoundingClientRect?.()
-            if (dim) {
-                if (dim.bottom - OFFSET <= window.innerHeight) {
+            const dimension = scrollRef.current?.getBoundingClientRect?.()
+            if (dimension) {
+                if (dimension.bottom - OFFSET <= window.innerHeight) {
                     setCount(count => count + NUM_OF_ELEMENT_TO_ADD)
                 }
             }
