@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <span></span>
+
+  <script>
+
+    const span = document.querySelector("span")
+    const eventSource = new EventSource('http://localhost:3000/stocks');
+
+    eventSource.onmessage = (event) => {
+      const stockData = JSON.parse(event.data);
+      console.log(`Updated Stock Price: ${stockData.symbol} - $${stockData.price}`);
+      // Update the UI with stockData
+      span.innerHTML = `${stockData.symbol} - $${stockData.price}`
+
+    };
+
+    eventSource.onerror = () => console.error('SSE connection error');
+
+  </script>
+</body>
+
+</html>

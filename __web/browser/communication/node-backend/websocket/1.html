@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <span></span>
+
+  <script>
+
+    const span = document.querySelector("span")
+    const ws = new WebSocket('ws://localhost:3000');
+
+    ws.onmessage = (event) => {
+      const stockData = JSON.parse(event.data);
+      console.log(`Updated Stock Price: ${stockData.symbol} - $${stockData.price}`);
+      // Update the UI with stockData
+      span.innerHTML = `${stockData.symbol} - $${stockData.price}`
+      
+
+    };
+
+    ws.onopen = () => console.log('Connected to WebSocket');
+    ws.onerror = (error) => console.error('WebSocket Error:', error);
+
+
+  </script>
+</body>
+
+</html>
