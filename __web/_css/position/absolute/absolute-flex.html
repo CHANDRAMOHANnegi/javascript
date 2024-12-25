@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div style="display: flex; align-items: center; justify-content: center;  flex-direction:column;">
+        <div style="height: 10vh; border: 1px solid #ccc;">
+            <div class="">h</div>
+            <div class="">h</div>
+            <div class="">h</div>
+            <div class="">h</div>
+            <div class="">h</div>
+            <div class="">h</div>
+            <div class="">h</div>
+            <div class="">h</div>
+            <div class="">h</div>
+            <div class="">h</div>
+        </div>
+        <div style="height: 1px; width: 100px; background: red; position:absolute;"></div>
+    </div>
+</body>
+
+</html>
+<!-- 
+
+1. The first part is fairly straight-forward. If you position a flex item absolutely, it no longer participates in the flex layout.
+This means any flex properties on the item become moot. You can remove them if you like.
+
+2. The next part explains that the absolutely positioned item behaves like it is the sole flex item in the flex container. 
+
+-->

@@ -49,8 +49,8 @@ export const InfiniteScrollingApp = () => {
 
     // Scroll event handler with debouncing
     const handleScroll = debounce(() => {
-        console.log('==', window.innerHeight , document.documentElement.scrollTop,
-            document.documentElement.offsetHeight);
+        // console.log('==', window.innerHeight , document.documentElement.scrollTop,
+        //     document.documentElement.offsetHeight);
         /****
          * window.innerHeight + document.documentElement.scrollTop ==== document.documentElement.offsetHeight
          * 
