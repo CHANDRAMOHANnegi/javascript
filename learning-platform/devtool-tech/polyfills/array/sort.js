@@ -1,10 +1,3 @@
-/**
- * Read FAQs section on the left for more information on how to use the editor
-**/
-/**
- * DO NOT CHANGE FUNCTION NAME
- */
-
 const defaultCompareFn = (a, b) => {
     const aStr = String(a);
     const bStr = String(b);

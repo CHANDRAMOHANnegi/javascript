@@ -33,4 +33,7 @@ function customReverse() {
   }
   
   Array.prototype.customReverse = customReverse;
-  
+
+  /****
+   * reverse array-like object
+   * **/ 
