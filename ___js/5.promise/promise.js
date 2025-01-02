@@ -49,6 +49,9 @@ class CustomPromise {
             };
             this.handlers.push(handler);
             if (this.state !== "pending") {
+                /***
+                 * important check
+                 * **/ 
                 this.#handleHandlers();
             }
         });
