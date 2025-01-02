@@ -126,6 +126,7 @@ class CustomPromise {
     }
 
     static race(promiseArray) {
+        // rejected or resolved
         let raceFinished = false
         return new CustomPromise((resolve, reject) => {
             for (const promise of promiseArray) {

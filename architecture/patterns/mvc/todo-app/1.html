@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimized MVC To-Do App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        input,
+        button {
+            margin: 5px;
+            padding: 8px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>To-Do List</h1>
+    <input type="text" id="taskInput" placeholder="Enter a task">
+    <button id="addTaskBtn">Add</button>
+    <ul id="taskList"></ul>
+
+    <script>
+        // **Model**
+        class TaskModel {
+            constructor() {
+                this.tasks = [];
+            }
+
+            addTask(task) {
+                this.tasks.push(task);
+            }
+
+            getTasks() {
+                return this.tasks;
+            }
+        }
+
+        // **View**
+        class TaskView {
+            constructor() {
+                this.taskInput = document.getElementById('taskInput');
+                this.addTaskBtn = document.getElementById('addTaskBtn');
+                this.taskList = document.getElementById('taskList');
+            }
+
+            getTaskInput() {
+                return this.taskInput.value.trim();
+            }
+
+            clearTaskInput() {
+                this.taskInput.value = '';
+            }
+
+            addTaskToView(task) {
+                const li = document.createElement('li');
+                li.textContent = task;
+                const removeBtn = document.createElement('button');
+                removeBtn.textContent = 'Remove';
+                li.appendChild(removeBtn);
+                this.taskList.appendChild(li);
+            }
+
+            bindAddTask(handler) {
+                this.addTaskBtn.addEventListener('click', () => handler(this.getTaskInput()));
+            }
+
+            bindRemoveTask() {
+                this.taskList.addEventListener('click', (event) => {
+                    if (event.target.tagName === 'BUTTON') {
+                        const li = event.target.parentNode;
+                        li.remove(); // Remove the task directly
+                    }
+                });
+            }
+        }
+
+        // **Controller**
+        class TaskController {
+            constructor(model, view) {
+                this.model = model;
+                this.view = view;
+
+                this.view.bindAddTask(this.handleAddTask.bind(this));
+                this.view.bindRemoveTask();
+            }
+
+            handleAddTask(task) {
+                if (task) {
+                    this.model.addTask(task);
+                    this.view.addTaskToView(task);
+                    this.view.clearTaskInput();
+                }
+            }
+        }
+
+        // **Initialize the App**
+        const app = new TaskController(new TaskModel(), new TaskView());
+    </script>
+</body>
+
+</html>
