@@ -1,30 +1,32 @@
-import { ChangeEvent, useState } from 'react'
-import { Button } from '@mono/ui';
-import { add } from '@mono/utils';
+import { lazy } from 'react'
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import './App.css';
+// import Home from './components/home';
+// import About from './components/about';
+import Faq from './components/faq';
+import { NavWrapper } from './components/nav-wrapper';
+// import Store from './components/store';
+
+const LazyHome = lazy(() => import("./components/home"))
+const LazyStore = lazy(() => import("./components/store"))
+// named component
+const LazyAbout = lazy(() => import("./components/about").then(module=>({default:module.About})))
 
 function App() {
-  const [nums, setNums] = useState({
-   a: '',
-   b: '', 
-  })
-
-  const handleNumChange = (key: keyof typeof nums) => (e: ChangeEvent<HTMLInputElement>) => {
-    setNums(prevNums => ({
-      ...prevNums,
-      [key]: e.target.value,
-    }));
-  };
-
-
   return (
-    <div>
-      <input type='text' value={nums.a} onChange={handleNumChange('a')} />
-      <input type='text' value={nums.b} onChange={handleNumChange('b')} />
-      <Button onClick={() => {
-        alert(add(Number(nums.a), Number(nums.b)));
-      }}>Add</Button>
-    </div>
-  )
+    <>
+      <BrowserRouter >
+        <Routes>
+          <Route path='/' element={<NavWrapper />}>
+            <Route index element={<LazyHome />} />
+            <Route path='/store' element={<LazyStore />} />
+            <Route path='/about' element={<LazyAbout />} />
+            <Route path='/faq' element={<Faq />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </>
+  );
 }
 
-export default App
+export default App;
