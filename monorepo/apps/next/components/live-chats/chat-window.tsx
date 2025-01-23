@@ -1,7 +1,6 @@
 import React from 'react'
 import { ChatType } from './types'
 import { CHAT_WINDOW_HEADING } from './constants'
-import { InputWithButton } from '../input-with-button/Input-with-button'
 
 const ChatItem = ({ chat }: { chat: ChatType }) => {
 
