@@ -16,7 +16,7 @@ import React from "react";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
 
-export function CodeSplitting() {
+function CodeSplitting() {
   const SayWelcome = dynamic(
     () => import("../say-hello/index").then((res) => res.SayWelcome),
     { loading: () => <p>Loading...</p> }
@@ -29,7 +29,7 @@ export function CodeSplitting() {
       set(true);
     }, 5000);
 
-    return () => {};
+    return () => { };
   }, []);
 
   return (

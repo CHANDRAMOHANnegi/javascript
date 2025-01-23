@@ -2,6 +2,7 @@ import topNavigationMenu from "@/config/nav-config";
 import React, { useState } from "react";
 import { MenuItem } from "../types";
 import { AutoComplete } from "@/components/auto-complete/auto-complete";
+import Link from "next/link";
 
 const Header: React.FC = () => {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
@@ -56,7 +57,7 @@ const Header: React.FC = () => {
     <header className="bg-gray-900 ">
       <div className="container mx-auto flex justify-between items-center py-4 px-6">
         <div className="text-2xl font-bold text-white">
-          <a href="/">E-Shop</a>
+          <Link href="/">E-Shop</Link>
         </div>
         <AutoComplete />
         <nav className="bg-gray-900 text-white">
@@ -68,7 +69,7 @@ const Header: React.FC = () => {
                 onMouseEnter={() => handleMenuMouseEnter(menu.id)}
                 onMouseLeave={handleMouseLeave}
               >
-                <a
+                <Link
                   href={menu.path}
                   className="flex items-center gap-2 text-lg hover:text-yellow-400"
                 >
@@ -78,7 +79,7 @@ const Header: React.FC = () => {
                       {menu.badge}
                     </span>
                   )}
-                </a>
+                </Link>
                 {menu.subMenu && activeMenu === menu.id && renderSubMenu(menu.subMenu)}
               </li>
             ))}

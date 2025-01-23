@@ -35,7 +35,7 @@ export const AutoComplete = () => {
         }
 
         setItems(data)
-        !showItems && setShowItems(true)
+        if(!showItems) setShowItems(true)
     }
 
     useEffect(() => {
@@ -53,7 +53,7 @@ export const AutoComplete = () => {
     }
 
     const handleInputFocus = (event: ChangeEvent<HTMLInputElement>) => {
-        text && items.length && setShowItems(true)
+        if(text && items.length) setShowItems(true)
     }
 
     return (
