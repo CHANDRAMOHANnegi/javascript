@@ -2,7 +2,7 @@ const ngetr = (arr = []) => {
     const stack = []
     /*******
      * we can sometime fill it with arr.length
-     * to mark that next greater for this element fis outside window
+     * to mark that next greater for this element is outside window
      * ***/ 
     const res = Array(arr.length).fill(-1);
 
