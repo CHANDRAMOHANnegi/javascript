@@ -1,4 +1,10 @@
 // https://www.youtube.com/watch?v=qroD9lvgGQ4&list=PL-Jc9J83PIiHq5rMZasunIR19QG3E-PAA&index=19
+/****
+ * 
+ * implement heap with comparator function
+ * 
+ * ***/
+
 class PQ {
     #data
     constructor(comparator) {
@@ -33,11 +39,7 @@ class PQ {
         if (child === 0) return
 
         const pi = this.parentIndex(child)
-        /***
-         * if parent priority is lower, then upHeapify
-         * 
-         * **/
-        if (this.comparator(this.#data[pi], this.#data[child]) > 0) {
+        if (comparator(this.#data[pi], this.#data[child]) > 0) {
             this.swap(this.#data, child, pi)
             this.#upHeapify(pi)
         }
@@ -45,22 +47,22 @@ class PQ {
 
     #downHeapify(pi) {
         let li = this.leftIndex(pi), ri = this.rightIndex(pi)
-        let highPriorityIndex = pi
+        let minIndex = pi
         /***
-         * compare with this.#data[highPriorityIndex]
+         * compare with this.#data[minIndex]
          * **/
-        if (li < this.size() && this.comparator(this.#data[li], this.#data[highPriorityIndex]) < 0) {
-            highPriorityIndex = li
+        if (li < this.size() && comparator(this.#data[li], this.#data[minIndex]) > 0) {
+            minIndex = li
         }
         /***
-         * compare with this.#data[highPriorityIndex]
+         * compare with this.#data[minIndex]
          * **/
-        if (ri < this.size() && this.comparator(this.#data[ri], this.#data[highPriorityIndex]) < 0) {
-            highPriorityIndex = ri
+        if (ri < this.size() && comparator(this.#data[ri], this.#data[minIndex]) > 0) {
+            minIndex = ri
         }
-        if (highPriorityIndex !== pi) {
-            this.swap(this.#data, pi, highPriorityIndex)
-            this.#downHeapify(highPriorityIndex)
+        if (minIndex !== pi) {
+            this.swap(this.#data, pi, minIndex)
+            this.#downHeapify(minIndex)
         }
     }
 
