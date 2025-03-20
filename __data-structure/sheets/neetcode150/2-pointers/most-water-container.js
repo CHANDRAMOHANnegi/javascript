@@ -3,17 +3,27 @@
  * @return {number}
  */
 
-var maxArea = function(height) {
-    let maxWater = 0, left = 0, right = height.length - 1
+// out of left and right, we get the min height, and hence area
+// update max
 
-    while(left < right){
-        maxWater = Math.max(maxWater, (right - left) * Math.min(height[left],height[right]))
-        if(height[left]<height[right]){
+var maxArea = function (height) {
+    let maxWater = 0
+    let left = 0
+    let right = height.length - 1
+
+    while (left < right) {
+        const minHeight = Math.min(height[left], height[right])
+        const width = right - left
+        maxWater = Math.max(maxWater, minHeight * width)
+
+        if (height[left] < height[right]) {
             left++
-        }else{
+        } else {
             right--
         }
     }
 
     return maxWater
 };
+
+// don't use stack here, use 2 pointer
