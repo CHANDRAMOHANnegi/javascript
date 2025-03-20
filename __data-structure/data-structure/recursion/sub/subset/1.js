@@ -35,3 +35,4 @@ var subsets = function (nums) {
     return results
 };
 
+// subsets approach is similar to combinations

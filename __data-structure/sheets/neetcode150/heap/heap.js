@@ -1,61 +1,59 @@
+class Heap {
+    constructor(comparator) {
+        this.queue = [];
+        this.comparator = comparator;
+    }
+    size() {
+        return this.queue.length;
+    }
+    add(num) {
+        this.queue.push(num);
+        this.#upHeapify(this.size() - 1);
+    }
+    remove() {
+        if (this.size() === 0) return null;
 
-class Heap{
-    constructor(comparator){
-        this.queue = []
-        this.comparator = comparator
+        this.#swap(0, this.size() - 1);
+        const last = this.queue.pop();
+        if (this.size() > 1) this.#downHeapify(0);
+        return last;
     }
-    size(){return this.queue.length}
-    add(num){
-        this.queue.push(num)
-        this.upHeapify(this.size()-1)
-    }
-    remove(){
-        if(!this.size())return 
-        const last = this.size()-1
-        this.#swap(last,0)
-        // swapped
-        const res = this.queue.pop()
-        this.downHeapify(0)
-        return res
-    }
-    upHeapify(index){
-        if(index<=0)return
-        const pi = this.#parent(index)
-        if(this.comparator(this.queue[pi],this.queue[index]) > 0){
-            this.#swap(pi,index)
-            this.upHeapify(pi)
+    #upHeapify(index) {
+        if (index >= this.size()) return;
+        const parent = this.#parent(index);
+        if (parent >= 0 && parent < this.size() && this.comparator(this.queue[parent], this.queue[index]) > 0) {
+            this.#swap(parent, index);
+            this.#upHeapify(parent);
         }
     }
-    downHeapify(index){
-        const li = this.#left(index)
-        const ri = this.#right(index)
-        let minI = index
-        if(li < this.size() && this.comparator(this.queue[minI],this.queue[li]) > 0){
-            minI=li
+    #downHeapify(index) {
+        let minPi = index;
+        const li = this.#left(index);
+        if (li < this.size() && this.comparator(this.queue[li], this.queue[minPi]) < 0) {
+            minPi = li;
         }
-        if(ri < this.size() && this.comparator(this.queue[minI],this.queue[ri]) > 0){
-            minI=ri
+        const ri = this.#right(index);
+        if (ri < this.size() && this.comparator(this.queue[ri], this.queue[minPi]) < 0) {
+            minPi = ri;
         }
-        if(minI!==index){
-            this.#swap(minI,index)
-            this.downHeapify(minI)
+        if (minPi != index) {
+            this.#swap(minPi, index);
+            this.#downHeapify(minPi);
         }
     }
-    #parent(child){
-        return Math.floor((child - 1)/2)
+
+    #parent(index) {
+        return Math.floor((index - 1) / 2);
     }
-    #left(parent){
-        return (parent * 2) + 1
+    #left(index) {
+        return (index * 2) + 1;
     }
-    #right(parent){
-        return (parent * 2) + 2
+    #right(index) {
+        return (index * 2) + 2;
     }
-    #swap(i,j){
-        const temp = this.queue[i]
-        this.queue[i]=this.queue[j]
-        this.queue[j] = temp 
-    }
-    peek(){
-        return this.queue[0]
+    #swap(i, j) {
+        const temp = this.queue[i];
+        this.queue[i] = this.queue[j];
+        this.queue[j] = temp;
     }
 }
