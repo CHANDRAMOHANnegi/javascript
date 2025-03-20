@@ -1,0 +1,2 @@
+By default, inline-block elements behave like inline elements, taking only the width needed for their content, 
+and they don't automatically respect the width of their parent container unless explicitly set. 
