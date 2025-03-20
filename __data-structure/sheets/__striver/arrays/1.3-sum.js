@@ -6,13 +6,13 @@
  */
 
 var threeSum = function (nums) {
-    let i = 0
     /***
      *sort the array, this is important
      */
     nums.sort((a, b) => a - b)
     const result = []
-
+    
+    let i = 0
     while (i < nums.length - 2) {
         /****
          * is current num is same as last num then continue,
