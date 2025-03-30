@@ -49,8 +49,6 @@ function prims2(graph) {
     edgesPool = { ...graph[startNode] }
 
     while (visited.size < nodes.length) {
-        console.log(edgesPool);
-
         const [minNode, minWeight] = findMinEdge(edgesPool)
 
         visited.add(minNode)

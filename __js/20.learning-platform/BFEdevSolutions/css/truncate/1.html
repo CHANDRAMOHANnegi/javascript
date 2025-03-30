@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .one-line {
+            width: 200px;
+
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+
+        }
+
+        .max-three-lines {
+            overflow: hidden;
+            /*
+            text-overflow: ellipsis;
+            
+            line-clamp can make it ellipsis
+
+            even if we don't hide over-flow
+            */
+
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+            display: -webkit-box;
+        }
+
+
+        .container {
+            height: 300px;
+            /* your code here */
+            display: flex;
+        }
+
+        .left {
+            background-color: #f44336;
+            flex: 1;
+            min-width: 100px;
+        }
+
+        .right {
+            background-color: #2973af;
+            flex: 3;
+        }
+
+
+
+
+
+        .modals {
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+            width: 100%;
+            padding: 30px 0;
+        }
+
+        .modal {
+            width: 300px;
+            max-height: 300px;
+            overflow: hidden;
+        }
+
+        .modal-header {
+            height: 50px;
+            background-color: #f44336;
+        }
+
+        .modal-body {
+            background-color: #2973af;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="one-line">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+    </div>
+
+    <div class="max-three-lines">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+    </div>
+
+    <div class="container">
+        <div class="left">
+        </div>
+        <div class=" right">
+        </div>
+    </div>
+
+    <div class="modals">
+        <div class="modal">
+            <div class="modal-header"></div>
+            <div class="modal-body"></div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

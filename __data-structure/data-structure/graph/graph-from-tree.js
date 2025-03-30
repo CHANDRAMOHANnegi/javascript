@@ -18,4 +18,4 @@ const createGraphfromTree = (node, graph) => {
     return graph
 }
 
-const graph = createGraphfromTree(root,{})
+const graph = createGraphfromTree(root, {})

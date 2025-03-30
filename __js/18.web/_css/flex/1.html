@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            display: flex;
+            width: 150px;
+        }
+
+        .item {
+            width: 100px;
+            background-color: lightblue;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="item">1</div>
+        <div class="item">2</div>
+    </div>
+</body>
+
+</html>
+
+<!-- 
+
+ Each item is originally 100px wide, but since the container is only 150px, both items shrink to fit.
+ The default value of flex-shrink is 1, which means that flex items can shrink if there isn't enough space in the flex container.
+
+ Flexbox prioritizes flexibility over fixed sizing. If items don't behave as expected, control them using flex-grow, flex-shrink, and align-items.
+
+-->

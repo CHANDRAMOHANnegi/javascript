@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .modals {
+            height: 100vh;
+        }
+
+        .modal {
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            height: 100%;
+            max-height: 300px;
+
+        }
+
+        .modal-header {
+            background-color: #f44336;
+            height: 50px;
+        }
+
+        .modal-body {
+            background-color: #2973af;
+            flex: 1;
+
+            /*
+              
+              flex: 1; is shorthand for flex-grow: 1; flex-shrink: 1; flex-basis: 0%;
+              Yes, flex: 1; works only if there is extra space available in the parent container.
+
+              space available
+
+              */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="modals">
+        <div class="modal">
+            <div class="modal-header"></div>
+            <div class="modal-body"></div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<!-- 
+
+flex: 0 1 auto;
+This means:
+
+flex-grow: 0 (no growth).
+flex-shrink: 1 (shrinks if space is limited).
+
+ -->

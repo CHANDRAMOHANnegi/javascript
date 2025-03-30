@@ -4,9 +4,7 @@
  * GREEDY ALGORITHM
  * **/
 
-function dijkstra2(graph, start) {
-    const visited = new Set()
-
+function dijkstra(graph, start) {
     /***
      * 
      * instead of queue use priority-queue
@@ -23,12 +21,12 @@ function dijkstra2(graph, start) {
      * everything is from start-node
      * 
      * **/
-
-    const nodes = Object.keys(graph)
-
+    
     const distances = {}
-
-    nodes.forEach(node => distances[node] = Infinity)
+    const visited = new Set()
+    
+    const nodesQueue = Object.keys(graph)
+    nodesQueue.forEach(node => distances[node] = Infinity)
 
     /***
      * KEY STEP
@@ -39,16 +37,16 @@ function dijkstra2(graph, start) {
     distances[start] = 0;
 
 
-    while (nodes.length) {
+    while (nodesQueue.length) {
         /****
          * this step is very important we are popping out the node
          * whose distance from source is lowest
          * 
-         * of all the nodes we will be adding the node with most priority to our network
+         * of all the nodesQueue we will be adding the node with most priority to our network
          * ***/
 
-        nodes.sort((a, b) => distances[a] - distances[b])
-        const closestNode = nodes.shift()
+        nodesQueue.sort((a, b) => distances[a] - distances[b])
+        const closestNode = nodesQueue.shift()
 
         // important check
         if (distances[closestNode] === Infinity) continue
@@ -88,7 +86,7 @@ const graph = {
     D: { B: 5, C: 1 }
 };
 
-console.log(dijkstra2(graph, "A"))
+console.log(dijkstra(graph, "A"))
 // { A: 0, B: 1, C: 3, D: 4 }
 
 
