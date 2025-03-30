@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            width: 300px;
+            display: flex;
+        }
+
+        .item-1 {
+            height: 50px;
+            background-color: #f44336;
+        }
+
+        .item {
+            /*
+            
+            flex:1;  //  Distribute available space equally 
+
+            In a flex container, child elements will only take up as 
+much space as their content (or default to 0 width if empty).
+
+            
+            */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class=" item item-1"></div>
+        <div class=" item item-2"></div>
+    </div>
+</body>
+
+</html>
+
+<!-- 
+
+In a flex container, child elements will only take up as 
+much space as their content (or default to 0 width if empty).
+
+
+-->
+
+
+<!-- 
+
+flex-grow
+A value of 0 means the item won't grow beyond its default size.
+
+
+the default value of flex-grow is 0, 
+which means that flex items will not grow beyond their initial size, 
+even if there is extra space in the container.
+
+
+-->

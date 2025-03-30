@@ -1,35 +1,23 @@
 
 const { createGraph } = require("../1.js")
-
-/*****
- * bfs is good for levels
- * ***/
-
 const bfs = (src, graph, visited) => {
     const queue = []
     queue.push({ src, level: 0 })
 
     while (queue.length) {
         const curr = queue.shift()
-
-        /***
-         * check for vertex with no edges
-         * ***/
         if (graph[curr.src]) {
             for (const nbr of graph[curr.src]) {
-                if (visited[nbr] === -1) {
-                    /**
-                     * mark the levels here
-                     * **/
+                if (visited[nbr] === -1) {// neighbor is not visited
                     visited[nbr] = curr.level + 1;
                     queue.push({ src: nbr, level: curr.level + 1 })
                 } else {
-                    /**
-                     * if adjacent nodes have same levels then its not bipartite
-                     * if child and parent has same level, they are not bipartite, 
-                     * means child has been visited in parent level
-                     * !means they are in same set
-                     * **/
+
+                    // neighbor is visited means there is cycle and if there is cycle 
+                    // its level is same as its parent level
+                    // ye pichhle level par visit hua hoga, and 
+                    // nbr ka jo parent hai bo bhi usi level par tha, isi liye issue hai
+                    // main jo issue hai vo cycle detection ka hai
                     if (visited[nbr] === curr.level) {
                         return false
                     }
@@ -42,20 +30,14 @@ const bfs = (src, graph, visited) => {
 }
 
 const bipartite = (graph, n) => {
-    /****
-     * visited will store the levels
-     * ****/
     const visited = Array(n).fill(-1)
 
-    let vtx = 0
-
-    while (vtx < n) {
+    for (let vtx = 0; vtx < n; vtx++) {
         if (visited[vtx] === -1) {
             const isBipartite = bfs(vtx, graph, visited)
             if (!isBipartite)
                 return false
         }
-        vtx++
     }
     return true
 }

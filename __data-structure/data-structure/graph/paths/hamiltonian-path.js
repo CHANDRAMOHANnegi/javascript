@@ -6,7 +6,7 @@ const { createGraph } = require("../1.js");
  * 
  * DFS is more efficient for exploring deep paths within the graph.
  * 
- * ***/ 
+ * ***/
 
 
 const dfs = (graph, n, visited, psf, src, osrc) => {
@@ -14,7 +14,7 @@ const dfs = (graph, n, visited, psf, src, osrc) => {
         /******
          * here we are checking it, even before pushing the last element
          * 
-         * **/ 
+         * **/
         console.log("hamiltonian path", src, visited, psf);
         if (graph[src].includes(osrc)) {
             console.log("hamiltonian cycle", visited, psf);
@@ -24,7 +24,7 @@ const dfs = (graph, n, visited, psf, src, osrc) => {
 
     /***
      * pre-order
-     * **/ 
+     * **/
     visited.add(src)
     for (const nbr of graph[src]) {
         if (!visited.has(nbr)) {
@@ -34,9 +34,9 @@ const dfs = (graph, n, visited, psf, src, osrc) => {
     /***
      * below step is very important, backtracking
      * pre-order, so remove here
-     * **/ 
-    console.log(src,psf);
-    
+     * **/
+    console.log(src, psf);
+
     visited.delete(src)
 }
 

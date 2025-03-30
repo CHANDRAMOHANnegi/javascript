@@ -88,3 +88,6 @@ console.log(pq)
 // console.log(pq.remove(), pq) // 2
 // console.log(pq.remove(), pq) // 5
 // console.log(pq.remove(), pq) // 6
+
+
+module.exports = { PriorityQueue }

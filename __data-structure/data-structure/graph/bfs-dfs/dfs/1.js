@@ -12,8 +12,9 @@ function hasCycleDFS(graph, node, visited, parent) {
              * means it is visited from some other ways
              * so there is cycle
              * 
-             * ya to visited nahi hota,
-             * agar visited hai, matlab cycle hai
+             * node ke children me bas uska parent hi visited hoga, 
+             * agar ye child parent nahi hai, to kahi aur se visit hua hai
+             * matlab cycle hai
              * 
              * ***/
         } else if (neighbor !== parent) {

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .my-checkbox {
+            display: flex;
+            align-items: center;
+        }
+
+        input {
+            border-radius: 50%;
+            border: none;
+            accent-color: green;
+            appearance: none;
+            width: 10px;
+            height: 10px;
+            background-color: gray;
+        }
+
+        input:checked {
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <label class="my-checkbox">
+        <input type="checkbox" />
+        <span>a checkbox</span>
+    </label>
+</body>
+
+</html>
+
+
+<!-- 
+       appearance: none;
+       
+       This resets the checkbox to an unstyled state, making it invisible until you add custom styles.
+
+       The visual appearance of a checkbox (<input type="checkbox">) is determined by the browser’s UI rendering engine, 
+
+
+       input[type="checkbox"]:checked {
+	/* checked state CSS */ 
+}
+-->

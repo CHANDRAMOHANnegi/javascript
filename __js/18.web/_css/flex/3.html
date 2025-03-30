@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            display: flex;
+            height: 300px;
+            align-items: stretch;
+            /* Default behavior */
+        }
+
+        .item {
+            height: 100px;
+            /* Ignored because of "stretch" */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="item"></div>
+        <div class="item"></div>
+    </div>
+</body>
+
+</html>
+
+
+<!-- 
+
+flex-grow
+A value of 0 means the item won't grow beyond its default size.
+
+
+the default value of flex-grow is 0, 
+which means that flex items will not grow beyond their initial size, 
+even if there is extra space in the container.
+
+
+flex-shrink → Controls how much an item shrinks when space is limited (default = 1, meaning it can shrink).
+
+
+
+-->
