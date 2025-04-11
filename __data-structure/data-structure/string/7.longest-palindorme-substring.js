@@ -16,7 +16,18 @@ const expand = (s, left, right) => {
      * After exiting the loop, left and right are outside the valid palindrome bounds, 
      * so the correct substring lies within left + 1 to right - 1.
      * 
+     * !
+     * why "left + 1" and not "left"
+     * 
+     * both left and right are pushed outward and end on character that don't
+     * match , so we shrink back by "+1" on left and not include right
+     * 
+     * left, right + 1
+     * 
+     * increase left by 1, decrease right by 1
+     * 
      * ***/
+    // return s.slice(left, right + 1)
     return s.slice(left + 1, right)
 }
 
@@ -34,7 +45,7 @@ var longestPalindrome = function (s) {
         /****
          * i was not updating max properly
          * FOCUS
-         * ****/ 
+         * ****/
 
         if (nexMax.length > max.length) {
             max = nexMax
