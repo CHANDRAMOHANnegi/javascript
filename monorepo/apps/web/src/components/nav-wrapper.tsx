@@ -1,5 +1,6 @@
 import { Suspense } from "react"
-import { Link, Outlet } from "react-router-dom"
+import { Link } from "../BrowserRouter/Link"
+// import { Link, Outlet } from "react-router-dom"
 
 export const NavWrapper = () => {
     return (
@@ -10,7 +11,7 @@ export const NavWrapper = () => {
                 <Link to={"/about"}>About</Link>
             </nav>
             <Suspense fallback={<>Loading...</>}>
-                <Outlet />
+                {/* <Outlet /> */}
             </Suspense>
         </>
     )

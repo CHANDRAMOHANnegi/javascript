@@ -50,20 +50,6 @@ const right_bound = (nums, target, left = 0, right = nums.length - 1) => {
     return right;
 }
 
+
 console.log(left_bound([1, 2, 3, 5, 7], 8));
 console.log(right_bound([1, 2, 3, 5, 7], 8));
-
-
-const arr = [2, 3, 4, 10, 40];
-const target = 0;
-const start = 1;
-const end = 4;
-
-const result = binarySearch(arr, target, start, end);
-console.log(result);
-
-if (result == -1) {
-    console.log("Element not found");
-} else {
-    console.log("Element found at index " + result);
-}

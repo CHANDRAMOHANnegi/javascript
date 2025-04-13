@@ -19,7 +19,7 @@ var search = function (nums, target) {
         // Check if the left half is sorted
         if (nums[low] <= nums[mid]) {
             // Target lies within the left sorted portion
-            if (nums[low] <= target && target < nums[mid]) {
+            if (nums[low] <= target && target < nums[mid]) {// these checks are to check if the target lies in sorted half
                 high = mid - 1;
             } else {
                 low = mid + 1;
@@ -28,7 +28,7 @@ var search = function (nums, target) {
         // Else the right half is sorted
         else {
             // Target lies within the right sorted portion
-            if (nums[mid] < target && target <= nums[high]) {
+            if (nums[mid] < target && target <= nums[high]) {// these checks are to check if the target lies in sorted half
                 low = mid + 1;
             } else {
                 high = mid - 1;

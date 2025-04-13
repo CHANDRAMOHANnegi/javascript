@@ -25,7 +25,8 @@ const expand = (s, left, right) => {
      * left, right + 1
      * 
      * increase left by 1, decrease right by 1
-     * 
+     * we push this window inward, so increase left by 1, decrease right by 1
+     * return s.substring(left,right + 1)
      * ***/
     // return s.slice(left, right + 1)
     return s.slice(left + 1, right)
