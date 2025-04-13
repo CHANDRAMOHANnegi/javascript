@@ -5,6 +5,7 @@ import './App.css';
 // import About from './components/about';
 import Faq from './components/faq';
 import { NavWrapper } from './components/nav-wrapper';
+import RouterApp from './BrowserRouter/RouterApp';
 // import Store from './components/store';
 
 const LazyHome = lazy(() => import("./components/home"))
@@ -15,7 +16,8 @@ const LazyAbout = lazy(() => import("./components/about").then(module=>({default
 function App() {
   return (
     <>
-      <BrowserRouter >
+    {/* <NavWrapper /> */}
+      {/* <BrowserRouter >
         <Routes>
           <Route path='/' element={<NavWrapper />}>
             <Route index element={<LazyHome />} />
@@ -24,7 +26,9 @@ function App() {
             <Route path='/faq' element={<Faq />} />
           </Route>
         </Routes>
-      </BrowserRouter>
+      </BrowserRouter> */}
+
+      <RouterApp/>
     </>
   );
 }
