@@ -5,13 +5,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .demo {
+            display: flex;
+        }
+
+        .controls {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #container {
+            position: relative;
+            width: 200px;
+            height: 100px;
+            overflow-x: scroll;
+            border: 1px solid black;
+            display: flex;
+        }
+
+        #marginIndicator {
+            position: relative;
+            height: 100px;
+            background-color: blue;
+            opacity: 0.5;
+        }
+
+        #elem {
+            background-color: red;
+            width: 100px;
+            height: 100px;
+            /* position: absolute;
+            left: 200px; */
+            flex-shrink: 0;
+        }
+
+        .gutter {
+            width: 210px;
+            height: 100px;
+            flex-shrink: 0;
+        }
+    </style>
 </head>
 
 <body>
     <div class="demo">
         <div id="container">
+            <div class="gutter"></div>
             <div id="elem"></div>
-            <div id="gutter"></div>
+            <div class="gutter"></div>
         </div>
         <div id="marginIndicator"></div>
     </div>

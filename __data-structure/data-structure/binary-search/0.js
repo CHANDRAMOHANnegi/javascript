@@ -26,6 +26,9 @@ const left_bound = (nums, target, left = 0, right = nums.length - 1) => {
             right = mid - 1;
         }
     }
+    console.log(left);
+    // left will be pointing to the first target
+
     // Check whether left border out of bounds lastly
     if (left >= nums.length || nums[left] != target)
         return -1;
@@ -44,12 +47,26 @@ const right_bound = (nums, target, left = 0, right = nums.length - 1) => {
             left = mid + 1;
         }
     }
+    console.log(right);
+    // right will be pointing to the last target
+
     // Check whether right border out of bounds lastly
     if (right < 0 || nums[right] != target)
         return -1;
-    return right;
+    return right; // right + 1 // potential insertion point
 }
 
 
-console.log(left_bound([1, 2, 3, 5, 7], 8));
-console.log(right_bound([1, 2, 3, 5, 7], 8));
+console.log(left_bound([1, 2, 3, 5, 7], 4));
+console.log(right_bound([1, 2, 3, 5, 7], 4));
+
+
+/*****
+ * when we find 
+ * if(nums[mid] === target){
+ * }
+ * 
+ * then we are moving the pointer,
+ * if the next value is not
+ * 
+ * ****/ 
