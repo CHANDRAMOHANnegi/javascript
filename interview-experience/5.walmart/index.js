@@ -1,5 +1,5 @@
 
-// Given an integer array nums  return the next greater number for every element in nums.
+// Given an integer array nums  return the next greater number for every element in nums.
 // Given a circular integer array nums (i.e., the next element of nums[nums.length - 1] is nums[0]), return the next greater number for every element in nums.
 
 const arr = [2, 5, 1, 6, 5]

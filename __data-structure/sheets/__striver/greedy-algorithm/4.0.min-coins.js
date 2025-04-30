@@ -46,22 +46,7 @@ var coinChange = function (coins, amount) {
     return amount !== 0 ? -1 : count;
 };
 
-
-// above one is  wrong
-
-/***
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * ***/
+// above one is  wrong // 
 
 /**
  * @param {number[]} coins
@@ -74,7 +59,7 @@ const coinsRec = function (coins, target, idx) {
         if (target === 0) {
             return 0
         }
-        return -1
+        return -1 // return Infinity // why ! if some amount is un-reachable then we can use infinite coins to get that amount
     }
 
     let includeRes = coinsRec(coins, target - coins[idx], idx)
@@ -111,3 +96,11 @@ var coinChange = function (coins, amount) {
     // return coinsRec(coins, amount, 0)
     return coinsRecDP(coins, amount)
 };
+
+/*****
+ * WHY COINS LOOP IS OUTSIDE
+ * 
+ * 1. we can start amount from the coin and not 0
+ * 2. we stake one coin and see impact of that coin on all amount
+ * 
+ * **/ 

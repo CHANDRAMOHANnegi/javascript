@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .carousel-container {
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .content {
+            overflow: hidden;
+        }
+
+        .cards {
+            width: 200px;
+            display: flex;
+            position: relative;
+
+            /* */
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .card {
+            width: 200px;
+            height: 100px;
+            flex-shrink: 0;
+            border: 1px solid red;
+        }
+
+        .dots {
+            display: flex;
+            position: absolute;
+        }
+
+        .prev,
+        .next {
+            z-index: 10;
+            position: absolute;
+        }
+
+        .next {
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="carousel-container">
+        <div class="prev"> = </div>
+        <div class="content">
+            <div class="cards">
+                <div class="card">
+                    <span>card 1</span>
+                </div>
+                <div class="card">
+                    <span>card 2</span>
+                </div>
+                <div class="card">
+                    <span>card 3</span>
+                </div>
+            </div>
+            <div class="dots">
+                <div class="dot">0</div>
+                <div class="dot">0</div>
+            </div>
+        </div>
+        <div class="next"> = </div>
+    </div>
+
+    <script>
+        const cards = document.querySelector(".cards")
+        const cardWidth = 200
+        const totalCards = document.querySelectorAll(".card").length
+        let currIndex = 1
+
+        const firstCard = cards.firstElementChild.cloneNode(true)
+        const lastCard = cards.lastElementChild.cloneNode(true)
+
+        cards.appendChild(firstCard)
+        cards.prepend(lastCard)
+
+        const totalSlides = totalCards + 2
+
+        cards.style.transform = `translateX(-${cardWidth}px)`
+
+        function goToNextCard() {
+            currIndex++
+            cards.style.transition = `transform 0.5s ease-in-out `
+            cards.style.transform = `translateX(-${cardWidth * currIndex}px)`
+
+            // if at the cloned first card, instantly jump to the real first card
+            if (currIndex === totalSlides - 1) {
+                setTimeout(() => {
+                    currIndex = 1
+                    cards.style.transition = `none`
+                    cards.style.transform = `translateX(-${cardWidth * currIndex}px)`
+                }, 500)
+            }
+        }
+
+        function goToPrevCard() {
+            currIndex--
+            cards.style.transition = `transform 0.5s ease-in-out `
+            cards.style.transform = `translateX(-${cardWidth * currIndex}px)`
+
+            // if at the cloned last card, instantly jump to the real last card
+            if (currIndex === 0) {
+                setTimeout(() => {
+                    cards.style.transition = `none`
+                    currIndex = totalCards
+                    cards.style.transform = `translateX(-${cardWidth * currIndex}px)`
+                }, 500)
+            }
+        }
+
+        document.querySelector(".next").addEventListener("click", goToNextCard)
+        document.querySelector(".prev").addEventListener("click", goToPrevCard)
+    </script>
+
+</body>
+
+</html>
