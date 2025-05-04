@@ -51,3 +51,5 @@ function subsetSumToK2(k, nums) {
 }
 
 console.log(subsetSumToK2(4, [6, 1, 2, 1]))
+
+// * loop is in reverse order because we cannot use nums more than once || VERY IMPORTANT

@@ -7,14 +7,17 @@ const subsetSum = (target, nums) => {
      * 
      * SINGLE MOST IMPORTANT CONDITION
      * 
-     * ***/ 
+     * ***/
     dp[0] = 1
 
     for (const num of nums) {
         /**
          * in target sum this loop is in reverse order,
          * while in coin change PnC this is not in reverse
-         * ***/  
+         * 
+         * loop is in reverse order because we cannot use nums more than once || VERY IMPORTANT
+         * 
+         * ***/
         for (let sum = target; sum >= num; sum--) {
             dp[sum] = dp[sum] + dp[sum - num]
         }
