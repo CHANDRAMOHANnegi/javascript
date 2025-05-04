@@ -21,6 +21,7 @@ const subsetSum = (SUM, nums) => {
 
     for (const num of nums) {
         for (let sum = SUM; sum >= num; sum--) {
+            // * loop is in reverse order because we cannot use nums more than once || VERY IMPORTANT
             dp[sum] = dp[sum] + dp[sum - num]
         }
     }
