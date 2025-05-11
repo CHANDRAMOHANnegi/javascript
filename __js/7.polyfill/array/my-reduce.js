@@ -1,8 +1,8 @@
-declare interface Array<T> {
-  myReduce(callbackfn: (previousValue: T, currentValue: T, currentIndex: number, array: T[]) => T): T;
-  myReduce(callbackfn: (previousValue: T, currentValue: T, currentIndex: number, array: T[]) => T, initialValue: T): T;
-  myReduce<U>(callbackfn: (previousValue: U, currentValue: T, currentIndex: number, array: T[]) => U, initialValue: U): U
-}
+// declare interface Array<T> {
+//   myReduce(callbackfn: (previousValue: T, currentValue: T, currentIndex: number, array: T[]) => T): T;
+//   myReduce(callbackfn: (previousValue: T, currentValue: T, currentIndex: number, array: T[]) => T, initialValue: T): T;
+//   myReduce<U>(callbackfn: (previousValue: U, currentValue: T, currentIndex: number, array: T[]) => U, initialValue: U): U
+// }
 
 Array.prototype.myReduce = function (callback, initialValue) {
 
@@ -14,13 +14,15 @@ Array.prototype.myReduce = function (callback, initialValue) {
   let start = 0
   if (arguments.length === 1) {
     if (this.length === 0) {
-      throw new Error(`Empty array without initial value isnot allowed`)
+      throw new Error(`Empty array without initial value is not allowed`)
     }
     val = this[0]
     start = 1
   }
 
   for (let i = start; i < this.length; i++) {
+    console.log('------');
+
     val = callback(val, this[i], i, this)
   }
 
@@ -34,7 +36,7 @@ Array.prototype.myReduce = function (callback, initialValue) {
  * 
  * if empty array with no initial value, then throw error
  * 
- * **/ 
+ * **/
 
 
 

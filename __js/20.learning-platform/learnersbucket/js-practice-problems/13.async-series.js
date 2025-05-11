@@ -63,6 +63,12 @@ const promises = [
     asyncTask(2),
     asyncTask(5),
 ];
+/****
+ * whats wrong here
+ * 
+ * 
+ * **/ 
+
 
 const pro = asyncSeriesExecuterReduce(promises);
 
