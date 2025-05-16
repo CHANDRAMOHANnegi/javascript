@@ -13,6 +13,9 @@ export type ButtonProps = {
   size?: "large" | "small";
 };
 
-export const Button = (props: ComponentProps<"button"> & ButtonProps) => {
-  return <button {...props}>Hello</button>;
+export const Button = ({
+  children,
+  ...rest
+}: ComponentProps<"button"> & ButtonProps) => {
+  return <button {...rest}>{children}</button>;
 };

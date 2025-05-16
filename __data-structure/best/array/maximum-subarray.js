@@ -1,7 +1,9 @@
 /**
  *  @param {number[]} nums
  *  @return {number}
- */   
+ */
+
+// Kadane's Algorithm
 
 var maxSubArray = function (nums) {
 
@@ -29,6 +31,6 @@ var maxSubArray = function (nums) {
  *    a single variable can do it
  * 
  * 
- * Kadane’s Algorithm
+ * Kadane's Algorithm
  * 
  * ******/ 
