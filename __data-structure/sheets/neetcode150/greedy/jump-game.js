@@ -56,7 +56,7 @@ const helperTAB = (nums) => {
 }
 
 
-const helperOptimal = (nums)=>{
+const optimalGreedy = (nums)=>{
     let farthest = 0
 
     for(let i = 0; i < nums.length; i++){
@@ -77,6 +77,6 @@ var canJump = function (nums) {
 
     // return helperTAB(nums)
 
-    return helperOptimal(nums)
+    return optimalGreedy(nums)
 
 };
