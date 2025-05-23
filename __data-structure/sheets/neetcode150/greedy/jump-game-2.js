@@ -35,7 +35,7 @@ const helperDP = (nums, idx, dp) => {
 }
 
 
-const optimal = (nums) => {
+const optimalGreedy = (nums) => {
     let farthest = 0
     let currentEnd = 0
     let min = 0
@@ -56,5 +56,5 @@ var jump = function (nums) {
     // const dp = Array.from({length: nums.length + 1},()=>Infinity)
     // return helperDP(nums, 0,dp)
 
-    return optimal(nums)
+    return optimalGreedy(nums)
 };
