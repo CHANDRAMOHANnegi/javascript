@@ -14,6 +14,8 @@ const ngetr = (arr) => {
     let idx = arr.length - 1
 
     while (idx >= 0) {
+
+        //  ">=" in below line is very important
         while (stack.length && arr[idx] >= arr[stack[stack.length - 1]]) {
             stack.pop()
         }
@@ -42,6 +44,8 @@ var maxSlidingWindow = function (nums, k) {
              * then jump to that point,
              * because all other are smaller
              * 
+             * loop to next greater within same window
+             * 
              * ****/ 
             right = nge[right]
         }
@@ -50,3 +54,13 @@ var maxSlidingWindow = function (nums, k) {
     }
     return res
 };
+
+/****
+ * What are we doing here
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * *****/ 
