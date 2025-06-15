@@ -21,6 +21,10 @@ class Heap {
     return this.queue.length;
   }
 
+  peek() {
+    return this.queue[0];
+  }
+
   swap(i, j) {
     [this.queue[i], this.queue[j]] = [this.queue[j], this.queue[i]];
   }
@@ -77,31 +81,66 @@ class Heap {
   }
 }
 
-const pq = new Heap();
+var MedianFinder = function () {
+  this.minHeap = new Heap();
+  this.maxHeap = new Heap((a, b) => b - a);
+  return null;
+};
 
-pq.add(5);
-pq.add(2);
-pq.add(6);
-pq.add(1);
+/**
+ * @param {number} num
+ * @return {void}
+ */
 
-console.log(pq);
-// console.log(pq.remove(), pq) // 1
-// console.log(pq.remove(), pq) // 2
-// console.log(pq.remove(), pq) // 5
-// console.log(pq.remove(), pq) // 6
+// max - 3, 2, 1
+// min - 4, 5
 
-module.exports = { Heap };
+MedianFinder.prototype.addNum = function (num) {
+  /***
+   * maxHeap is default heap for adding values, so we start with maxHeap
+   *
+   * so size of maxHeap can become 1 greater than minHeap
+   *
+   * if(max > min + 1){
+   *    balance
+   * }
+   *
+   * ***/
 
-// Example heap: [10, 20, 30]
-// Size = 3, valid indices are 0, 1, 2
+  // The extra element is always in maxHeap when the total number of elements is odd.
 
-let index = 1; // Element 20
-let leftIndex = this.leftChildIndex(1); // (1 * 2) + 1 = 3
-let rightIndex = this.rightChildIndex(1); // (1 * 2) + 2 = 4
+  if (this.maxHeap.size() === 0 || this.maxHeap.peek() >= num) {
+    this.maxHeap.add(num); // by default add to maxHeap
+  } else {
+    this.minHeap.add(num); // by default add to maxHeap
+  }
 
-// leftIndex = 3, but our array only has indices 0, 1, 2
-// rightIndex = 4, also out of bounds!
+  if (this.maxHeap.size() > this.minHeap.size() + 1) {
+    this.minHeap.add(this.maxHeap.remove());
+  } else if (this.minHeap.size() > this.maxHeap.size()) {
+    // The extra element is always in maxHeap when the total number of elements is odd.
+    // if extra element comes in minHeap, we push it to maxHeap
+    this.maxHeap.add(this.minHeap.remove());
+  }
+  return null;
+};
 
-// Without the check:
-this.queue[3]; // undefined!
-this.queue[4]; // undefined!
+/**
+ * @return {number}
+ */
+MedianFinder.prototype.findMedian = function () {
+  if (this.minHeap.size() < this.maxHeap.size()) {
+    return this.maxHeap.peek();
+  }
+  if (this.minHeap.size() > this.maxHeap.size()) {
+    return this.minHeap.peek();
+  }
+  return ((this.minHeap.peek() ?? 0) + (this.maxHeap.peek() ?? 0)) / 2; //.toFixed(1)
+};
+
+/**
+ * Your MedianFinder object will be instantiated and called as such:
+ * var obj = new MedianFinder()
+ * obj.addNum(num)
+ * var param_2 = obj.findMedian()
+ */
