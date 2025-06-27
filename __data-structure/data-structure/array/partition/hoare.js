@@ -30,3 +30,14 @@ const quickSort = (nums, low, high) => {
 
   return nums;
 };
+
+
+/****
+ *  Hoare partition
+ * 
+ * 1. lesser swaps,
+ * 2. pivot may not end up in its final sorted position after partition
+ * 
+ * 3. return partition index resulting in two overlapping segments
+ * 
+ * **/
